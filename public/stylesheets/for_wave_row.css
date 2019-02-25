@@ -1,0 +1,39 @@
+.waveform {
+    max-width: 800px;
+    height: 150px;
+    margin: auto;    
+    }
+    #waveform {
+    height: 50px;
+    position: relative;
+}
+#waveform1 {
+    height: 50px;
+    position: relative;
+}
+    .play_and_pause_button{
+    outline: none;
+    border: 0;
+    padding: 0;
+    padding-right: 8px;
+    background-color: transparent;
+    }
+    .play_svg {
+    width: 30px;
+    height: 30px;
+    color: #ccc;
+    cursor: pointer;
+    display: block;
+    }
+    .row_one{
+    height: 50px;
+    width: auto;
+    margin: auto;
+    display: -ms-flexbox; 
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-right: 8px;
+    }
