@@ -22,22 +22,24 @@ var audioList = new Vue({
 			//////////测试用数据结束////////////
 		],
 	},
-	// created() {
-	// 	var self=this;
-	// 	var upid = {id:1};
-	// 	$.ajax({
-	// 		type: "get",
-	// 		data:upid,
-	// 		url: "",
-	// 		dataType: 'json',
-	// 		success: function (data) {
-	// 			self.audioList = data
-	// 			data=JSON.stringify(data)
-	// 			// console.log(data)
+	created() {
 
-	// 		}
-	// 	})
-	// },
+
+		// var self=this;
+		// var upid = {id:1};
+		// $.ajax({
+		// 	type: "get",
+		// 	data:upid,
+		// 	url: "",
+		// 	dataType: 'json',
+		// 	success: function (data) {
+		// 		self.audioList = data
+		// 		data=JSON.stringify(data)
+		// 		// console.log(data)
+
+		// 	}
+		// })
+	},
 	watch:{    
 		audioList:function(){  
 			this.$nextTick(function (){
@@ -53,13 +55,21 @@ function isloading(){
 	$("#isloading").css("display","none")
 }
 
-var wavesurfer = WaveSurfer.create({
+
+var t="013kt143.mp3"
+var w1="w1"
+new_wave(w1,t)
+
+
+function new_wave(name,music){
+    // 创建音频
+    var name = WaveSurfer.create({
     container: document.querySelector('#waveform'),
     // 绘制波形之前允许播放音频
     backend: 'MediaElement',
     height : 50,
     plugins: [
-      WaveSurfer.cursor.create({
+        WaveSurfer.cursor.create({
         showTime: true,
         opacity: 1,
         customShowTimeStyle: {
@@ -71,11 +81,11 @@ var wavesurfer = WaveSurfer.create({
       })
     ]
     });
-    wavesurfer.load('/music/仙女棒/013kt143.mp3');
+    name.load('/music/仙女棒/'+music);
     // 播放和暂停
     $(document).on('click','.btnPlay',function () {
       // 开始播放
-      wavesurfer.play();
+      name.play();
       // 修改图标->移除内容->增加内容
       $(this).empty()
       $(this).append(playing_svg_str)
@@ -84,7 +94,7 @@ var wavesurfer = WaveSurfer.create({
     });
     $(document).on('click','.btnPause', function () {
     // 暂停播放
-    wavesurfer.pause();
+    name.pause();
     // 修改图标->移除内容->增加内容
     $(this).empty()
     $(this).append(play_svg_str)
@@ -92,9 +102,10 @@ var wavesurfer = WaveSurfer.create({
     $(this).addClass("btnPlay")
     });
     // 播放结束事件
-    wavesurfer.on('finish', function () {
+    name.on('finish', function () {
       $(".btnPause").empty()
       $(".btnPause").append(play_svg_str)
       $(".btnPause").addClass("btnPlay")
       $(".btnPause").removeClass("btnPause")
     });
+}
