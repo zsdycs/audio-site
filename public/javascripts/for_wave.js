@@ -18,13 +18,38 @@ var audioList = new Vue({
 	data: {
 		audioList: [
 			////////////测试用数据//////////////
-			
+			{
+                music:'013kt130.mp3',
+                num:'1',
+                id:'audio1',
+            },
+            {
+                music:'013kt143.mp3',
+                num:'2',
+                id:'audio2'
+            },
+            {
+                music:'46570_1082_1337.mp3',
+                num:'3',
+                id:'audio3',
+            }
 			//////////测试用数据结束////////////
 		],
 	},
 	created() {
-
-
+        // audioList=JSON.parse(this.audioList)
+        // for(var i=0;i<3;i++){
+            // var music=audioList[i].music
+            // var t1='013kt143.mp3'
+            // var w1="w1"
+            // var w2="w2"
+            // var w3="w3"
+            // new_wave(w1,t1)
+            // var t1='013kt130.mp3'
+            // new_wave(w2,t1)
+            // var t1='46570_1082_1337.mp3'
+            // new_wave(w3,t1)
+        // }
 		// var self=this;
 		// var upid = {id:1};
 		// $.ajax({
@@ -44,7 +69,7 @@ var audioList = new Vue({
 		audioList:function(){  
 			this.$nextTick(function (){
 				isloading()
-				// console.log('v-for渲染已经完成')
+				console.log('v-for渲染已经完成')
 			}
 		
 		)}
@@ -56,15 +81,23 @@ function isloading(){
 }
 
 
-var t="013kt143.mp3"
-var w1="w1"
-new_wave(w1,t)
 
+var t1="a27.mp3"
+var id='#audio1'
+var wave=new Array()
+wave[0] = new_wave(id,t1)
+var t2="013kt130.mp3"
+var id='#audio2'
+var wave2  =new_wave(id,t2)
+var t3="46570_1082_1337.mp3"
+var id='#audio3'
+var wave3 =new_wave(id,t3)
+// console.log(wave[0]);
 
 function new_wave(name,music){
     // 创建音频
-    var name = WaveSurfer.create({
-    container: document.querySelector('#waveform'),
+    var wave = WaveSurfer.create({
+    container: document.querySelector(name),
     // 绘制波形之前允许播放音频
     backend: 'MediaElement',
     height : 36,
@@ -81,33 +114,12 @@ function new_wave(name,music){
       })
     ]
     });
-    name.load('/music/仙女棒/'+music);
-    // 播放和暂停
-    $(document).on('click','.btnPlay',function () {
-      // 开始播放
-      name.play();
-      // 修改图标->移除内容->增加内容
-      $(this).empty()
-      $(this).append(playing_svg_str)
-      $(this).removeClass("btnPlay")
-      $(this).addClass("btnPause")
-    });
-    $(document).on('click','.btnPause', function () {
-    // 暂停播放
-    name.pause();
-    // 修改图标->移除内容->增加内容
-    $(this).empty()
-    $(this).append(play_svg_str)
-    $(this).removeClass("btnPause")
-    $(this).addClass("btnPlay")
-    });
-    // 播放结束事件
-    name.on('finish', function () {
-      $(".btnPause").empty()
-      $(".btnPause").append(play_svg_str)
-      $(".btnPause").addClass("btnPlay")
-      $(".btnPause").removeClass("btnPause")
-    });
+    
+    // 加载音频资源
+    wave.load('/music/仙女棒/'+music);
+
+    ////////////
+    return wave
 }
 $(function(){
     // 添加like事件
@@ -121,3 +133,62 @@ $(function(){
         
     })
 })
+function secondToDate(result) {
+    var m = Math.floor((result / 60 % 60)) < 10 ? '0' + Math.floor((result / 60 % 60)) : Math.floor((result / 60 % 60));
+    var s = Math.floor((result % 60)) < 10 ? '0' + Math.floor((result % 60)) : Math.floor((result % 60));
+    return result =  m + ":" + s;
+}
+
+// 播放和暂停
+$(document).on('click','.btnPlay',function () {
+    // 开始播放
+    wave[0].play();
+    // 修改图标->移除内容->增加内容
+    $(this).empty()
+    $(this).append(playing_svg_str)
+    $(this).removeClass("btnPlay")
+    $(this).addClass("btnPause")
+});
+
+$(document).on('click','.btnPause', function () {
+  // 暂停播放
+  wave[0].pause();
+  // 修改图标->移除内容->增加内容
+  $(this).empty()
+  $(this).append(play_svg_str)
+  $(this).removeClass("btnPause")
+  $(this).addClass("btnPlay")
+});
+
+// 播放结束事件
+wave[0].on('finish', function () {
+      wave[0].stop()
+      $(".CurrentTime").text("00:00")
+      $(".btnPause").empty()
+      $(".btnPause").append(play_svg_str)
+      $(".btnPause").addClass("btnPlay")
+      $(".btnPause").removeClass("btnPause")
+  });
+
+// 已播放时间
+wave[0].on("audioprocess",function(){
+      wave[0].getDuration()
+      $(".CurrentTime").text(secondToDate(wave[0].getCurrentTime()) )
+})
+
+getTime()
+
+// 以秒为单位返回音频片段的持续时间
+function getTime() {
+   setTimeout(
+    function () {
+        var duration = wave[0].getDuration()
+        if(isNaN(duration)){
+            getTime();
+        }else{
+            // console.log(name)
+            // $(name).next().text(secondToDate(wave.getDuration()))
+            $(".current-time").text(secondToDate(wave[0].getDuration()))
+        }
+    }, 15);
+}

@@ -12,7 +12,7 @@
   <div>
     <div id="audioList">
       <ul class="audioLis_ul">
-        <li class="audioLidLis_li">
+        <li v-for="item in audioList" class="audioLidLis_li">
           <div class="row_one">
             <div class="row_div">
               <!-- 左边 -->
@@ -34,11 +34,11 @@
                         </g>
                       </svg>
                       </button>
-                      <span class="audio-time" id="total-time">01:01</span>
+                      <span class="audio-time CurrentTime">00:00</span>
                       <div class="wave_div">
-                        <div id="waveform" class="waveform"></div>
+                        <div v-bind:id="item.id" class="waveform"></div>
                       </div>
-                      <span class="audio-time" id="current-time">01:11</span>
+                      <span class="audio-time current-time">00:00</span>
                     </div>
                   </div>
                 </div>
@@ -48,7 +48,7 @@
                     <div class="music_info">
                       <h3 class="h3_m_name">
                         <a class="music_name_a" href="#">
-                          music name
+                          Music name
                         </a>
                       </h3>
                       <div class="music_by_div">
@@ -94,10 +94,10 @@
                   <section class="row-r-ss">
                     <span>
                       <span class="price-span">
-                        <div class="price-div">￥1</div>
+                        <div class="price-div">￥0</div>
                       </span>
                       <span>
-                          <div class="sales-div">620 Sales</div>
+                          <div class="sales-div">0 Sales</div>
                       </span>
                     </span>
                     <span class="cart-span">
