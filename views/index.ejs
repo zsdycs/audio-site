@@ -5,46 +5,23 @@
   <title><%= title %> </title>
   <link rel="icon" type="image/x-icon" href="/images/common/favicon.ico" />
   <link rel="stylesheet" href="/stylesheets/for_wave_row.css">
-  <style>
-    @media(max-width: 600px) {
-      body {
-        background-color: rgb(117, 14, 36);
-      }
-    }
-
-    @media(min-width: 600px) {
-      body {
-        background-color: aquamarine;
-      }
-    }
-
-    @media(min-width: 800px) {
-      body {
-        background-color: rgb(210, 255, 127);
-      }
-    }
-
-    @media(min-width: 1000px) {
-      body {
-        background-color: rgb(255, 174, 127);
-      }
-    }
-  </style>
 </head>
 
 <body>
   <div id="isloading">正在加载...</div>
   <div>
     <div id="audioList">
-      <ul>
-        <li>
-          <div>
-            <div class="row_one">
+      <ul class="audioLis_ul">
+        <li class="audioLidLis_li">
+          <div class="row_one">
+            <div class="row_div">
               <!-- 左边 -->
-              <div>
-                <div>
-                  <div>
-                    <button class="play_and_pause_button btnPlay">
+              <div class="row_L">
+                <!-- 左上 -->
+                <div class="row_L_top">
+                  <div class="row_L_top_div">
+                    <div class="row_L_top_content">
+                      <button class="play_and_pause_button btnPlay">
                       <svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em"
                         viewBox="0 0 30 30" class="play_svg" style="vertical-align:middle">
                         <title>Play</title>
@@ -56,32 +33,37 @@
                           </g>
                         </g>
                       </svg>
-                    </button>
-                    <div style="width:500px">
-                      <div id="waveform" class="waveform"></div>
+                      </button>
+                      <span class="audio-time" id="total-time">01:01</span>
+                      <div class="wave_div">
+                        <div id="waveform" class="waveform"></div>
+                      </div>
+                      <span class="audio-time" id="current-time">01:11</span>
                     </div>
-                    <span class="">00:00</span>
                   </div>
                 </div>
-                <div class="row_2">
-                  <span>
+                <!-- 左下 -->
+                <div class="row_L_bottom">
+                  <span class="row_L_B_L">
                     <div class="music_info">
-                      <h3>
-                        music name
+                      <h3 class="h3_m_name">
+                        <a class="music_name_a" href="#">
+                          music name
+                        </a>
                       </h3>
-                      <div>
+                      <div class="music_by_div">
                         <i>by</i>
-                        <a href="#">Author name</a>
+                        <a href="#" class="music_author">Author name</a>
                       </div>
                     </div>
                   </span>
                   <span>
-                    <div>
-                      <div>
+                    <div class="text-align-r">
+                      <div class="down-icon">
                         <a download="672644_heart-beat-_by_gabrielgaro_preview.mp3" role="button"
                           href="">
                           <svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em"
-                            viewBox="0 0 16 16" class="_1wuTE" style="vertical-align: middle;">
+                            viewBox="0 0 16 16" class="down-svg" style="vertical-align: middle;">
                             <title>Download Preview</title>
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                               <path fill="#999999"
@@ -91,8 +73,8 @@
                           </svg>
                         </a>
                       </div>
-                      <a role="button" href="#" class="" rel="nofollow">
-                        <svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 512 512" class="_1UJnU _255P_"
+                      <a role="button" href="#" class="like-a" rel="nofollow">
+                        <svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 512 512" class="add-f-svg"
                           style="vertical-align: middle;">
                           <title>Add to Favorites</title>
                           <g>
@@ -107,19 +89,19 @@
                 </div>
               </div>
               <!-- 右边 -->
-              <div>
-                <section>
-                  <section>
+              <div class="row-R">
+                <section class="row-r-s">
+                  <section class="row-r-ss">
                     <span>
-                      <span>
-                        <div class="">￥1</div>
+                      <span class="price-span">
+                        <div class="price-div">￥1</div>
                       </span>
                       <span>
-                          <div class="">620 Sales</div>
+                          <div class="sales-div">620 Sales</div>
                       </span>
                     </span>
-                    <span>
-                      <a class="_3tfm8 wrc8W lpgPF" role="button" href="#" target="_blank"><svg
+                    <span class="cart-span">
+                      <a class="cart-a" role="button" href="#" target="_blank"><svg
                           fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 16 16"
                           style="vertical-align: middle;">
                           <title>Cart</title>
@@ -143,8 +125,6 @@
     </div>
 
   </div>
-
-
   <script src="/javascripts/lib/wavesurfer.js"></script>
   <script src="/javascripts/lib/wavesurfer.cursor.js"></script>
   <script src="/javascripts/lib/jquery-1.11.1.min.js"></script>

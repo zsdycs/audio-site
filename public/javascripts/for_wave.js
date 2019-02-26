@@ -67,7 +67,7 @@ function new_wave(name,music){
     container: document.querySelector('#waveform'),
     // 绘制波形之前允许播放音频
     backend: 'MediaElement',
-    height : 50,
+    height : 36,
     plugins: [
         WaveSurfer.cursor.create({
         showTime: true,
@@ -109,3 +109,15 @@ function new_wave(name,music){
       $(".btnPause").removeClass("btnPause")
     });
 }
+$(function(){
+    // 添加like事件
+    $(document).on("click",".like-a",function(){
+        
+        if($(this).attr("class")=="like-a add-like"){
+            $(this).removeClass("add-like")
+        }else{
+            $(this).addClass("add-like")
+        }
+        
+    })
+})
