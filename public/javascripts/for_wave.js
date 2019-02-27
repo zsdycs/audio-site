@@ -16,27 +16,71 @@ var play_svg_str='<svg fill=\"currentColor\" preserveAspectRatio=\"xMidYMid meet
 var audioList = new Vue({
 	el: '#audioList',
 	data: {
-		audioList: [
-			////////////测试用数据//////////////
-			{
+		audioList: [],
+	},
+	created() {
+        ////////////测试用数据//////////////
+			data=[{
                 music:'013kt130.mp3',
-                num:'1',
-                id:'audio1',
+                music_name:'仙女棒',
+                author_name:'佚名',
+                id:'audio0',
             },
             {
                 music:'013kt143.mp3',
-                num:'2',
-                id:'audio2'
+                music_name:'仙女棒',
+                author_name:'佚名',
+                id:'audio1'
             },
             {
                 music:'46570_1082_1337.mp3',
-                num:'3',
+                music_name:'仙女棒',
+                author_name:'佚名',
+                id:'audio2',
+            },
+            {
+                music:'46570_1082_1337.mp3',
+                music_name:'仙女棒',
+                author_name:'佚名',
                 id:'audio3',
-            }
+            },
+            {
+                music:'46570_1082_1337.mp3',
+                music_name:'仙女棒',
+                author_name:'佚名',
+                id:'audio4',
+            },
+            {
+                music:'46570_1082_1337.mp3',
+                music_name:'仙女棒',
+                author_name:'佚名',
+                id:'audio5',
+            },
+            {
+                music:'46570_1082_1337.mp3',
+                music_name:'仙女棒',
+                author_name:'佚名',
+                id:'audio6',
+            },
+            {
+                music:'46570_1082_1337.mp3',
+                music_name:'仙女棒',
+                author_name:'佚名',
+                id:'audio7',
+            },
+            {
+                music:'46570_1082_1337.mp3',
+                music_name:'仙女棒',
+                author_name:'佚名',
+                id:'audio8',
+            },
+            {
+                music:'46570_1082_1337.mp3',
+                music_name:'仙女棒',
+                author_name:'佚名',
+                id:'audio9',
+            }]
 			//////////测试用数据结束////////////
-		],
-	},
-	created() {
         // audioList=JSON.parse(this.audioList)
         // for(var i=0;i<3;i++){
             // var music=audioList[i].music
@@ -50,17 +94,17 @@ var audioList = new Vue({
             // var t1='46570_1082_1337.mp3'
             // new_wave(w3,t1)
         // }
-		// var self=this;
-		// var upid = {id:1};
+		var self=this;
+		// var updata = {id:1};
 		// $.ajax({
 		// 	type: "get",
-		// 	data:upid,
+		// 	data:updata,
 		// 	url: "",
 		// 	dataType: 'json',
 		// 	success: function (data) {
-		// 		self.audioList = data
-		// 		data=JSON.stringify(data)
-		// 		// console.log(data)
+				self.audioList = data
+				data=JSON.stringify(data)
+				// console.log(data)
 
 		// 	}
 		// })
@@ -69,7 +113,7 @@ var audioList = new Vue({
 		audioList:function(){  
 			this.$nextTick(function (){
 				isloading()
-				console.log('v-for渲染已经完成')
+				// console.log('v-for渲染已经完成')
 			}
 		
 		)}
@@ -83,16 +127,38 @@ function isloading(){
 
 
 var t1="a27.mp3"
-var id='#audio1'
+var id='#audio0'
 var wave=new Array()
 wave[0] = new_wave(id,t1)
 var t2="013kt130.mp3"
-var id='#audio2'
-var wave2  =new_wave(id,t2)
+var id='#audio1'
+wave[1]  =new_wave(id,t2)
 var t3="46570_1082_1337.mp3"
+var id='#audio2'
+wave[2] =new_wave(id,t3)
+var t3="47165_1082_1379.mp3"
 var id='#audio3'
-var wave3 =new_wave(id,t3)
-// console.log(wave[0]);
+wave[3] =new_wave(id,t3)
+var t3="013kt130.mp3"
+var id='#audio4'
+wave[4] =new_wave(id,t3)
+var t3="013kt143.mp3"
+var id='#audio5'
+wave[5] =new_wave(id,t3)
+var t3="46578_1082_1337.mp3"
+var id='#audio6'
+wave[6] =new_wave(id,t3)
+var t3="47165_1082_1379.mp3"
+var id='#audio7'
+wave[7] =new_wave(id,t3)
+var t3="celestial 4.mp3"
+var id='#audio8'
+wave[8] =new_wave(id,t3)
+var t3="celestial 11 short.mp3"
+var id='#audio9'
+wave[9] =new_wave(id,t3)
+
+
 
 function new_wave(name,music){
     // 创建音频
@@ -100,6 +166,7 @@ function new_wave(name,music){
     container: document.querySelector(name),
     // 绘制波形之前允许播放音频
     backend: 'MediaElement',
+    hideScrollbar:true,
     height : 36,
     plugins: [
         WaveSurfer.cursor.create({
@@ -117,8 +184,6 @@ function new_wave(name,music){
     
     // 加载音频资源
     wave.load('/music/仙女棒/'+music);
-
-    ////////////
     return wave
 }
 $(function(){
@@ -133,62 +198,144 @@ $(function(){
         
     })
 })
+// 秒——>00:00
 function secondToDate(result) {
     var m = Math.floor((result / 60 % 60)) < 10 ? '0' + Math.floor((result / 60 % 60)) : Math.floor((result / 60 % 60));
     var s = Math.floor((result % 60)) < 10 ? '0' + Math.floor((result % 60)) : Math.floor((result % 60));
     return result =  m + ":" + s;
 }
 
-// 播放和暂停
+// 播放
 $(document).on('click','.btnPlay',function () {
-    // 开始播放
-    wave[0].play();
-    // 修改图标->移除内容->增加内容
-    $(this).empty()
-    $(this).append(playing_svg_str)
-    $(this).removeClass("btnPlay")
-    $(this).addClass("btnPause")
-});
+    var wave_isplay=new Array()
+    var istrue ="istrue"
+    var id=$(this).next().next().children().attr("id")
 
+    // 给数组赋值
+    for(var i=0;i<10;i++){
+        wave_isplay[i]="is"+wave[i].isPlaying()
+    }
+
+    // 判断是否有声音片段正在播放
+    if(arrayishave(wave_isplay,istrue)) { 
+        //有正在播放，暂停正在播放，开始当前
+        wave[arrayisplay(wave_isplay,istrue)].pause();
+        // 修改正在播放的按钮状态
+        var playing_id="#audio"+arrayisplay(wave_isplay,istrue)
+        $(playing_id).parent().prev().prev().empty()
+        $(playing_id).parent().prev().prev().append(play_svg_str)
+        $(playing_id).parent().prev().prev().removeClass("btnPause")
+        $(playing_id).parent().prev().prev().addClass("btnPlay")
+        for(var i=0;i<10;i++){
+            if(id=="audio"+i){ 
+                // console.log(i)
+                // 开始播放
+                wave[i].play();
+                // 修改图标->移除内容->增加内容
+                $(this).empty()
+                $(this).append(playing_svg_str)
+                $(this).removeClass("btnPlay")
+                $(this).addClass("btnPause")
+            }
+        }
+    }else{
+        for(var i=0;i<10;i++){
+            if(id=="audio"+i){ 
+                // console.log(i)
+                // 开始播放
+                wave[i].play();
+                // 修改图标->移除内容->增加内容
+                $(this).empty()
+                $(this).append(playing_svg_str)
+                $(this).removeClass("btnPlay")
+                $(this).addClass("btnPause")
+            }
+        }
+    }  
+});
+// 暂停
 $(document).on('click','.btnPause', function () {
-  // 暂停播放
-  wave[0].pause();
-  // 修改图标->移除内容->增加内容
-  $(this).empty()
-  $(this).append(play_svg_str)
-  $(this).removeClass("btnPause")
-  $(this).addClass("btnPlay")
+    var id=$(this).next().next().children().attr("id")
+    for(var i=0;i<10;i++){
+        if(id=="audio"+i){
+        // 暂停播放
+        wave[i].pause();
+        // 修改图标->移除内容->增加内容
+        $(this).empty()
+        $(this).append(play_svg_str)
+        $(this).removeClass("btnPause")
+        $(this).addClass("btnPlay")
+        }
+    }
 });
-
 // 播放结束事件
-wave[0].on('finish', function () {
-      wave[0].stop()
-      $(".CurrentTime").text("00:00")
-      $(".btnPause").empty()
-      $(".btnPause").append(play_svg_str)
-      $(".btnPause").addClass("btnPlay")
-      $(".btnPause").removeClass("btnPause")
-  });
+wave_finish()
+// 已播放时间
+wave_audioprocess()
+// 获取声音片段时间
+getTime()
+// 播放结束事件
+function wave_finish(){
+    for(var i=0;i<10;i++){
+        wave[i].on('finish', function () {
+            // wave[i].stop()
+            // $(".CurrentTime").text("00:00")
+            $(".btnPause").empty()
+            $(".btnPause").append(play_svg_str)
+            $(".btnPause").addClass("btnPlay")
+            $(".btnPause").removeClass("btnPause")
+        });
+    }
+}
 
 // 已播放时间
-wave[0].on("audioprocess",function(){
-      wave[0].getDuration()
-      $(".CurrentTime").text(secondToDate(wave[0].getCurrentTime()) )
-})
-
-getTime()
-
+function wave_audioprocess(){
+    for(var i=0;i<10;i++){
+        wave[i].on("audioprocess",function(){
+            for(var i=0;i<10;i++){
+                wave[i].getDuration()
+                var id = "#audio"+i
+                // console.log(id)
+                // console.info(secondToDate(wave[i].getCurrentTime()))
+                $(id).parent().prev().text(secondToDate(wave[i].getCurrentTime()))
+            }
+        })
+    }
+}
+// 判断数组是否包含某值
+function arrayishave(arr,value){
+    for(var i=0; i<10; i++) {
+        if(arr[i] == value) {
+            return true
+        }
+    }
+}
+// 判断数组中正在播放的下标
+function arrayisplay(arr,value){
+    for(var i=0; i<10; i++) {
+        if(arr[i] == value) {
+            return i
+        }
+    }
+}
 // 以秒为单位返回音频片段的持续时间
 function getTime() {
    setTimeout(
     function () {
-        var duration = wave[0].getDuration()
-        if(isNaN(duration)){
-            getTime();
-        }else{
-            // console.log(name)
-            // $(name).next().text(secondToDate(wave.getDuration()))
-            $(".current-time").text(secondToDate(wave[0].getDuration()))
+        for(var i=0;i<10;i++){
+            var duration=new Array()
+            duration[i] = wave[i].getDuration()
+            if(isNaN(duration[i])){
+                getTime();
+            }else{
+                var id = "#audio"+i
+                if(secondToDate(wave[i].getDuration())=="00:00"){
+                    $(id).parent().next().text("00:01")
+                }else{
+                    $(id).parent().next().text(secondToDate(wave[i].getDuration()))
+                }
+            }
         }
+        
     }, 15);
 }

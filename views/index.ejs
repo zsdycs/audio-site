@@ -8,11 +8,11 @@
 </head>
 
 <body>
-  <div id="isloading">正在加载...</div>
+  <div id="isloading">正在加载······</div>
   <div>
     <div id="audioList">
       <ul class="audioLis_ul">
-        <li v-for="item in audioList" class="audioLidLis_li">
+        <li v-cloak v-for="item in audioList" class="audioLidLis_li">
           <div class="row_one">
             <div class="row_div">
               <!-- 左边 -->
@@ -47,13 +47,11 @@
                   <span class="row_L_B_L">
                     <div class="music_info">
                       <h3 class="h3_m_name">
-                        <a class="music_name_a" href="#">
-                          Music name
-                        </a>
+                        <a class="music_name_a" href="#">{{item.music_name}}</a>
                       </h3>
                       <div class="music_by_div">
                         <i>by</i>
-                        <a href="#" class="music_author">Author name</a>
+                        <a href="#" class="music_author">{{item.author_name}}</a>
                       </div>
                     </div>
                   </span>
