@@ -12,6 +12,9 @@ var play_svg_str='<svg fill=\"currentColor\" preserveAspectRatio=\"xMidYMid meet
 '<path d=\"M21.2224954,16.2938514 C21.2876061,16.3396427 21.320161,16.4006969 21.320161,16.4770157 C21.320161,16.5685983 21.2876061,16.6372842 21.2224954,16.6830755 L13.9952401,22.2466908 C13.9301294,22.2924821 13.8406034,22.3001139 13.7266597,22.2695864 C13.6289936,22.2237951 13.5801612,22.1474774 13.5801612,22.040631 L13.5801612,10.9134004 C13.5801612,10.8218178 13.6289936,10.7531319 13.7266597,10.7073406 C13.8243258,10.6615493 13.9138517,10.6691811 13.9952401,10.7302361 L21.2224954,16.2938514 Z M16,1 C7.7125,1 1,7.7125 1,16 C1,24.2875 7.7125,31 16,31 C24.2875,31 31,24.2875 31,16 C31,7.7125 24.2875,1 16,1 Z M16,29.0645161 C8.79818548,29.0645161 2.93548387,23.2018145 2.93548387,16 C2.93548387,8.79818548 8.79818548,2.93548387 16,2.93548387 C23.2018145,2.93548387 29.0645161,8.79818548 29.0645161,16 C29.0645161,23.2018145 23.2018145,29.0645161 16,29.0645161 Z\">'+
 '</path></g></g></svg>';
 
+// 请求获取得到的资源数目 全局变量
+var wave=new Array()
+
 //音频列表
 var audioList = new Vue({
 	el: '#audioList',
@@ -30,7 +33,7 @@ var audioList = new Vue({
                 music:'013kt143.mp3',
                 music_name:'仙女棒',
                 author_name:'佚名',
-                id:'audio1'
+                id:'audio1',
             },
             {
                 music:'46570_1082_1337.mp3',
@@ -102,7 +105,9 @@ var audioList = new Vue({
 		// 	url: "",
 		// 	dataType: 'json',
 		// 	success: function (data) {
-				self.audioList = data
+                self.audioList = data
+                console.log(data)
+                
 				data=JSON.stringify(data)
 				// console.log(data)
 
@@ -124,11 +129,8 @@ function isloading(){
 	$("#isloading").css("display","none")
 }
 
-
-
 var t1="a27.mp3"
 var id='#audio0'
-var wave=new Array()
 wave[0] = new_wave(id,t1)
 var t2="013kt130.mp3"
 var id='#audio1'
@@ -158,10 +160,8 @@ var t3="celestial 11 short.mp3"
 var id='#audio9'
 wave[9] =new_wave(id,t3)
 
-
-
+// 创建音频对象
 function new_wave(name,music){
-    // 创建音频
     var wave = WaveSurfer.create({
     container: document.querySelector(name),
     // 绘制波形之前允许播放音频
@@ -181,7 +181,6 @@ function new_wave(name,music){
       })
     ]
     });
-    
     // 加载音频资源
     wave.load('/music/仙女棒/'+music);
     return wave
@@ -189,7 +188,11 @@ function new_wave(name,music){
 $(function(){
     // 添加like事件
     $(document).on("click",".like-a",function(){
-        
+        // 判断登录状态
+
+        // 请求改变数据库数据
+
+        // 样式变化
         if($(this).attr("class")=="like-a add-like"){
             $(this).removeClass("add-like")
         }else{
@@ -212,7 +215,7 @@ $(document).on('click','.btnPlay',function () {
     var id=$(this).next().next().children().attr("id")
 
     // 给数组赋值
-    for(var i=0;i<10;i++){
+    for(var i=0;i<wave.length;i++){
         wave_isplay[i]="is"+wave[i].isPlaying()
     }
 
@@ -239,7 +242,7 @@ $(document).on('click','.btnPlay',function () {
             }
         }
     }else{
-        for(var i=0;i<10;i++){
+        for(var i=0;i<wave.length;i++){
             if(id=="audio"+i){ 
                 // console.log(i)
                 // 开始播放
@@ -256,7 +259,7 @@ $(document).on('click','.btnPlay',function () {
 // 暂停
 $(document).on('click','.btnPause', function () {
     var id=$(this).next().next().children().attr("id")
-    for(var i=0;i<10;i++){
+    for(var i=0;i<wave.length;i++){
         if(id=="audio"+i){
         // 暂停播放
         wave[i].pause();
@@ -276,7 +279,7 @@ wave_audioprocess()
 getTime()
 // 播放结束事件
 function wave_finish(){
-    for(var i=0;i<10;i++){
+    for(var i=0;i<wave.length;i++){
         wave[i].on('finish', function () {
             // wave[i].stop()
             // $(".CurrentTime").text("00:00")
@@ -290,9 +293,9 @@ function wave_finish(){
 
 // 已播放时间
 function wave_audioprocess(){
-    for(var i=0;i<10;i++){
+    for(var i=0;i<wave.length;i++){
         wave[i].on("audioprocess",function(){
-            for(var i=0;i<10;i++){
+            for(var i=0;i<wave.length;i++){
                 wave[i].getDuration()
                 var id = "#audio"+i
                 // console.log(id)
@@ -304,7 +307,7 @@ function wave_audioprocess(){
 }
 // 判断数组是否包含某值
 function arrayishave(arr,value){
-    for(var i=0; i<10; i++) {
+    for(var i=0; i<arr.length; i++) {
         if(arr[i] == value) {
             return true
         }
@@ -312,7 +315,7 @@ function arrayishave(arr,value){
 }
 // 判断数组中正在播放的下标
 function arrayisplay(arr,value){
-    for(var i=0; i<10; i++) {
+    for(var i=0; i<arr.length; i++) {
         if(arr[i] == value) {
             return i
         }
@@ -322,7 +325,7 @@ function arrayisplay(arr,value){
 function getTime() {
    setTimeout(
     function () {
-        for(var i=0;i<10;i++){
+        for(var i=0;i<wave.length;i++){
             var duration=new Array()
             duration[i] = wave[i].getDuration()
             if(isNaN(duration[i])){
