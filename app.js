@@ -10,14 +10,23 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/runoob";
+/////
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/";
  
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  console.log("数据库已创建!");
-  db.close();
-});
+// MongoClient.connect(url, function(err, db) {
+//     if (err) throw err;
+//     var dbo = db.db("runoob");
+//     var myobj = { name: "菜鸟教程", url: "www.runoob" };
+//     dbo.collection("site").insertOne(myobj, function(err, res) {
+//         if (err) throw err;
+//         console.log("文档插入成功");
+//         db.close();
+//     });
+// });
+/////
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

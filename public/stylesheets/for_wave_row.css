@@ -335,34 +335,35 @@ button, input, optgroup, select, textarea {
     }
     .row_div, .row_one {
         padding: 16px;
-    }
+        margin: 0px 30px 0px 0px;
+    }   
 }
 
-/* @media(min-width: 640px) {
-body {
+@media(min-width: 640px) {
+    body {
     background-color: aquamarine;
-    
-} */
-.row_div{
-margin: 24px 16px 0;
--ms-flex-direction: row;
-flex-direction: row;
-height: 75px;
-padding: 16px;
-}
-.row-R {
-    width: 170px;
-    min-width: 127px;
-    margin-left: 8px;
-    padding-left: 16px;
-    display: -ms-flexbox;
-    display: flex;
-    border-left: 1px solid #e6e6e6;
-    -ms-flex-direction: column;
-    flex-direction: column;
-}
-}
+        
+    }
+    .row_div{
+    margin: 24px 16px 0;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    height: 75px;
+    padding: 16px;
+    }
+    .row-R {
+        width: 170px;
+        min-width: 127px;
+        margin-left: 8px;
+        padding-left: 16px;
+        display: -ms-flexbox;
+        display: flex;
+        border-left: 1px solid #e6e6e6;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
 
+}
 
 
 
