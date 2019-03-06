@@ -29,60 +29,61 @@ var audioList = new Vue({
                 author_name:'佚名',
                 id:'audio0',
             },
-            {
-                music:'013kt143.mp3',
-                music_name:'仙女棒',
-                author_name:'佚名',
-                id:'audio1',
-            },
-            {
-                music:'46570_1082_1337.mp3',
-                music_name:'仙女棒',
-                author_name:'佚名',
-                id:'audio2',
-            },
-            {
-                music:'46570_1082_1337.mp3',
-                music_name:'仙女棒',
-                author_name:'佚名',
-                id:'audio3',
-            },
-            {
-                music:'46570_1082_1337.mp3',
-                music_name:'仙女棒',
-                author_name:'佚名',
-                id:'audio4',
-            },
-            {
-                music:'46570_1082_1337.mp3',
-                music_name:'仙女棒',
-                author_name:'佚名',
-                id:'audio5',
-            },
-            {
-                music:'46570_1082_1337.mp3',
-                music_name:'仙女棒',
-                author_name:'佚名',
-                id:'audio6',
-            },
-            {
-                music:'46570_1082_1337.mp3',
-                music_name:'仙女棒',
-                author_name:'佚名',
-                id:'audio7',
-            },
-            {
-                music:'46570_1082_1337.mp3',
-                music_name:'仙女棒',
-                author_name:'佚名',
-                id:'audio8',
-            },
-            {
-                music:'46570_1082_1337.mp3',
-                music_name:'仙女棒',
-                author_name:'佚名',
-                id:'audio9',
-            }]
+            // {
+            //     music:'013kt143.mp3',
+            //     music_name:'仙女棒',
+            //     author_name:'佚名',
+            //     id:'audio1',
+            // },
+            // {
+            //     music:'46570_1082_1337.mp3',
+            //     music_name:'仙女棒',
+            //     author_name:'佚名',
+            //     id:'audio2',
+            // },
+            // {
+            //     music:'46570_1082_1337.mp3',
+            //     music_name:'仙女棒',
+            //     author_name:'佚名',
+            //     id:'audio3',
+            // },
+            // {
+            //     music:'46570_1082_1337.mp3',
+            //     music_name:'仙女棒',
+            //     author_name:'佚名',
+            //     id:'audio4',
+            // },
+            // {
+            //     music:'46570_1082_1337.mp3',
+            //     music_name:'仙女棒',
+            //     author_name:'佚名',
+            //     id:'audio5',
+            // },
+            // {
+            //     music:'46570_1082_1337.mp3',
+            //     music_name:'仙女棒',
+            //     author_name:'佚名',
+            //     id:'audio6',
+            // },
+            // {
+            //     music:'46570_1082_1337.mp3',
+            //     music_name:'仙女棒',
+            //     author_name:'佚名',
+            //     id:'audio7',
+            // },
+            // {
+            //     music:'46570_1082_1337.mp3',
+            //     music_name:'仙女棒',
+            //     author_name:'佚名',
+            //     id:'audio8',
+            // },
+            // {
+            //     music:'46570_1082_1337.mp3',
+            //     music_name:'仙女棒',
+            //     author_name:'佚名',
+            //     id:'audio9',
+            // }
+        ]
 			//////////测试用数据结束////////////
         // audioList=JSON.parse(this.audioList)
         // for(var i=0;i<3;i++){
@@ -129,36 +130,10 @@ function isloading(){
 	$("#isloading").css("display","none")
 }
 
-var t1="a27.mp3"
+var t1="batempty.WAV"
 var id='#audio0'
 wave[0] = new_wave(id,t1)
-var t2="013kt130.mp3"
-var id='#audio1'
-wave[1]  =new_wave(id,t2)
-var t3="46570_1082_1337.mp3"
-var id='#audio2'
-wave[2] =new_wave(id,t3)
-var t3="47165_1082_1379.mp3"
-var id='#audio3'
-wave[3] =new_wave(id,t3)
-var t3="013kt130.mp3"
-var id='#audio4'
-wave[4] =new_wave(id,t3)
-var t3="013kt143.mp3"
-var id='#audio5'
-wave[5] =new_wave(id,t3)
-var t3="46578_1082_1337.mp3"
-var id='#audio6'
-wave[6] =new_wave(id,t3)
-var t3="47165_1082_1379.mp3"
-var id='#audio7'
-wave[7] =new_wave(id,t3)
-var t3="celestial 4.mp3"
-var id='#audio8'
-wave[8] =new_wave(id,t3)
-var t3="celestial 11 short.mp3"
-var id='#audio9'
-wave[9] =new_wave(id,t3)
+
 
 // 创建音频对象
 function new_wave(name,music){
@@ -182,7 +157,7 @@ function new_wave(name,music){
     ]
     });
     // 加载音频资源
-    wave.load('/music/仙女棒/'+music);
+    wave.load('/music/MAC系统声音/'+music);
     return wave
 }
 $(function(){
