@@ -285,6 +285,9 @@ button, input, optgroup, select, textarea {
 .add-like{
     animation-name: _3HUDA;
 }
+#audioList{
+    margin-bottom: 24px;
+}
 @keyframes _3HUDA
 {20%{transform:scale(.8)}50%{transform:scale(1.2)}
 }
@@ -300,7 +303,7 @@ button, input, optgroup, select, textarea {
 .cart-a{
     color: #999;
     border-color: #79b530;
-    height: 24px;
+    height: 37px;
     display: -ms-flexbox;
     display: flex;
     font-size: 14px;
@@ -309,17 +312,13 @@ button, input, optgroup, select, textarea {
     -ms-flex-direction: column;
     flex-direction: column;
     margin: 0;
-    /* display: inline-block; */
     border: 1px solid #ccc;
     background-color: transparent;
     -webkit-font-smoothing: antialiased;
-    /* color: #b3b3b3; */
     text-align: center;
     cursor: pointer;
-    /* margin: 1px 4px 0; */
     line-height: 1.5;
     padding: 7px 12px;
-    /* font-size: 12px; */
     font-weight: 700;
     text-decoration: none;
     border-radius: 2px;
@@ -335,7 +334,7 @@ button, input, optgroup, select, textarea {
     }
     .row_div, .row_one {
         padding: 16px;
-        margin: 0px 30px 0px 0px;
+        /* margin: 0px 30px 0px 0px; */
     }   
 }
 
@@ -348,8 +347,8 @@ button, input, optgroup, select, textarea {
     margin: 24px 16px 0;
     -ms-flex-direction: row;
     flex-direction: row;
-    height: 75px;
-    padding: 16px;
+    height: 106px;
+    padding: 15px 30px;
     }
     .row-R {
         width: 170px;
@@ -367,11 +366,11 @@ button, input, optgroup, select, textarea {
 
 
 
-@media(min-width: 1000px) {
+/* @media(min-width: 1000px) {
 body {
     background-color: rgb(255, 255, 255);
 }
-}
+} */
 @media (max-width: 1408px) and (min-width: 1152px){
 .music_info {
     max-width: 500px;
