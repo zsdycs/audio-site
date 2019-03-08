@@ -118,7 +118,7 @@ var audioList = new Vue({
 	watch:{    
 		audioList:function(){  
 			this.$nextTick(function (){
-				isloading()
+				audioListisloading()
 				// console.log('v-for渲染已经完成')
 			}
 		
@@ -126,8 +126,8 @@ var audioList = new Vue({
 	}
 });
 // 音频列表渲染完成隐藏
-function isloading(){
-	$("#isloading").css("display","none")
+function audioListisloading(){
+	$("#audioList").removeClass("loader")
 }
 
 var t1="/music/管风琴/3.mp3"
@@ -211,6 +211,12 @@ $(function(){
         }
         
     })
+    // 鼠标移入移出增加小圆点
+    $(".row_div").hover(function(){
+        $(this).removeClass("display_3qnOD")
+    },function(){
+        $(this).addClass("display_3qnOD")
+    });
 })
 // 秒——>00:00
 function secondToDate(result) {
@@ -353,3 +359,4 @@ function getTime() {
         
     }, 15);
 }
+

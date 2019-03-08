@@ -363,9 +363,33 @@ button, input, optgroup, select, textarea {
     }
 
 }
-
-
-
+.display_3qnOD ._3qnOD{
+    display: none;
+}
+._3qnOD {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #087096;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+._3qnOD:after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    display: block;
+    border-radius: 100%;
+    background-color: inherit;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-name: _3UIIa;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+    opacity: .5;
+}
+@keyframes _3UIIa{0%{opacity:0;transform:scale(3)}}
 /* @media(min-width: 1000px) {
 body {
     background-color: rgb(255, 255, 255);

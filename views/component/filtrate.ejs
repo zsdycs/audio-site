@@ -1,0 +1,94 @@
+<div class="filtrate-div">
+        <button class="filtrate-button open-filtrate" type="button" aria-label="collapse">
+          <div class="">
+            <h3 class="">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">标签</font>
+              </font>
+            </h3><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="8" width="13" viewBox="0 0 13 8"
+              style="vertical-align: middle;">
+              <title>Chevron Up</title>
+              <g>
+                <g stroke="none" stroke-width="1" fill-rule="evenodd" fill="none">
+                  <g transform="translate(1.000000, 2.000000)" stroke-width="2" stroke="currentColor">
+                    <polyline transform="translate(5.500000, 2.500000) rotate(90.000000) translate(-5.500000, -2.500000) "
+                      points="8 -2.5 3 2.5 8 7.5"></polyline>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </button>
+          <div id="tagList" class="ui active centered inline loader">
+            <div class="ui list">
+            <div v-cloak v-for="item in tagList" class="item">
+                <div class="ui checkbox">
+                    <input v-bind:id="item.id" type="checkbox" name="example">
+                    <label>
+                      {{item.tag_name}}
+                      
+                    </label>
+                    <span style="color: #999;font-size:12px;">
+                        {{item.music_num}}
+                        </span>
+                </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <script src="/javascripts/filtrate.js"></script>
+      <!--  -->
+      <div class="filtrate-div">
+          <button class="filtrate-button open-filtrate" type="button" aria-label="collapse">
+            <div class="">
+              <h3 class="">
+                <font style="vertical-align: inherit;">
+                  <font style="vertical-align: inherit;">价格</font>
+                </font>
+              </h3><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="8" width="13" viewBox="0 0 13 8"
+                style="vertical-align: middle;">
+                <title>Chevron Up</title>
+                <g>
+                  <g stroke="none" stroke-width="1" fill-rule="evenodd" fill="none">
+                    <g transform="translate(1.000000, 2.000000)" stroke-width="2" stroke="currentColor">
+                      <polyline transform="translate(5.500000, 2.500000) rotate(90.000000) translate(-5.500000, -2.500000) "
+                        points="8 -2.5 3 2.5 8 7.5"></polyline>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </button>
+            <div>
+                <div class="_1y-cL">
+                  <div class="_25r2q">
+                    <div class="_3BYKu"><span class="_1hMyj">
+                        <font style="vertical-align: inherit;">
+                          <font style="vertical-align: inherit;font-size: smaller;">￥</font>
+                        </font>
+                      </span><input aria-label="Minimum price" min="0" type="text" name="Minimum price" class="_3yPNI" placeholder="1"
+                        value=""></div><span class="_2zSyE">
+                      <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">- </font>
+                      </font>
+                    </span>
+                    <div class="_3BYKu"><span class="_1hMyj">
+                        <font style="vertical-align: inherit;">
+                          <font style="vertical-align: inherit;font-size: smaller;">￥</font>
+                        </font>
+                      </span><input aria-label="Maximum price" min="0" type="text" name="Maximum price" class="_3yPNI"
+                        placeholder="9904" value=""></div><button type="button" class="_3WEcW"><svg fill="currentColor"
+                        preserveAspectRatio="xMidYMid meet" height="12" width="8" viewBox="0 0 8 13" style="vertical-align: inherit;">
+                        <title>Chevron Right</title>
+                        <g fill="none" stroke="none" stroke-width="1" fill-rule="evenodd">
+                          <g transform="translate(-2.000000, 4.000000)" stroke="currentColor" stroke-width="2">
+                            <polyline transform="translate(5.500000, 2.500000) rotate(90.000000) translate(-5.500000, -2.500000)"
+                              points="10.5 5 5.5 6.66133815e-16 0.5 5"></polyline>
+                          </g>
+                        </g>
+                      </svg></button>
+                  </div>
+                </div>
+          </div>
+      </div>
