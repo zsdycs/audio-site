@@ -344,7 +344,7 @@ button, input, optgroup, select, textarea {
         
     }
     .row_div{
-    margin: 24px 16px 0;
+    margin: 16px 16px 0px;
     -ms-flex-direction: row;
     flex-direction: row;
     height: 106px;

@@ -12,6 +12,9 @@
 .hidden.menu {
 display: none;
 }
+.two.column.stackable.ui.grid .thirteen.wide.column{
+    text-align: center;
+}
 .ui.input{
     width: 70%;
 }
@@ -42,11 +45,40 @@ display: flex !important;
 .masthead .logo.item img {
 margin-right: 1em;
 }
-
+.two.column.stackable.ui.grid .ui.labels{
+    margin-left: 10px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: baseline;
+    align-items: baseline;
+}
 .masthead .ui.menu .ui.button {
 margin-left: 0.5em;
 }
-
+.ui.mini.menu{
+    margin: 0 16px;
+}
+._1X0WU {
+    -ms-flex-item-align: baseline;
+    align-self: baseline;
+    font-size: 16px;
+    font-family: -apple-system,BlinkMacSystemFont,segoe ui,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,arial,sans-serif;
+    color: #333;
+    -webkit-font-smoothing: subpixel-antialiased;
+    font-weight: 400;
+    font-size: 14px;
+    color: #4d4d4d;
+    margin: 0;
+    margin-right: 8px!important;
+    line-height: 32px;
+}
+._3HYTF {
+    font-weight: 700;
+}
 .masthead h1.ui.header {
 margin-top: 3em;
 margin-bottom: 0em;
@@ -198,6 +230,9 @@ padding: 0em;
     margin-left: 8px;
     text-align: center;
 }
+._3WEcW:hover{
+    background-color: rgb(240, 240, 240);
+}
 .grouped.fields{
     margin-bottom: 24px;
 }
@@ -278,6 +313,9 @@ display: none;
 }
 @media only screen and (max-width: 700px)
 {
+    .two.column.stackable.ui.grid .ui.labels{
+        width: 69%;
+    }
     #mobile-header .search-form .search-submit:before {
         content: '\f002';
     }
