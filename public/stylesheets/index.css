@@ -19,11 +19,11 @@ display: none;
     margin: auto;
 }
 .two.column.stackable.ui.grid .ui.list{
-    margin-top: 8px;
+    margin-top: 5.5px;
     margin-bottom: 24px;
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 231px;
+    max-height: 267px;
 }
 .toc.item{
     float: left;
@@ -142,9 +142,9 @@ padding: 0em;
 }
 @media only screen and (max-width: 767px){
     .filtrate-div{
-    margin-left: 7%;
+    margin-left: 4%;
     float: left;
-    width: 40%;
+    width: 44%;
 }
 }
 ._25r2q {
@@ -197,6 +197,21 @@ padding: 0em;
     height: 32px;
     margin-left: 8px;
     text-align: center;
+}
+.grouped.fields{
+    margin-bottom: 24px;
+}
+.grouped.fields .field{
+    /* margin-bottom: 4px; */
+    display: -ms-flexbox;
+    display: flex;
+    line-height: 32px;
+    margin-right: 0px;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.filtrate-div .ui.radio.checkbox{
+    padding-top: 7px;
 }
 /* 筛选列表结束 */
 .ui.checkbox{

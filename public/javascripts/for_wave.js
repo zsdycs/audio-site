@@ -130,7 +130,7 @@ function audioListisloading(){
 	$("#audioList").removeClass("loader")
 }
 
-var t1="/music/管风琴/3.mp3"
+var t1="/music/电脑发音/1.mp3"
 var id='#audio0'
 wave[0] = new_wave(id,t1)
 
@@ -213,6 +213,7 @@ $(function(){
     })
     // 鼠标移入移出增加小圆点
     $(".row_div").hover(function(){
+        // 移入
         $(this).removeClass("display_3qnOD")
     },function(){
         $(this).addClass("display_3qnOD")

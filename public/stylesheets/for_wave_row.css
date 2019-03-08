@@ -370,10 +370,10 @@ button, input, optgroup, select, textarea {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: #087096;
+    background-color: #00CC00;
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 25px;
+    top: 5px;
 }
 ._3qnOD:after {
     content: "";
