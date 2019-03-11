@@ -26,3 +26,12 @@ $(document).ready(function () {
     }
   })
 });
+
+$('.ui.dropdown').dropdown();
+$(document).on("click",".rank-a",function(){
+  // console.log($(this).text()) 
+  // ajax排序请求局部刷新audioList
+  
+  // 修改列表标题
+  $('.dropdown-title').html($(this).text())
+})
