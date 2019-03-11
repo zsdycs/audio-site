@@ -53,15 +53,21 @@
                 <a class="ui label">￥2-￥40<i class="delete icon"></i></a>
               </div>
               <div class="right menu">
-                <div class="ui dropdown item">综合排序<i class="dropdown icon"></i>
+                <div class="ui dropdown item">
+                    综合排序
+                  <i class="dropdown icon"></i>
                   <div class="menu">
-                    <a class="item">综合排序</a>
+                    <a class="item active selected">综合排序</a>
                     <a class="item">销售最高</a>
                     <a class="item">价格最低</a>
                     <a class="item">日期最新</a>
                   </div>
                 </div>
               </div>
+              <script>
+              $('.ui.dropdown').dropdown();
+              
+              </script>
             </div>
             
             <%- include('./audioList') %>

@@ -231,10 +231,10 @@ var tagList = new Vue({
 		// 	dataType: 'json',
 		// 	success: function (data) {
                 self.tagList = data
-                console.log("1---"+data)
+                // console.log("1---"+data)
                 
 				data=JSON.stringify(data)
-				console.log("2---"+data)
+				// console.log("2---"+data)
 
 		// 	}
 		// })

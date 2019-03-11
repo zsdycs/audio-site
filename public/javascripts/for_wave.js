@@ -107,7 +107,7 @@ var audioList = new Vue({
 		// 	dataType: 'json',
 		// 	success: function (data) {
                 self.audioList = data
-                console.log(data)
+                // console.log(data)
                 
 				data=JSON.stringify(data)
 				// console.log(data)
