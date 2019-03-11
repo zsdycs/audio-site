@@ -44,13 +44,6 @@
             <div class="ui labels">
                 <p class="_1X0WU"><span class="_3HYTF">53200</span>条</p>
                 <a class="ui label">缥缈<i class="delete icon"></i></a>
-                <a class="ui label">轻快<i class="delete icon"></i></a>
-                <a class="ui label">最近1年<i class="delete icon"></i></a>
-                <a class="ui label">￥2-￥40<i class="delete icon"></i></a>
-                <a class="ui label">缥缈<i class="delete icon"></i></a>
-                <a class="ui label">轻快<i class="delete icon"></i></a>
-                <a class="ui label">最近1年<i class="delete icon"></i></a>
-                <a class="ui label">￥2-￥40<i class="delete icon"></i></a>
               </div>
               <!-- 右边下拉列表（排序） -->
               <div class="right menu">
@@ -79,52 +72,6 @@
 
                 <a class="icon item toendpage"><i class="right chevron icon"></i></a>
             </div>
-            <script>
-              var maxpage=11,nowpage=1
-              isInsufficientPage()
-              $(document).on("click",".paging",function(){
-                $(".paging").removeClass("active")
-                $(this).addClass("active")
-                nowpage = parseInt($(this).text())
-              })
-              // 分页→右
-              $(document).on("click",".toendpage",function(){
-                if(parseInt($(".pageend").text()) < maxpage){
-                  for(i=0; i<$(".paging").length; i++){
-                    $(".paging").eq(i).text(parseInt($(".paging").eq(i).text()) +4)
-                    if(parseInt($(".paging").eq(i).text()) == nowpage){
-                      $(".paging").eq(i).addClass("active")
-                    }else{
-                      $(".paging").eq(i).removeClass("active")
-                    }
-                    if(parseInt($(".paging").eq(i).text()) > maxpage){
-                      $(".paging").eq(i).css("display","none")
-                    }
-                  }
-                }
-              })
-              // 分页←左
-              $(document).on("click",".tofistpage",function(){
-                if(parseInt($(".pagefist").text()) > 1){
-                  $(".paging").css("display","block")
-                  for(i=0; i<$(".paging").length; i++){
-                    $(".paging").eq(i).text(parseInt($(".paging").eq(i).text()) -4)
-                    if(parseInt($(".paging").eq(i).text()) == nowpage){
-                      $(".paging").eq(i).addClass("active")
-                    }else{
-                      $(".paging").eq(i).removeClass("active")
-                    }
-                  }
-                }
-              })
-              function isInsufficientPage(){
-                for(i=0; i<$(".paging").length; i++){
-                  if(parseInt($(".paging").eq(i).text()) > maxpage){
-                    $(".paging").eq(i).css("display","none")
-                  }
-                }
-              }
-            </script>
         </div>
     </div>
 
