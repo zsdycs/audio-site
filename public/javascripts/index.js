@@ -136,12 +136,20 @@ function labeltagListisloading(){
 }
 // 删除所选标签
 $(document).on("click",".labeltag",function(){
-  $(this).remove()
   // 修改cookie
-
-  // 请求过滤audiolist局部刷新
-
-  // 更新左边筛选项
+  var exp = new Date();
+  exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
+  filtrateList=JSON.parse(getCookie("filtrateTagList"))
+  for(var i=0;i<filtrateList[0].tag.length;i++){
+    if(filtrateList[0].tag[i] == $(this).text()){
+      filtrateList[0].tag.splice(i,1)
+        break;
+    }
+  }
+  document.cookie = "filtrateTagList=" + JSON.stringify(filtrateList) + ";expires=" + exp.toGMTString()+ ";path=/";
+  $(this).remove()
+  // 刷新页面刷新
+  window.location.reload()
 
 })
 

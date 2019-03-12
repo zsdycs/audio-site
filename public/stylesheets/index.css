@@ -15,6 +15,9 @@ display: none;
 .two.column.stackable.ui.grid .thirteen.wide.column{
     text-align: center;
 }
+.ui.label.labeltag{
+    margin-bottom: 4px;
+}
 .ui.input{
     width: 70%;
 }
