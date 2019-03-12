@@ -17,64 +17,60 @@
   <script src="/javascripts/lib/jquery-migrate-1.1.1.js"></script>
   <script src="/javascripts/lib/vue2-3-4.js"></script>
   <script src="/javascripts/semantic-ui/semantic.min.js"></script>
+  <script src="/javascripts/common.js"></script>
   <script src="/javascripts/index.js"></script>
+  
 </head>
 
 <body class="pushable">
 
-  <!-- Following header -->
-  <%- include('./following-header') %>
+<!-- Following header -->
+<%- include('./following-header') %>
 
-  <!-- Sidebar Menu -->
-  <%- include('./sidebar-menu') %>
+<!-- Sidebar Menu -->
+<%- include('./sidebar-menu') %>
 
 
-  <!-- Page Contents -->
-  <div class="pusher">
-    <%- include('./index-contents') %>
+<!-- Page Contents -->
+<div class="pusher">
+  <%- include('./index-contents') %>
 
-    <div class="two column stackable ui grid">
-        <div class="three wide column">
-            <%- include('./filtrate') %>
-        </div>
-        <div class="thirteen wide column">
-          
-            <div class="ui mini menu">
-              <!-- 标签组 -->
-            <div class="ui labels">
-                <p class="_1X0WU"><span class="_3HYTF">53200</span>条</p>
-                <a class="ui label">缥缈<i class="delete icon"></i></a>
-              </div>
-              <!-- 右边下拉列表（排序） -->
-              <div class="right menu">
-                <div class="ui dropdown item">
-                  <div class="dropdown-title">综合排序</div>
-                  <i class="dropdown icon"></i>
-                  <div class="menu">
-                    <a class="rank-a item active selected">综合排序</a>
-                    <a class="rank-a item">销售最高</a>
-                    <a class="rank-a item">价格最低</a>
-                    <a class="rank-a item">日期最新</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <%- include('./audioList') %>
-            <!-- 分页按钮 -->
-            <div class="ui pagination menu">
-                <a class="icon item tofistpage"><i class="left chevron icon"></i></a>
-
-                <a class="paging pagefist item active">1</a>
-                <a class="paging item">2</a>
-                <a class="paging item">3</a>
-                <a class="paging pageend item">4</a>
-
-                <a class="icon item toendpage"><i class="right chevron icon"></i></a>
-            </div>
-        </div>
+  <div class="two column stackable ui grid">
+    <div class="three wide column">
+      <%- include('./filtrate') %>
     </div>
-
+    <div class="thirteen wide column">
+      <div class="ui mini menu">
+        <!-- 标签组 -->
+      <div class="ui labels">
+        <p class="_1X0WU"><span class="_3HYTF">53200</span>条</p>
+        <div id="labeltagList">
+          <a v-cloak v-for="item in labeltagList" class="ui label labeltag loader">{{item.tag_name}}<i class="delete icon"></i></a>
+        </div>
+      </div>
+      <script>
+      </script>
+        <!-- 右边下拉列表（排序） -->
+        <div class="right menu">
+          <div class="ui dropdown item">
+            <div class="dropdown-title">综合排序</div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <a class="rank-a item active selected">综合排序</a>
+              <a class="rank-a item">销售最高</a>
+              <a class="rank-a item">价格最低</a>
+              <a class="rank-a item">日期最新</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 音频片段 -->
+      <%- include('./audioList') %>
+      <!-- 分页按钮 -->
+      <%- include('../component/pageButton') %>
+    </div>
+  </div>
+    
       
 
       

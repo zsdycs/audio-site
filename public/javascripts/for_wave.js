@@ -111,7 +111,7 @@ var audioList = new Vue({
                 
 				data=JSON.stringify(data)
 				// console.log(data)
-
+                
 		// 	}
 		// })
 	},
@@ -169,7 +169,6 @@ wave[8] = new_wave(id,t1)
 var t1="/music/管风琴/3.mp3"
 var id='#audio9'
 wave[9] = new_wave(id,t1)
-
 
 // 创建音频对象
 function new_wave(name,music){
