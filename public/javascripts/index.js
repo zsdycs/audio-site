@@ -102,19 +102,28 @@ function getFiltrateByCookieForRtopList(){
         // {
         //   tag_name:'电子',
         // },
-        // {
-        //   tag_name:'事件',
-        // },
       ]
       //////////测试用数据结束////////////
         // }
     var self=this;
     filtrateList=JSON.parse(getCookie("filtrateTagList"))
+    // 标签
     for(var i = 0;i<filtrateList[0].tag.length;i++){
       var tag_name=filtrateList[0].tag[i]
       var tag_one = {tag_name:tag_name}
       data.push(tag_one)
     }
+    // 价格
+    // 通过cookie获得最大价格
+    maxandnumlist=JSON.parse(getCookie("maxAndNum"))
+    var max_price = maxandnumlist[0].max_price
+    if(!(filtrateList[0].price[0]==1 && filtrateList[0].price[1]==max_price)){
+      var tag_name="￥"+filtrateList[0].price[0]+" - ￥"+filtrateList[0].price[1]
+      var tag_one = {tag_name:tag_name}
+      data.push(tag_one)
+    }
+    // 时间
+
     self.labeltagList = data
     // console.log("1---"+data)
     data=JSON.stringify(data)
@@ -143,8 +152,15 @@ $(document).on("click",".labeltag",function(){
   for(var i=0;i<filtrateList[0].tag.length;i++){
     if(filtrateList[0].tag[i] == $(this).text()){
       filtrateList[0].tag.splice(i,1)
-        break;
+      break;
     }
+  }
+  if($(this).text().indexOf("￥") >= 0 ){
+    // cookie获得最大值
+    maxandnumlist=JSON.parse(getCookie("maxAndNum"))
+    var max_price = maxandnumlist[0].max_price
+    filtrateList[0].price[0] = 1
+    filtrateList[0].price[1] = max_price
   }
   document.cookie = "filtrateTagList=" + JSON.stringify(filtrateList) + ";expires=" + exp.toGMTString()+ ";path=/";
   $(this).remove()
@@ -156,9 +172,9 @@ $(document).on("click",".labeltag",function(){
 // 初始化筛选项变量。标签，价格，时间
 // 标签
 var tag = new Array()
-// 价格，最大金额通过请求获得，测试使用固定值
+// 价格，最大金额通过cookie获得，测试使用固定值
 var price = new Array()
-price[0] = 1,price[1] = 100
+price[0] = 1,price[1] = 9904
 // 时间,状态值=1:所有，2：最近一周，3：最近一个月，4：最近3个月，5：最近1年。
 var time = 1
 var filtrate = { tag:tag,price:price,time:time },filtrateList = [];
@@ -171,6 +187,10 @@ if(getCookie("filtrateTagList")==""){
 }
 // 根据cookie筛选项显示页面筛选项状态，数据绑定
 function FiltrateAndAudioByCookie(){
+  filtrateList=JSON.parse(getCookie("filtrateTagList"))
+  maxandnumlist=JSON.parse(getCookie("maxAndNum"))
+  // 关联数量
+  $(".audio_num").text(maxandnumlist[0].voice_num)
   // 关联标签
   $(".input-check-tag").each(function(){
     filtrateList=JSON.parse(getCookie("filtrateTagList"))
@@ -181,14 +201,25 @@ function FiltrateAndAudioByCookie(){
       }
   })
   // 关联价格状态
+  var price_max =maxandnumlist[0].max_price
+  if(price_max == filtrateList[0].price[1]){
+    $(".price-r-input").attr("placeholder",price_max)
+  }else{
+    $(".price-r-input").attr("value",filtrateList[0].price[1])
+  }
+  if(filtrateList[0].price[0] == 1){
+    $(".price-l-input").attr("placeholder",1)
+  }else{
+    $(".price-l-input").attr("value",filtrateList[0].price[0])
+  }
   
+  
+  // $(".price-r-input").val(filtrateList[0].price[1])
   // 关联时间状态
 
-  // 关联右边头部
-
-  // 上传cookie，刷新音频列表
 
 }
+// 标签-------------------
 // 左边tag选择->写入cookie->上传后右边的音频列表内容刷新->左边选择列表上传给后端，返回新了可选项列表
 $(document).on("click",".input-check-tag",function(){
   // 被选中
@@ -226,4 +257,101 @@ $(document).on("click",".input-check-tag",function(){
   }
   // 上传cookie（上传所有筛选项，返回音频列表与可筛选项，刷新列表，可复用函数）
   window.location.reload()
+})
+// 价格--------------------
+$(document).on("click",".price_button",function(){
+  // 通过cookie获得最大价格》》》
+  maxandnumlist=JSON.parse(getCookie("maxAndNum"))
+  var price_max =maxandnumlist[0].max_price
+
+  if($(".price-l-input").val()!="" && $(".price-r-input").val()==""){
+    console.log(1)
+    todo($(".price-l-input").val(),price_max,price_max)
+  }else if($(".price-l-input").val()=="" && $(".price-r-input").val()!=""){
+    console.log(2)
+    todo(1,$(".price-r-input").val(),price_max)
+
+  }else if($(".price-r-input").val() == "" && $(".price-l-input").val() == ""){
+    console.log(3)
+    todo(1,price_max,price_max)
+  }else{
+    todo($(".price-l-input").val(),$(".price-r-input").val(),price_max)
+  }
+
+  function todo(l,r,max){
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
+    // 流程，取出标签，遍历找到数组所在位置，移除位置的值
+    filtrateList=JSON.parse(getCookie("filtrateTagList"))
+    var price_l = l, price_r = r
+    if(price_l > price_r){
+      $(".price-r-input").val(max)
+      price_r = $(".price-r-input").val()
+    }
+    // 写入cookie
+    filtrateList[0].price[0] = price_l, filtrateList[0].price[1] = price_r
+    document.cookie = "filtrateTagList=" + JSON.stringify(filtrateList) + ";expires=" + exp.toGMTString()+ ";path=/";
+    // console.log("min:"+price_l+"  max:"+price_r)
+    // 上传cookie（上传所有筛选项，返回音频列表与可筛选项，刷新列表，可复用函数）
+    window.location.reload()
+  }
+  
+})
+// 时间--------------------
+
+// ////数量输入规则
+// 输入,最大值根据请求获得，例9904
+$(document).on("keyup",".price-l-input",function(){
+  // if(isNaN(this.value)||this.value==''||this.value==0){
+  //   this.value=1;
+  // }
+  maxandnumlist=JSON.parse(getCookie("maxAndNum"))
+  var max_price = maxandnumlist[0].max_price
+  if(this.value>max_price){
+    this.value=max_price;
+  }
+  if(this.value.length==1){
+    this.value=this.value.replace(/[^1-9]/g,'')
+    }else{
+      this.value=this.value.replace(/\D/g,'')
+    }
+})
+// 粘贴
+$(document).on("blur",".price-l-input",function(){
+  if(this.value.length==1){
+    this.value=this.value.replace(/[^1-9]/g,'')
+    }else{
+      this.value=this.value.replace(/\D/g,'')
+    }
+})
+// 右边
+$(document).on("keyup",".price-r-input",function(){
+  // 获取页面加载获得的cookie，得到最大价格
+  maxandnumlist=JSON.parse(getCookie("maxAndNum"))
+  var max_price = maxandnumlist[0].max_price
+  if(this.value>max_price){
+    this.value=max_price;
+  }
+  if(this.value.length==1){
+    this.value=this.value.replace(/[^1-9]/g,'')
+    }else{
+      this.value=this.value.replace(/\D/g,'')
+    }
+})
+// 粘贴
+$(document).on("blur",".price-r-input",function(){
+  // 获取页面加载获得的cookie，得到最大价格
+  maxandnumlist=JSON.parse(getCookie("maxAndNum"))
+  var max_price=maxandnumlist[0].max_price
+  // if(isNaN(this.value)||this.value==''||this.value==0){
+  //   this.value=max_price;
+  // }
+  if(this.value>max_price){
+    this.value=max_price;
+  }
+  if(this.value.length==1){
+    this.value=this.value.replace(/[^1-9]/g,'')
+    }else{
+      this.value=this.value.replace(/\D/g,'')
+    }
 })

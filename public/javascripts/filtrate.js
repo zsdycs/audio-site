@@ -33,9 +33,15 @@ var tagList = new Vue({
 		// 	url: "",
 		// 	dataType: 'json',
 		// 	success: function (data) {
-                self.tagList = data
+				// 通过get获得页面状态，最大价格max_price,当前音频数量voice_num写入cookie
+				var max_price = 9999,voice_num = 50000
+				var maxandnum = { max_price:max_price,voice_num:voice_num },maxandnumlist = [];
+				maxandnumlist.push(maxandnum);	
+				var exp = new Date();
+				exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
+				document.cookie = "maxAndNum=" + JSON.stringify(maxandnumlist) + ";expires=" + exp.toGMTString()+ ";path=/";
+				self.tagList = data
                 // console.log("1---"+data)
-                
 				data=JSON.stringify(data)
 				// console.log("2---"+data)
 
