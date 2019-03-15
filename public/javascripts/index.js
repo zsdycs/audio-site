@@ -123,7 +123,22 @@ function getFiltrateByCookieForRtopList(){
       data.push(tag_one)
     }
     // 时间
-
+    if(filtrateList[0].time != 1){
+      if(filtrateList[0].time == 2){
+        set_time("最近1周")
+      }else if(filtrateList[0].time == 3){
+        set_time("最近1月")
+      }else if(filtrateList[0].time == 4){
+        set_time("最近3月")
+      }else{
+        set_time("最近1年")
+      }
+      function set_time(t){
+        var tag_one = {tag_name:t}
+        data.push(tag_one)
+      }
+    }
+    
     self.labeltagList = data
     // console.log("1---"+data)
     data=JSON.stringify(data)
@@ -161,6 +176,9 @@ $(document).on("click",".labeltag",function(){
     var max_price = maxandnumlist[0].max_price
     filtrateList[0].price[0] = 1
     filtrateList[0].price[1] = max_price
+  }
+  if($(this).text() == "最近1周" || $(this).text() == "最近1月" || $(this).text() == "最近3月" || $(this).text() == "最近1年"){
+    filtrateList[0].time = 1
   }
   document.cookie = "filtrateTagList=" + JSON.stringify(filtrateList) + ";expires=" + exp.toGMTString()+ ";path=/";
   $(this).remove()
@@ -212,11 +230,8 @@ function FiltrateAndAudioByCookie(){
   }else{
     $(".price-l-input").attr("value",filtrateList[0].price[0])
   }
-  
-  
-  // $(".price-r-input").val(filtrateList[0].price[1])
   // 关联时间状态
-
+  $(".label_time[data-time="+filtrateList[0].time+"]").prev().attr("checked",true)
 
 }
 // 标签-------------------
@@ -298,6 +313,19 @@ $(document).on("click",".price_button",function(){
   
 })
 // 时间--------------------
+$(document).on("click",".label_time",function(){
+  filtrateList=JSON.parse(getCookie("filtrateTagList"))
+  if(filtrateList[0].time != $(this).data("time")){
+    // 写入cookie
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
+    filtrateList[0].time=$(this).data("time")
+    document.cookie = "filtrateTagList=" + JSON.stringify(filtrateList) + ";expires=" + exp.toGMTString()+ ";path=/";
+    // 上传cookie（上传所有筛选项，返回音频列表与可筛选项，刷新列表，可复用函数）
+    window.location.reload()
+  }
+})
+
 
 // ////数量输入规则
 // 输入,最大值根据请求获得，例9904
