@@ -339,10 +339,10 @@ button, input, optgroup, select, textarea {
 }
 
 @media(min-width: 640px) {
-    body {
+    /* body {
     background-color: aquamarine;
         
-    }
+    } */
     .row_div{
     margin: 16px 16px 0px;
     -ms-flex-direction: row;

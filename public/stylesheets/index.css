@@ -218,9 +218,7 @@ padding: 0em;
 ._2zSyE {
     margin: 0 4px;
 }
-.ui.menu .item img.logo {
-    margin-right: 1.5em;
-}
+
 ._3WEcW {
     border: none;
     border-radius: 2px;
@@ -264,10 +262,6 @@ padding: 0em;
 .quote.stripe.segment .grid .column {
 padding-top: 5em;
 padding-bottom: 5em;
-}
-
-.footer.segment {
-padding: 5em 0em;
 }
 
 .secondary.pointing.menu .toc.item {
@@ -369,6 +363,9 @@ display: none;
     webkit-transform: translate3d(75px, 0, 0);
     transform: translate3d(75px, 0, 0);
 }
+.fixed.inverted.menu{
+    display: none;
+}
 #pusher .masthead:after{
     position: absolute;
     top: 0px;
@@ -388,56 +385,55 @@ display: none;
 }
 #pusher .masthead{
     background-color: #000000;  
-    background-position: 50% 50%;
     -webkit-transform: translate3d(0, 0, 0); 
     transform: translate3d(0, 0, 0);
 }
-#pusher .masthead.bg1:after {
+#pusher .inverted.vertical.masthead.bg1:after {
     background-image: url("/images/common/1.jpg");
   }
-  #pusher .masthead.bg2:after {
+  #pusher .inverted.vertical.masthead.bg2:after {
     background-image: url("/images/common/2.jpg");
   }
-  #pusher .masthead.bg3:after {
+  #pusher .inverted.vertical.masthead.bg3:after {
     background-image: url("/images/common/3.jpg");
   }
-  #pusher .masthead.bg4:after {
+  #pusher .inverted.vertical.masthead.bg4:after {
     background-image: url("/images/common/4.jpg");
   }
-  #pusher .masthead.bg5:after {
+  #pusher .inverted.vertical.masthead.bg5:after {
     background-image: url("/images/common/5.jpg");
   }
-  #pusher .masthead.bg6:after {
+  #pusher .inverted.vertical.masthead.bg6:after {
     background-image: url("/images/common/6.jpg");
   }
-  #pusher .masthead.bg7:after {
+  #pusher .inverted.vertical.masthead.bg7:after {
     background-image: url("/images/common/7.jpg");
   }
-  #pusher .masthead.bg8:after {
+  #pusher .inverted.vertical.masthead.bg8:after {
     background-image: url("/images/common/8.jpg");
   }
-  #pusher .masthead.bg9:after {
+  #pusher .inverted.vertical.masthead.bg9:after {
     background-image: url("/images/common/9.jpg");
   }
-  #pusher .masthead.bg10:after {
+  #pusher .inverted.vertical.masthead.bg10:after {
     background-image: url("/images/common/10.jpg");
   }
-  #pusher .masthead.bg11:after {
+  #pusher .inverted.vertical.masthead.bg11:after {
     background-image: url("/images/common/11.jpg");
   }
-  #pusher .masthead.bg12:after {
+  #pusher .inverted.vertical.masthead.bg12:after {
     background-image: url("/images/common/12.jpg");
   }
-  #pusher .masthead.bg13:after {
+  #pusher .inverted.vertical.masthead.bg13:after {
     background-image: url("/images/common/13.jpg");
   }
-  #pusher .masthead.bg14:after {
+  #pusher .inverted.vertical.masthead.bg14:after {
     background-image: url("/images/common/14.jpg");
   }
-  #pusher .masthead.bg15:after {
+  #pusher .inverted.vertical.masthead.bg15:after {
     background-image: url("/images/common/15.jpg");
   }
-  #pusher .masthead.bg16:after {
+  #pusher .inverted.vertical.masthead.bg16:after {
     background-image: url("/images/common/16.jpg");
   }
 

@@ -2,7 +2,7 @@ module.exports = function (app) {
   app.get('/', function (req, res) {
     res.render('index', { title: 'Audiosite' });
   })
-  app.use('/home', require('./homepage'))
+  app.use('/cart', require('./cart'))
   // app.use('/signin', require('./signin'))
   // app.use('/signout', require('./signout'))
   // app.use('/posts', require('./posts'))

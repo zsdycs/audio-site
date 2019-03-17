@@ -1,0 +1,9 @@
+.ui.menu .item img.logo {
+    margin-right: 1.5em;
+}
+.ui.inverted.vertical.footer.segment{
+    background: #1b1c1d;
+}
+.footer.segment {
+    padding: 5em 0em;
+}
