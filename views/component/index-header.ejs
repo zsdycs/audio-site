@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" type="text/css" href="/stylesheets/semantic-ui/semantic.min.css">
   <link rel="stylesheet" href="/stylesheets/index.css">
-
+ 
   <script src="/javascripts/lib/jquery-1.11.1.min.js"></script>
   <script src="/javascripts/lib/jquery-migrate-1.1.1.js"></script>
   <script src="/javascripts/lib/vue2-3-4.js"></script>
@@ -22,17 +22,19 @@
   
 </head>
 
-<body class="pushable">
+<body>
+  <!-- 移动端Following header -->
+  <%- include('./following-header') %>
+  
+  <!-- Sidebar Menu -->
+  <%- include('./sidebar-menu') %>
+  
+  <!-- PC顶部fixed -->
+  <%- include('./top') %>
 
-<!-- Following header -->
-<%- include('./following-header') %>
-
-<!-- Sidebar Menu -->
-<%- include('./sidebar-menu') %>
-
-
-<!-- Page Contents -->
-<div class="pusher">
+  
+  <!-- Page Contents -->
+  <div class="pusher" id="pusher">
   <%- include('./index-contents') %>
 
   <div class="two column stackable ui grid">

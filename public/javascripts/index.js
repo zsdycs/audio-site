@@ -11,6 +11,12 @@ $(document).ready(function () {
   });
   // create sidebar and attach to menu open
   $('.ui.sidebar').sidebar('attach events', '.toc.item')
+  // $("#segment").animate({"opacity":"0.8"},15000); 
+  //x上限，y下限     
+  var x = 16;     
+  var y = 1;     
+  var rand = parseInt(Math.random() * (x - y + 1) + y);
+  $("#segment").addClass("bg"+rand)
 });
 
 $(function(){
