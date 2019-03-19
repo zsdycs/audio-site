@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="/stylesheets/for_wave_row.css">
 <link rel="stylesheet" href="/stylesheets/index.css">
+<link rel="stylesheet" href="/stylesheets/selectAndselected.css">
 <script src="/javascripts/index.js"></script>
 
 </head>
@@ -53,8 +54,12 @@
     <!-- 分页按钮 -->
     <%- include('../component/pageButton') %>
     <!-- 添加到购物车-选择列表 -->
-    <div id="ReactModalPortal" style="display:none">
+    <div id="SelectLicenses" style="display:none">
       <%- include('./index-select-licenses') %>
+    </div>
+    <!--  -->
+    <div id="HadSelect" style="display:none">
+      <%- include('./index-had-selected') %>
     </div>
   </div>
 </div>

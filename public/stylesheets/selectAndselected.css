@@ -1,0 +1,180 @@
+/* 添加到购物车选项表，弹框 */
+.ReactModal__Overlay {
+    padding-top: 53px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1042;
+    background-color: rgba(51,51,51,.5);
+    overflow: hidden;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .ReactModal__Content {
+    z-index: 1045;
+  }
+  .cart-modal__core-info{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 30px;
+    
+  }
+  .fds-c-text-heading.-size-l{
+    margin: 0;
+  }
+  .fds-c-text-heading.-size-xxs{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 18px;
+    
+  }
+  .modal{
+    width: 367px;
+  }
+  @media (max-width: 640px){
+    .cart-modal__core-info,.cart-modal__variant-info {
+        width: 100%;
+        float: left;
+    }
+    .fds-c-text-heading.-size-xxs{
+      height: 30px;
+    }
+  }
+  @media (min-width: 640px){
+    .fds-c-text-body.-weight-bold{
+      margin-top: 20px;
+    }
+    .fds-c-text-heading.-size-xxs{
+        margin-right: 20px;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        height: 65px;
+    }
+    
+    .cart-modal__core-info {
+        width: 150px;
+        height: 85px;
+    }
+    
+    .cart-modal__variant-info {
+        width: 130px;
+        margin-top: 0;
+    }
+    .cart-modal__core-info,.cart-modal__variant-info{
+        float: left;
+    }
+  }
+  .fds-u-text-align-center {
+    text-align: center;
+  }
+  .fds-c-modal__header {
+    padding-top: .8em;
+    padding-bottom: .8em;
+    border-radius: 4px 4px 0 0;
+  }
+  .fds-c-modal__footer, .fds-c-modal__footer.-padding-s, .fds-c-modal__header, .fds-c-modal__header.-padding-s, .fds-c-modal__section, .fds-c-modal__section.-padding-s {
+    padding: 16px;
+  }
+  .fds-c-modal__footer, .fds-c-modal__footer.-background-light, .fds-c-modal__header, .fds-c-modal__header.-background-light, .fds-c-modal__section, .fds-c-modal__section.-background-light {
+    background-color: #fff;
+    border: 1px solid #dedede;
+  }
+  .fds-c-modal__footer, .fds-c-modal__header, .fds-c-modal__section {
+    overflow: auto;
+    margin-top: -1px;
+  }
+  .cart-modal__variant-selector {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+  }
+  .fds-u-p3 {
+    padding: 24px!important;
+  }
+  .fds-c-modal__footer.-height-scroll, .fds-c-modal__header.-height-scroll, .fds-c-modal__section.-height-scroll {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 250px;
+  }
+  .fds-c-modal__footer.-background-mid, .fds-c-modal__header.-background-mid, .fds-c-modal__section.-background-mid {
+    background-color: #f5f5f5;
+    border: 1px solid #dedede;
+  }
+  .fds-u-p2 {
+    padding: 16px!important;
+  }
+  .fds-c-modal__footer {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    border-radius: 0 0 4px 4px;
+  }
+  .fds-c-modal__footer-cta, .fds-c-modal__footer-cta.-align-left {
+    text-align: left;
+  }
+  .fds-c-modal__footer-cta.-align-left{
+    padding-left: 50px;
+  }
+  .fds-c-modal__footer-cta.-align-right {
+    padding-right: 50px;
+    text-align: right;
+  }
+  .fds-c-button.-color-light {
+    background-color: #e6e6e6;
+    border: 1px solid #dedede;
+    color: #666;
+  }
+  .fds-c-button--3d.-color-primary {
+    box-shadow: 0 2px 0 #6f9936;
+    position: relative;
+    background-color: #82b440; 
+  }
+  .fds-c-button--3d,.fds-c-button{
+    font-size: 14px;
+    padding: 5px 20px;
+    line-height: 1.5;
+  }
+  .fds-c-modal__footer-cta {
+    -ms-flex: 1 100px;
+    flex: 1 100px;
+  }
+  .fds-c-text-heading.-size-m {
+    font-size: 24px;
+  }
+  .fds-c-text-heading.-size-l,.fds-c-text-heading.-size-s{
+    font-size: 28px;
+    text-align: left;
+  }
+  .fds-c-text-body.-weight-bold {
+    font-weight: 700;
+    text-align: left;
+  }
+  .fds-c-text-heading,.fds-c-text-heading.-color-dark {
+    color: #454545;
+  }
+  .fds-u-mb0 {
+    margin-bottom: 0!important;
+  }
+  .fds-c-modal {
+    position: relative;
+    margin: 20px auto;
+  }
+  /* 弹框结束 */
+  
+  /* 成功加入购物车 */
+  .fds-c-text-heading.-size-s.fds-u-mb0 {
+    text-align: center;
+  }
