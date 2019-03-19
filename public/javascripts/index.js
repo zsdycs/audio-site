@@ -470,11 +470,11 @@ $(document).on("click",".s-button",function(){
     var data=getCookie("shoppingcart")
     data=JSON.parse(data)
     data=JSON.stringify(data)
-    console.log(">>>>:"+data)
+    // console.log(">>>>:"+data)
 
 
 })
-// 加入成功-马上结算->结算页
+// 加入成功-马上结算->购物车页！！！不做结算页啦啦啦
 $(document).on("click",".add-s-button",function(){
   $("#HadSelect").css("display","none")
   $('body').css('overflow','auto');

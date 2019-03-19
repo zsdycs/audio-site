@@ -3,10 +3,9 @@ module.exports = function (app) {
     res.render('index', { title: 'Audiosite' });
   })
   app.use('/cart', require('./cart'))
+  app.use('/order', require('./order'))
   // app.use('/signin', require('./signin'))
   // app.use('/signout', require('./signout'))
-  // app.use('/posts', require('./posts'))
-  // app.use('/comments', require('./comments'))
 
   // 404 page
   app.use(function (req, res) {

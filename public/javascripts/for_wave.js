@@ -170,7 +170,7 @@ function audioListisloading(){
 	$("#audioList").removeClass("loader")
 }
 
-var t1="/music/电脑发音/1.mp3"
+var t1="/music/动物/猴子.wav"
 var id='#audio0'
 wave[0] = new_wave(id,t1)
 
