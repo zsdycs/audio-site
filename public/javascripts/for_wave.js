@@ -27,7 +27,8 @@ var audioList = new Vue({
                 music:'013kt130.mp3',
                 music_name:'仙女棒',
                 author_name:'佚名',
-                price:'231',
+                price_one:'231',
+                price_unlimited:'323',
                 sales:'33',
                 id:'audio0',
             },
@@ -35,7 +36,8 @@ var audioList = new Vue({
                 music:'013kt143.mp3',
                 music_name:'仙女棒',
                 author_name:'佚名',
-                price:'231',
+                price_one:'231',
+                price_unlimited:'323',
                 sales:'33',
                 id:'audio1',
             },
@@ -43,7 +45,8 @@ var audioList = new Vue({
                 music:'46570_1082_1337.mp3',
                 music_name:'仙女棒',
                 author_name:'佚名',
-                price:'231',
+                price_one:'231',
+                price_unlimited:'323',
                 sales:'33',
                 id:'audio2',
             },
@@ -51,7 +54,8 @@ var audioList = new Vue({
                 music:'46570_1082_1337.mp3',
                 music_name:'仙女棒',
                 author_name:'佚名',
-                price:'231',
+                price_one:'231',
+                price_unlimited:'323',
                 sales:'33',
                 id:'audio3',
             },
@@ -59,7 +63,8 @@ var audioList = new Vue({
                 music:'46570_1082_1337.mp3',
                 music_name:'仙女棒',
                 author_name:'佚名',
-                price:'231',
+                price_one:'231',
+                price_unlimited:'323',
                 sales:'33',
                 id:'audio4',
             },
@@ -67,7 +72,8 @@ var audioList = new Vue({
                 music:'46570_1082_1337.mp3',
                 music_name:'仙女棒',
                 author_name:'佚名',
-                price:'231',
+                price_one:'231',
+                price_unlimited:'323',
                 sales:'33',
                 id:'audio5',
             },
@@ -75,7 +81,8 @@ var audioList = new Vue({
                 music:'46570_1082_1337.mp3',
                 music_name:'仙女棒',
                 author_name:'佚名',
-                price:'231',
+                price_one:'231',
+                price_unlimited:'323',
                 sales:'33',
                 id:'audio6',
             },
@@ -83,7 +90,8 @@ var audioList = new Vue({
                 music:'46570_1082_1337.mp3',
                 music_name:'仙女棒',
                 author_name:'佚名',
-                price:'231',
+                price_one:'231',
+                price_unlimited:'323',
                 sales:'33',
                 id:'audio7',
             },
@@ -91,7 +99,8 @@ var audioList = new Vue({
                 music:'46570_1082_1337.mp3',
                 music_name:'仙女棒',
                 author_name:'佚名',
-                price:'231',
+                price_one:'231',
+                price_unlimited:'323',
                 sales:'33',
                 id:'audio8',
             },
@@ -99,7 +108,8 @@ var audioList = new Vue({
                 music:'46570_1082_1337.mp3',
                 music_name:'仙女棒',
                 author_name:'佚名',
-                price:'231',
+                price_one:'231',
+                price_unlimited:'323',
                 sales:'33',
                 id:'audio9',
             }
@@ -370,9 +380,9 @@ function getTime() {
             }else{
                 var id = "#audio"+i
                 if(secondToDate(wave[i].getDuration())=="00:00"){
-                    $(id).parent().next().text("00:01")
+   $(id).parent().next().text("00:01")
                 }else{
-                    $(id).parent().next().text(secondToDate(wave[i].getDuration()))
+   $(id).parent().next().text(secondToDate(wave[i].getDuration()))
                 }
             }
         }

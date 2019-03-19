@@ -261,6 +261,15 @@ button, input, optgroup, select, textarea {
     justify-content: space-between;
     height: 100%;
 }
+#add-cart-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#add-cart-button{
+    margin: 0;
+    padding: .78571429em 1em .78571429em;
+}
 .price-span{
     display: inline-block;
     margin: 8px 0 8px;
@@ -325,9 +334,9 @@ button, input, optgroup, select, textarea {
 }
 
 @media(max-width: 639px) {
-    body {
+    /* body {
       background-color: rgb(117, 14, 36);
-    }
+    } */
     .row_div{
         -ms-flex-direction: column;
         flex-direction: column;

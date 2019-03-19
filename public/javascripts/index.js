@@ -389,3 +389,49 @@ $(document).on("blur",".price-r-input",function(){
       this.value=this.value.replace(/\D/g,'')
     }
 })
+// 购物车按钮
+$(document).on("click",".add-cart-button",function(){
+  $("#ReactModalPortal").css("display","block")
+  $("body").css({overflow:"hidden"})
+  // 关联数据
+  // .data("action")
+  var one = $(".price-div").data("price_one")
+  var unlimited = $(".price-div").data("price_unlimited")
+  $("#select-price").append("<option value =\""+ one +"\">一次性 - ￥"+ one +"</option>")
+  $("#select-price").append("<option value =\""+ unlimited +"\">无限制 - ￥"+ unlimited +"</option>")
+  $("#selected-audio-name").text($(".music_name_a").html())
+  $("#selected-price").text($("#select-price").val())
+  if($("#select-price").val() == one){
+    $("#selected-license").text("一次性")
+  }else if($("#select-price").val() == unlimited){
+    $("#selected-license").text("无限制")
+  }
+})
+// 选择
+$(document).on("click","#select-price",function(){
+  var one = $(".price-div").data("price_one")
+  var unlimited = $(".price-div").data("price_unlimited")
+  $("#selected-price").text($("#select-price").val())
+  if($("#select-price").val() == one){
+    $("#selected-license").text("一次性")
+  }else if($("#select-price").val() == unlimited){
+    $("#selected-license").text("无限制")
+  }
+  // console.log($("#select-price").val())
+})
+// 取消加入
+$(document).on("click",".c-button",function(){
+  $("#select-price").empty()
+  $("#ReactModalPortal").css("display","none")
+  $('body').css('overflow','auto');
+})
+// 确认加入
+$(document).on("click",".s-button",function(){
+  console.log($("#select-price").val())
+  $("#select-price").empty()
+  $("#ReactModalPortal").css("display","none")
+  $('body').css('overflow','auto');
+  // 写入购物车cookie
+
+})
+  

@@ -1,3 +1,11 @@
+* {
+    outline: none;
+ }
+ :focus {
+
+    outline: 0;
+
+}
 .ui.menu .item img.logo {
     margin-right: 1.5em;
 }
@@ -6,4 +14,91 @@
 }
 .footer.segment {
     padding: 5em 0em;
+}
+/* 移动端顶栏-搜索 */
+#mobile-header{
+    border: none;
+}
+.toc.item{
+    float: left;
+}
+.search-form .search-submit {
+    font-size: 21px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    border: 0;
+    width: 13%;
+    float: right;
+    padding: 0;
+    height: 41px;
+    background-color: #bdc3c7;
+}
+.secondary.pointing.menu .toc.item {
+    display: none;
+}
+.ui.input {
+    width: 70%;
+}
+#mobile-header .ui.icon.input {
+    float: right;
+}
+@media only screen and (max-width: 700px)
+{
+    .ui.fixed.menu {
+        display: none !important;
+      }
+    .ui.inverted.menu.PCtop{
+        display:none;
+    }
+    .two.column.stackable.ui.grid .ui.labels{
+        width: 69%;
+    }
+    #mobile-header .search-form .search-submit:before {
+        content: '\f002';
+    }
+    .ui.inverted.vertical.masthead.center.aligned.segment{
+        margin-top: 55px;
+        background-color: #000000;
+        background-position: 50% 50%;
+    }
+    .ui.text.container .ui.search{
+        display: none;
+    }
+    #mobile-header {
+    background-color: #1b1c1d;
+    color: #fff;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    z-index: 999;
+    padding: 8px 16px;
+    }
+    .secondary.pointing.menu .item,
+    .secondary.pointing.menu .menu,
+    .secondary.pointing.menu .right.item {
+      display: none;
+    }
+    .secondary.pointing.menu .toc.item {
+        display: block;
+    }
+}
+
+@media (min-width: 700px){
+   #mobile-header {
+    display: none;
+    } 
+}
+/* 侧边补充高度 */
+.ui.vertical.inverted.sidebar.menu.left.uncover.visible{
+    top:55px;
+    width: 75px;
+}
+/* 右边运动位置 */
+.ui.visible.left.sidebar ~ .fixed, .ui.visible.left.sidebar ~ #pusher{
+    webkit-transform: translate3d(75px, 0, 0);
+    transform: translate3d(75px, 0, 0);
 }
