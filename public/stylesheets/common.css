@@ -99,6 +99,6 @@
 }
 /* 右边运动位置 */
 .ui.visible.left.sidebar ~ .fixed, .ui.visible.left.sidebar ~ #pusher{
-    webkit-transform: translate3d(75px, 0, 0);
+    -webkit-transform: translate3d(75px, 0, 0);
     transform: translate3d(75px, 0, 0);
 }
