@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET */
 router.get('/', function(req, res, next) {
-  res.render('cart', { title: '购物车' });
+  res.render('order', { title: '订单' });
   // res.send('hhhh');
 });
 

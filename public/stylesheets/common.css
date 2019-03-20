@@ -1,11 +1,12 @@
 * {
     outline: none;
  }
- :focus {
+:focus {
 
     outline: 0;
 
 }
+
 .ui.menu .item img.logo {
     margin-right: 1.5em;
 }
