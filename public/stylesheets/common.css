@@ -6,7 +6,9 @@
     outline: 0;
 
 }
-
+[v-cloak] {
+    display: none;
+}
 .ui.menu .item img.logo {
     margin-right: 1.5em;
 }

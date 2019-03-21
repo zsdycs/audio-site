@@ -1,45 +1,31 @@
-<div class="content-main--basic" id="content">
+<div class="content-main--basic cart-list" id="content" style="display:none">
 
     <div class="">
-
-
         <section class="page-section" data-view="cartPage">
             <div class="grid-container">
                 <section class="layout -sidebar-right">
                     <div class="layout__main-content">
                         <div class="cart-header">
                             <span class="cart-header__left">
-                                <a class="btn"
-                                    href="//audiojungle.net/category/music/cinematic/dramatic-action-adventure">
+                                <a class="btn" href="/">
                                     <font style="vertical-align: inherit;">
                                         <font style="vertical-align: inherit;">继续购物</font>
                                     </font>
                                 </a>
                             </span>
-                            <span class="cart-header__summary">
-                                <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">您的购物车中有1件商品</font>
-                                </font>
-                            </span>
-                            <form class="cart-header__right" action="/cart/clear" accept-charset="UTF-8" method="post">
-                                <input name="utf8" type="hidden" value="✓"><input type="hidden"
-                                    name="authenticity_token"
-                                    value="1yJwwGnLTzSzrfN/oYtG3aa6XySRHrnRZDsxD5wI0PRg59jirKDx5DOygVfczkv63f/5VYH4Xr+SigzgA+hV9A==">
-                                <button name="button" type="submit" class="js-cart__empty e-btn -color-dark"
-                                    data-confirm="Are you sure you want to remove all items from your cart?"
-                                    data-google-analytics-payload="{&quot;actionData&quot;:null,&quot;productsArray&quot;:[{&quot;id&quot;:23249143,&quot;name&quot;:&quot;Epic&quot;,&quot;variant&quot;:&quot;music_standard&quot;,&quot;category&quot;:&quot;audiojungle.net/category/music/cinematic/dramatic-action-adventure&quot;,&quot;brand&quot;:&quot;soundbay&quot;,&quot;price&quot;:&quot;9.00&quot;,&quot;quantity&quot;:&quot;1&quot;}],&quot;timestamp&quot;:1553045994}">
+                            <span class="cart-header__summary"></span>
+                            <dic class="cart-header__right">
+                                <button name="button" type="submit" class="e-btn -color-dark" id="del-all">
                                     <font style="vertical-align: inherit;">
                                         <font style="vertical-align: inherit;">清空</font>
                                     </font>
                                 </button>
 
-                            </form>
+                            </dic>
                         </div>
 
-
-
-                        <div class="shopping-cart">
-                            <div class="shopping-cart__group">
+                        <div class="shopping-cart" id="cartList">
+                            <div v-cloak v-for="item in cartList" class="shopping-cart__group">
                                 <article class="shopping-cart__entry">
                                     <div class="item-result">
 
@@ -48,7 +34,7 @@
                                             <div class="cart-entry">
 
                                                 <div class="cart-entry__title">
-                                                    <h5 class="t-body -weight-bold h-m0">史诗</h5>
+                                                    <h5 class="t-body -weight-bold h-m0">{{item.name}}</h5>
                                                 </div>
 
 
@@ -57,7 +43,7 @@
                                                     <div class="cart-entry__license">
                                                         <p class="t-body -size-s h-m0">
                                                             <strong>许可证：</strong>
-                                                            <a class="cart_entry__information-detail">音乐标准许可证</a>
+                                                            <a class="cart_entry__information-detail">{{item.license}}</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -66,27 +52,14 @@
 
                                             <div class="item-result__price">
                                                 <div class="cart-entry__remove">
-                                                    <form action="/cart/remove/38621887" accept-charset="UTF-8"
-                                                        method="post"><input name="utf8" type="hidden" value="✓"><input
-                                                            type="hidden" name="authenticity_token"
-                                                            value="1yJwwGnLTzSzrfN/oYtG3aa6XySRHrnRZDsxD5wI0PRg59jirKDx5DOygVfczkv63f/5VYH4Xr+SigzgA+hV9A==">
-                                                        <button name="button" type="submit"
-                                                            class="js-cart__remove-entry btn-link"
-                                                            data-confirm="Are you sure you want to remove this item?"
-                                                            data-google-analytics-payload="{&quot;actionData&quot;:null,&quot;productsArray&quot;:[{&quot;id&quot;:23249143,&quot;name&quot;:&quot;Epic&quot;,&quot;variant&quot;:&quot;music_standard&quot;,&quot;category&quot;:&quot;audiojungle.net/category/music/cinematic/dramatic-action-adventure&quot;,&quot;brand&quot;:&quot;soundbay&quot;,&quot;price&quot;:&quot;9.00&quot;,&quot;quantity&quot;:&quot;1&quot;}],&quot;timestamp&quot;:1553045994}">
-                                                            <span>
-                                                                <font style="vertical-align: inherit;">
-                                                                    <font style="vertical-align: inherit;">去掉</font>
-                                                                </font>
-                                                            </span><i class="e-icon -icon-cancel -margin-left"></i>
-                                                        </button></form>
+                                                    <button v-bind:data-audio_id="item.id" name="button" class="btn-link"><i class="x icon"></i></button>
                                                 </div>
                                                 <div class="cart-entry__price">
                                                     <h6 class="t-heading -size-l h-m0">
                                                         <b class="js-item-upgrade__item-price t-currency">
                                                             <font style="vertical-align: inherit;">
                                                                 <font style="vertical-align: inherit;">
-                                                                    ￥<span class="price-one">9</span>
+                                                                    ￥<span class="price-one">{{item.price}}</span>
                                                                 </font>
                                                             </font>
                                                         </b>
@@ -131,3 +104,4 @@
 
     </div>
 </div>
+<script src="/javascripts/for_cartList.js"></script>

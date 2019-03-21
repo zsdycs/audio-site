@@ -1,6 +1,5 @@
 #pusher{
     margin-top: 53px;
-    background-color: blueviolet;
 }
 /* cart-list */
 .content-main--basic {
@@ -55,22 +54,24 @@
     text-align: center;
     text-decoration: none;
 }
-.cart-header__summary {
-    display: none;
-}
 .cart-header__right {
     padding-right: 8px;
     text-align: right;
+}
+.cart-header__summary {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 13px;
+    color: #999999;
 }
 .shopping-cart {
     overflow: visible;
     border-radius: 0 0 4px 4px;
     margin-bottom: 16px;
     border: 1px solid #e1e8ed;
+    border-bottom: 0;
     border-top: 0;
-}
-.shopping-cart__group:first-of-type {
-    border-top: none;
 }
 .shopping-cart__entry {
     background-color: white;
@@ -116,7 +117,7 @@
 }
 .cart-entry__remove {
     position: absolute;
-    top: 0;
+    top: 10px;
     right: 0;
 }
 .cart-entry__price {
@@ -128,12 +129,17 @@
     position: relative;
     z-index: 2;
 }
+.btn-link:hover{
+    color:rgb(223, 44, 44);
+}
+.cart-entry__remove button:hover{
+    background-color:transparent;
+}
 .btn-link {
     background-color: transparent;
     padding: 0;
     text-decoration: none;
     line-height: 1.1;
-    color: #0084B4;
     border-radius: 0;
 }
 .e-icon.-margin-left {
@@ -169,6 +175,7 @@
 .cart-entry__title h5{
     font-size: 20px;    
 }
+
 .t-heading.-size-s {
     font-size: 24px;
 }
@@ -229,4 +236,83 @@
     }
 
 
+}
+
+/* cart-no */
+.content-main--basic {
+    min-height: 300px;
+    height: 100%;
+}
+.page-section {
+    padding: 50px 0;
+}
+.box.-size-m {
+    padding: 40px;
+}
+.box.-radius-all {
+    border-radius: 4px;
+}
+.box {
+    background-color: #fafafa;
+    border: 1px solid #e1e8ed;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+.h-text-align-center {
+    text-align: center;
+}
+.t-heading.-size-m {
+    font-size: 24px;
+}
+.t-heading {
+    color: #454545;
+}
+.t-heading {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    padding: 0;
+}
+.t-body.-color-dark, .t-body {
+    color: #666666;
+}
+.t-body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    padding: 0;
+}
+.h-m0 {
+    margin: 0px !important;
+}
+.t-body a {
+    color: #0084B4;
+    text-decoration:underline;
+}
+.t-body a:hover{
+    color: rgb(0, 0, 0);
+    text-decoration:none;
+}
+.grid-container {
+    max-width: 1004px;
+    max-width: 64rem;
+    padding-left: 10px;
+    padding-left: 0.625rem;
+    padding-right: 10px;
+    padding-right: 0.625rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 569px){
+    .page-section {
+    padding: 50px 0;
+}
 }
