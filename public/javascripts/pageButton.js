@@ -59,18 +59,16 @@ function isInsufficientPage(){
 }
 // 将当前页码设置为最前项，并给当前页码加 "active"
 function pageinitial(maxpage,nowpage){
-    console.log($(".paging").length)
     for(i=0; i<$(".paging").length; i++){
         $(".paging").eq(i).text(parseInt($(".paging").eq(i).text()) +nowpage-1)
+        
         if(parseInt($(".paging").eq(i).text()) == nowpage){
-        $(".paging").eq(i).addClass("active")
-        console.log(i)
+            $(".paging").eq(i).addClass("active")
         }else{
-        $(".paging").eq(i).removeClass("active")
-        console.log(i)
+            $(".paging").eq(i).removeClass("active")
         }
         if(parseInt($(".paging").eq(i).text()) > maxpage){
-        $(".paging").eq(i).css("display","none")
+            $(".paging").eq(i).css("display","none")
         }
     }
 }

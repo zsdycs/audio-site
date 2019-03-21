@@ -286,7 +286,8 @@ $(document).on("click",".label_time",function(){
 })
 
 
-// ////数量输入规则
+////数量输入规则/////
+
 // 输入,最大值根据请求获得，例9904
 $(document).on("keyup",".price-l-input",function(){
   // if(isNaN(this.value)||this.value==''||this.value==0){

@@ -43,7 +43,12 @@
                                                     <div class="cart-entry__license">
                                                         <p class="t-body -size-s h-m0">
                                                             <strong>许可证：</strong>
-                                                            <a class="cart_entry__information-detail">{{item.license}}</a>
+                                                            <a  v-bind:data-id="item.id"
+                                                                v-bind:data-price="item.price" 
+                                                                v-bind:data-name="item.name" 
+                                                                v-bind:data-one="item.one" 
+                                                                v-bind:data-unlimited="item.unlimited"
+                                                                class="cart_entry__information-detail">{{item.license}}</a>
                                                         </p>
                                                     </div>
                                                 </div>

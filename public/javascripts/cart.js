@@ -33,6 +33,7 @@ $(function(){
         checkshoppingcartnum()
     })
 
+    // 清除所有
     $(document).on("click","#del-all",function(){
         var cartList=getCookie("shoppingcart")
         cartList=JSON.parse(cartList)
@@ -50,14 +51,86 @@ $(function(){
         checkshoppingcartnum()
     })
 
+    // 更换许可证
+    $(document).on("click",".cart_entry__information-detail",function(){
+        $("#select-price").empty()
+        // 修改并添加弹框页面数据
+        var id = $(this).data("id")
+        var name = $(this).data("name")
+        var price = $(this).data("price")
+        var one = $(this).data("one")
+        var unlimited = $(this).data("unlimited")
+
+        $("#select-price").append("<option value =\""+ one +"\">一次性 - ￥"+ one +"</option>")
+        $("#select-price").append("<option value =\""+ unlimited +"\">无限制 - ￥"+ unlimited +"</option>")
+        
+        $("#selected-audio-name").text(name)
+        $("#selected-price").text(price)
+
+        $("#select-price").find("option[value="+ price +"]").attr("selected",true); 
+
+        if(price == one){
+            $("#selected-license").text("一次性")
+        }else if(price == unlimited){
+            $("#selected-license").text("无限制")
+        }
+
+        $(".s-button").text("确定")
+        $(".s-button").data("id",id)
+
+        $("#SelectLicenses").css("display","block")
+        $("body").css({overflow:"hidden"})
+    })
+
+    // 选择许可证
+    $(document).on("click","#select-price",function(){
+        var selected = $("#select-price").find("option:selected").text()
+        $("#selected-price").text($("#select-price").val())
+        if(selected.indexOf("一次性") >= 0){
+        $("#selected-license").text("一次性")
+        }else{
+        $("#selected-license").text("无限制")
+        }
+    })
+
+    // 取消加入
+    $(document).on("click",".c-button",function(){
+        $("#select-price").empty()
+        $("#SelectLicenses").css("display","none")
+        $('body').css('overflow','auto');
+    })
+
+    // 确认加入
+    $(document).on("click",".s-button",function(){
+        // 根据id修改 "许可证" 、 "金额" ，写入购物车cookie
+        var exp = new Date();
+        exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
+        var id = $(this).data("id")
+        var audioList=JSON.parse(getCookie("shoppingcart"))
+        // 先判断cookie中有无相同的id商品
+        for(var i=0;i<audioList.length;i++){
+            if(audioList[i].id === id){
+            audioList[i].price = $("#selected-price").text()
+            audioList[i].license = $("#selected-license").text()
+            break;
+            }
+        }
+        document.cookie = "shoppingcart=" + JSON.stringify(audioList) + ";expires=" + exp.toGMTString()+ ";path=/";
+        var data=getCookie("shoppingcart")
+        data=JSON.parse(data)
+        data=JSON.stringify(data)
+        // console.log(">>>>:"+data)
+        // 局部刷新？？？？？
+        window.location.reload()
+    })
 
 })
+
 
 // 根据购物车cookie，显示购物车list或no，并关联 "数量"、"总价" 显示
 function checkshoppingcartnum(){
     var cartList=JSON.parse(getCookie("shoppingcart"))
     var num = cartList.length
-    console.log(num)
     if(num == 0){
         $(".cart-list").css("display","none")
         $(".cart-no").css("display","block")

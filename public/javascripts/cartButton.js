@@ -13,7 +13,11 @@ $(document).on("click",".add-cart-button",function(){
     $("#select-price").append("<option value =\""+ unlimited +"\">无限制 - ￥"+ unlimited +"</option>")
     // console.log(name)
     $("#selected-audio-name").text(name)
+
     $(".s-button").data("audio_id",audio_id)
+    $(".s-button").data("one",one)
+    $(".s-button").data("unlimited",unlimited)
+
     $("#selected-price").text($("#select-price").val())
     if($("#select-price").val() == one){
       $("#selected-license").text("一次性")
@@ -47,12 +51,16 @@ $(document).on("click",".add-cart-button",function(){
     $("#hadSelectName").text($("#selected-audio-name").text())
     $("#hadSelectPrice").text($("#selected-price").text())
     $("#hadSelectLicenses").text($("#selected-license").text())
+
     var id = $(this).data("audio_id")
+    var one = $(this).data("one")
+    var unlimited = $(this).data("unlimited")
+
     // 写入购物车cookie，名字，金额，许可证，id
     var exp = new Date();
     exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
     var name = $("#hadSelectName").text(),price = $("#hadSelectPrice").text(), license = $("#hadSelectLicenses").text()
-    var audios = {name:name,price:price,license:license,id:id}
+    var audios = {id:id,name:name,price:price,license:license,one:one,unlimited:unlimited}
     var audioList = []
     // 如果cooki为空，直接添加
     if(getCookie("shoppingcart").length==0){
