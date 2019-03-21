@@ -4,6 +4,8 @@ module.exports = function (app) {
   })
   app.use('/cart', require('./cart'))
   app.use('/order', require('./order'))
+  app.use('/favorite', require('./favorite'))
+  // 
   // app.use('/signin', require('./signin'))
   // app.use('/signout', require('./signout'))
 

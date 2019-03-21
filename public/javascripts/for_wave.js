@@ -239,7 +239,7 @@ $(function(){
     // 添加like事件
     $(document).on("click",".like-a",function(){
         // 判断登录状态
-
+        
         // 请求改变数据库数据
 
         // 样式变化

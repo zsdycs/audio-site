@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="/stylesheets/for_wave_row.css">
+<link rel="stylesheet" href="/stylesheets/favorite.css">
+<link rel="stylesheet" href="/stylesheets/selectAndselected.css">
+
+<script src="/javascripts/cartButton.js"></script>
+<script src="/javascripts/favorite.js"></script>
+<script src="/javascripts/pageButton.js"></script>
+
+</head>
+
+<body>
+<!-- 移动端mobile header -->
+<%- include('./mobile-header') %>
+
+<!-- Sidebar Menu -->
+<%- include('./sidebar-menu') %>
+
+<!-- PC顶部fixed -->
+<%- include('./top') %>
+
+
+<!-- Page Contents -->
+<div class="pusher" id="pusher">
+    <div class="ui grid">
+        <div class="center aligned sixteen wide column audioList-column">
+            <!-- 音频 -->
+            <%- include('./audioList') %>
+        </div>
+        <div class="center aligned sixteen wide column pageButton-column">
+            <!-- 分页按钮 -->
+            <%- include('../component/pageButton') %>
+        </div>
+    </div>
+    
+    
+    <!-- 添加到购物车-选择列表 -->
+    <div id="SelectLicenses" style="display:none">
+        <%- include('./index-select-licenses') %>
+    </div>
+    <!-- 已选择，是否跳转购物车 -->
+    <div id="HadSelect" style="display:none">
+        <%- include('./index-had-selected') %>
+    </div>
+</div>
+</div>

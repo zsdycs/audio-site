@@ -9,6 +9,12 @@
 [v-cloak] {
     display: none;
 }
+/* 分页 */
+
+.ui.menu .item:before{
+    display: none;
+}
+/* 分页结束 */
 .ui.menu .item img.logo {
     margin-right: 1.5em;
 }
