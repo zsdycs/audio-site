@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="/stylesheets/for_wave_row.css">
 <link rel="stylesheet" href="/stylesheets/order.css">
+<link rel="stylesheet" href="/stylesheets/list-and-no.css">
+<link rel="stylesheet" href="/stylesheets/selectAndselected.css">
+
 <script src="/javascripts/order.js"></script>
 
 </head>
@@ -17,7 +20,13 @@
 
 <!-- Page Contents -->
 <div class="pusher" id="pusher">
-
-  
+    <%- include('./list-no') %>
+    <%- include('./list') %>
 </div>
+
+<!-- -选择 "许可证" 列表 -->
+<div id="SelectLicenses" style="display:none">
+    <%- include('./select-licenses') %>
+</div>
+
 </div>

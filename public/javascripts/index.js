@@ -18,7 +18,12 @@ $(document).ready(function () {
   var rand = parseInt(Math.random() * (x - y + 1) + y);
   $("#segment").addClass("bg"+rand)
 });
-
+// 如果购物车cookie不存在写入空购物车cookie
+if(getCookie("shoppingcart")==""){
+	var exp = new Date();
+	exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
+	document.cookie = "shoppingcart=[];expires=" + exp.toGMTString()+ ";path=/";
+}
 $(function(){
   FiltrateAndAudioByCookie()
   getFiltrateByCookieForRtopList()

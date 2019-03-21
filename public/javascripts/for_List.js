@@ -1,8 +1,8 @@
 // 购物车数据
-var cartList = new Vue({
-	el: '#cartList',
+var List = new Vue({
+	el: '#List',
 	data: {
-        cartList: [],
+        List: [],
 	},
 	created() {
 		////////////下面的是前端测试用的数据//////////////
@@ -19,7 +19,7 @@ var cartList = new Vue({
         data=JSON.parse(data)
         var self=this;
         if(data!=""){
-            self.cartList = data 
+            self.List = data 
         }
         
 	}
