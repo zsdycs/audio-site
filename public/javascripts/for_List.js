@@ -9,7 +9,7 @@ var List = new Vue({
         var data=[{
             name:"仙女棒",
             price:"21",
-            license:"一次性",
+            license:"无限制",
             id:2453231,
             one:2132,
             unlimited:231233,
@@ -18,7 +18,7 @@ var List = new Vue({
     // 根据地址请求列表数据
         var self=this;
         var url = GetUrlRelativePath();
-        console.log("我知道啦，是这里:"+url)
+        // console.log("我知道啦，是这里:"+url)
         if(url == "/cart"){
             var data=getCookie("shoppingcart")
             data=JSON.parse(data)

@@ -70,7 +70,6 @@
     border-radius: 0 0 4px 4px;
     margin-bottom: 16px;
     border: 1px solid #e1e8ed;
-    border-bottom: 0;
     border-top: 0;
 }
 .shopping-cart__entry {
@@ -165,12 +164,10 @@
     line-height: 1;
 }
 .cart-footer__subtotal {
-    line-height: 32px;
     text-align: right;
 }
 .cart-footer__checkout{
-    float: right;
-    margin: 0 10px 10px 20px;
+    margin: 0 10px 0 20px;
 }
 .cart-entry__title h5{
     font-size: 20px;    

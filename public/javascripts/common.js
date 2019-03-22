@@ -27,7 +27,7 @@ $(document).ready(function () {
   // 侧边栏
   $(function(){
     var url = GetUrlRelativePath();
-    console.log("现在位于:"+url)
+    // console.log("现在位于:"+url)
       if(url == "/cart"){
         $(".item").removeClass("active")
         $("#cart-item").addClass("active")
