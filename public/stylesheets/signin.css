@@ -1,0 +1,51 @@
+#pusher{
+    margin-top: 53px;
+}
+.ui.centered.grid{
+    max-width: 64rem;
+    margin: auto;
+    padding-top: 40px;
+}
+.ui.centered.grid .column{
+    max-width: 490px
+}
+h2.ui.header{
+    margin: 0;
+    padding: 16px;
+    border-left: 1px solid #dedede;
+    border-right: 1px solid #dedede;
+    text-align: center;
+}
+h2.ui.header.top{
+    border-radius: 4px 4px 0 0;
+    background-color: #262626;
+    border: none;
+    color: white;
+    margin: 0;
+}
+h2.ui.header.top .content{
+    padding: 0;
+}
+h2.ui.header.top .image{
+    margin-top:0;
+    width: 1.5em;
+}
+.ui.segment{
+    border-top: 0;
+    margin: 0;
+    border-radius: 0 0 4px 4px;
+}
+.ui.form.segment.ui.form .field {
+    width: 66%;
+    margin: 0 auto 1em;
+}
+.ui.form.segment.ui.form .ui.button.fluid{
+    width: 66%;
+    margin: auto;
+}
+.ui.form .required.field>label:after{
+    vertical-align: sub;
+}
+.column .ui.message{
+    text-align: center;
+}

@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET */
+// GET signin 登录页
 router.get('/', function(req, res, next) {
-  res.render('order', { title: '已购' });
+  res.render('signin',{ title: '登录' });
 });
+// POST /signin 用户登录
+
 
 
 module.exports = router

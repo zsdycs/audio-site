@@ -3,7 +3,8 @@ var router = express.Router();
 
 /* GET */
 router.get('/', function(req, res, next) {
-  res.render('order', { title: '已购' });
+  // 登出成功后跳转到主页
+  res.redirect('/')
 });
 
 
