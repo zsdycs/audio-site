@@ -11,8 +11,8 @@
 }
 /* 分页 */
 
-.ui.menu .item:before{
-    display: none;
+.ui.menu #index-item.item:before, .ui.menu .item:before{
+    display: none!important;
 }
 /* 分页结束 */
 .ui.menu .item img.logo {
@@ -104,10 +104,15 @@
 /* 侧边补充高度 */
 .ui.vertical.inverted.sidebar.menu.left.uncover.visible{
     top:55px;
-    width: 75px;
+    width: 100px;
+}
+/* 侧边icon */
+.ui.vertical.menu .item>i.icon.sidebar-icon{
+    float: left;
+    margin: 0 .5em 0 0em;
 }
 /* 右边运动位置 */
 .ui.visible.left.sidebar ~ .fixed, .ui.visible.left.sidebar ~ #pusher{
-    -webkit-transform: translate3d(75px, 0, 0);
-    transform: translate3d(75px, 0, 0);
+    -webkit-transform: translate3d(100px, 0, 0);
+    transform: translate3d(100px, 0, 0);
 }

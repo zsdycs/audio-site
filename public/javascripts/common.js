@@ -27,9 +27,22 @@ $(document).ready(function () {
   // 侧边栏
   $(function(){
     var url = GetUrlRelativePath();
-      if(url != "/"){
+    console.log("现在位于:"+url)
+      if(url == "/cart"){
         $(".item").removeClass("active")
         $("#cart-item").addClass("active")
+      }else if(url == "/favorite"){
+        $(".item").removeClass("active")
+        $("#favorite-item").addClass("active")
+      }else if(url == "/order"){
+        $(".item").removeClass("active")
+        $("#order-item").addClass("active")
+      }else if(url == "/signin"){
+        $(".item").removeClass("active")
+        $("#signin-item").addClass("active")
+      }else if(url == "/signup"){
+        $(".item").removeClass("active")
+        $("#signup-item").addClass("active")
       }
   })
   function GetUrlRelativePath(){

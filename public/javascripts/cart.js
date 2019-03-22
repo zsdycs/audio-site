@@ -127,23 +127,5 @@ $(function(){
 })
 
 
-// 根据购物车cookie，显示购物车list或no，并关联 "数量"、"总价" 显示
-function checkshoppingcartnum(){
-    var cartList=JSON.parse(getCookie("shoppingcart"))
-    var num = cartList.length
-    if(num == 0){
-        $(".cart-list").css("display","none")
-        $(".cart-no").css("display","block")
-    }else{
-        var price = 0
-        for(var i = 0;i < num;i++){
-            price+=parseInt(cartList[i].price)
-        }
-        price+=parseInt($("#total-price").text())
-        $("#total-price").text(price)
-        $(".cart-header__summary").text("您的购物车中有"+ num +"件商品")
-        $(".cart-list").css("display","block")
-        $(".cart-no").css("display","none")
-    }
-}
+
 
