@@ -1,6 +1,9 @@
 {
   "name": "audiosite",
   "version": "1.0.0",
+  "description": "my GP",
+  "license": "MIT",
+  "repository": "https://github.com/zsdycs/My-GraduationProject",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production pm2 start index.js --name 'audiosite'",
@@ -8,6 +11,7 @@
   },
   "author": "zsdycs",
   "dependencies": {
+    "@tensorflow/tfjs": "1.0.2",
     "config-lite": "2.1.0",
     "connect-flash": "0.1.1",
     "connect-mongo": "2.0.3",

@@ -11,12 +11,13 @@
 }
 h2.ui.header{
     margin: 0;
-    padding: 16px;
+    padding: 16px 16px 0px 16px;
     border-left: 1px solid #dedede;
     border-right: 1px solid #dedede;
     text-align: center;
 }
 h2.ui.header.top{
+    padding: 16px;
     border-radius: 4px 4px 0 0;
     background-color: #262626;
     border: none;
@@ -33,7 +34,11 @@ h2.ui.header.top .image{
 .ui.segment{
     border-top: 0;
     margin: 0;
+    padding-bottom: 35px;
     border-radius: 0 0 4px 4px;
+}
+.ui.segment.signin{
+    padding-bottom: 20px;
 }
 .ui.form.segment.ui.form .field {
     width: 66%;
