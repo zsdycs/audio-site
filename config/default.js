@@ -5,5 +5,5 @@ module.exports = {
       key: 'audiosite',
       maxAge: 2592000000
     },
-    mongodb: 'mongodb://localhost:27017/audiosite'
+    mongodb: 'mongodb://localhost:27017/gp_db'
   }

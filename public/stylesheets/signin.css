@@ -4,7 +4,7 @@
 .ui.centered.grid{
     max-width: 64rem;
     margin: auto;
-    padding-top: 40px;
+    padding-top: 25px;
 }
 .ui.centered.grid .column{
     max-width: 490px

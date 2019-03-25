@@ -17,6 +17,17 @@
     <div class="pusher" id="pusher">
         <div class="ui centered grid">
             <div class="column">
+                <% if (success) { %>
+                <div class="ui success message">
+                    <p><%= success %></p>
+                </div>
+                <% } %>
+            
+                <% if (error) { %>
+                <div class="ui error message">
+                    <p><%= error %></p>
+                </div>
+                <% } %>
                 <h2 class="ui header top">
                     <img src="/images/common/favicon.ico" class="image">
                     <div class="content">Audiosite</div>

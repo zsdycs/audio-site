@@ -13,21 +13,27 @@
         <div class="results"></div>
       </div>
       
-      <div class="ui simple dropdown right item" style="width:99px">登录<i class="dropdown icon"></i>
-        <div class="menu">
-          <a class="item" href="/signin"><i class="user icon"></i>登录</a>
-          <div class="divider" style="margin:0"></div>
-
-          <a class="item" href="/signup"><i class="user plus icon"></i>注册</a>
-          <div class="divider" style="margin:0"></div>
-
-          <a class="item" href="/favorite"><i class="heart icon"></i>收藏</a>
-          <div class="divider" style="margin:0"></div>
-
-          <a class="item" href="/order"><i class="itunes note icon"></i>已购</a>
-          <div class="divider" style="margin:0"></div>
-          <a class="item" href="/signout"><i class="sign-out icon"></i>退出</a>
+      <% if (user) { %>
+        <div class="ui simple dropdown right item" style="width:99px"><%= audiosite.title %><i class="dropdown icon"></i>
+          <div class="menu">
+            <a class="item" href="/favorite"><i class="heart icon"></i>收藏</a>
+            <div class="divider" style="margin:0"></div>
+            <a class="item" href="/order"><i class="itunes note icon"></i>已购</a>
+            <div class="divider" style="margin:0"></div>
+            <a class="item" href="/signout"><i class="sign-out icon"></i>退出</a>
+          </div>
         </div>
-      </div>
+      <% } else { %>
+        <div class="ui simple dropdown right item" style="width:99px">登录<i class="dropdown icon"></i>
+          <div class="menu">
+            <a class="item" href="/signin"><i class="user icon"></i>登录</a>
+            <div class="divider" style="margin:0"></div>
+  
+            <a class="item" href="/signup"><i class="user plus icon"></i>注册</a>
+          </div>
+        </div>
+      <% } %>
+
+      
     </div>
 </div>
