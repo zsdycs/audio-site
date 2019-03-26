@@ -13,7 +13,9 @@ var play_svg_str='<svg fill=\"currentColor\" preserveAspectRatio=\"xMidYMid meet
 '</path></g></g></svg>';
 
 // 请求获取得到的资源数目 全局变量
-var wave=new Array()
+var wave = new Array()
+var t = new Array()
+var id = new Array()
 
 //音频列表
 var audioList = new Vue({
@@ -23,121 +25,111 @@ var audioList = new Vue({
 	},
 	created() {
         ////////////测试用数据//////////////
-			data=[{
-                music:'013kt130.mp3',
-                music_name:'仙女df棒',
+		data=[
+            {
+
+                fileName:'仙女df棒',
                 author_name:'佚名',
                 price_one:'131',
                 price_unlimited:'3223',
                 sales:'33',
+                filePath:'/music/动物/猴子.wav',
                 div_id:'audio0',
                 audio_id:'2031',
             },
             {
-                music:'013kt143.mp3',
-                music_name:'仙女aa棒ffasae',
+                fileName:'仙女aa棒ffasae',
                 author_name:'佚名',
                 price_one:'331',
                 price_unlimited:'433',
                 sales:'33',
+                filePath:'/music/管风琴/3.mp3',
                 div_id:'audio1',
                 audio_id:'42333231',
             },
             {
-                music:'46570_1082_1337.mp3',
-                music_name:'仙ae女棒',
+                fileName:'仙ae女棒',
                 author_name:'佚名',
                 price_one:'41',
                 price_unlimited:'523',
                 sales:'33',
+                filePath:'/music/管风琴/3.mp3',
                 div_id:'audio2',
                 audio_id:'243231',
             },
             {
-                music:'46570_1082_1337.mp3',
-                music_name:'仙女棒',
+                fileName:'仙女棒',
                 author_name:'佚名',
                 price_one:'21',
                 price_unlimited:'143',
                 sales:'33',
+                filePath:'/music/管风琴/3.mp3',
                 div_id:'audio3',
                 audio_id:'2453231',
             },
             {
-                music:'46570_1082_1337.mp3',
-                music_name:'ased仙女棒',
+                fileName:'ased仙女棒',
                 author_name:'佚名',
                 price_one:'231',
                 price_unlimited:'323',
                 sales:'33',
+                filePath:'/music/管风琴/3.mp3',
                 div_id:'audio4',
                 audio_id:'221131',
             },
             {
-                music:'46570_1082_1337.mp3',
-                music_name:'asdf仙女棒',
+                fileName:'asdf仙女棒',
                 author_name:'佚名',
                 price_one:'2361',
                 price_unlimited:'3323',
                 sales:'33',
+                filePath:'/music/动物/猴子.wav',
                 div_id:'audio5',
                 audio_id:'2031',
             },
             {
-                music:'46570_1082_1337.mp3',
-                music_name:'仙女棒asd',
+                fileName:'仙女棒asd',
                 author_name:'佚名',
                 price_one:'7231',
                 price_unlimited:'9323',
                 sales:'33',
+                filePath:'/music/动物/猴子.wav',
                 div_id:'audio6',
                 audio_id:'29311',
             },
             {
-                music:'46570_1082_1337.mp3',
-                music_name:'ff仙女棒',
+                fileName:'ff仙女棒',
                 author_name:'佚名',
                 price_one:'2431',
                 price_unlimited:'22323',
                 sales:'33',
+                filePath:'/music/动物/猴子.wav',
                 div_id:'audio7',
                 audio_id:'24231',
             },
             {
-                music:'46570_1082_1337.mp3',
-                music_name:'asdfff仙女棒',
+                fileName:'asdfff仙女棒',
                 author_name:'佚名',
                 price_one:'23531',
                 price_unlimited:'36423',
                 sales:'33',
+                filePath:'/music/动物/猴子.wav',
                 div_id:'audio8',
                 audio_id:'21231',
             },
             {
-                music:'46570_1082_1337.mp3',
-                music_name:'仙女棒dsff',
+                fileName:'仙女棒dsff',
                 author_name:'佚名',
                 price_one:'2531',
                 price_unlimited:'8323',
                 sales:'33',
+                filePath:'/music/动物/猴子.wav',
                 div_id:'audio9',
                 audio_id:'23112',
             }
         ]
 			//////////测试用数据结束////////////
         // audioList=JSON.parse(this.audioList)
-        // for(var i=0;i<3;i++){
-            // var music=audioList[i].music
-            // var t1='013kt143.mp3'
-            // var w1="w1"
-            // var w2="w2"
-            // var w3="w3"
-            // new_wave(w1,t1)
-            // var t1='013kt130.mp3'
-            // new_wave(w2,t1)
-            // var t1='46570_1082_1337.mp3'
-            // new_wave(w3,t1)
-        // }
 		var self=this;
 		// var updata = {id:1};
 		// $.ajax({
@@ -146,6 +138,10 @@ var audioList = new Vue({
 		// 	url: "",
 		// 	dataType: 'json',
 		// 	success: function (data) {
+                for(var i=0;i<data.length;i++){
+                    t[i] = data[i].filePath
+                    id[i] = "#audio"+i
+                }
                 self.audioList = data
                 // console.log(data)
                 
@@ -165,50 +161,29 @@ var audioList = new Vue({
 		)}
 	}
 });
+wave[0] = new_wave(id[0],t[0])
+
+wave[1] = new_wave(id[1],t[1])
+
+wave[2] = new_wave(id[2],t[2])
+
+wave[3] = new_wave(id[3],t[3])
+
+wave[4] = new_wave(id[4],t[4])
+
+wave[5] = new_wave(id[5],t[5])
+
+wave[6] = new_wave(id[6],t[6])
+
+wave[7] = new_wave(id[7],t[7])
+
+wave[8] = new_wave(id[8],t[8])
+
+wave[9] = new_wave(id[9],t[9])
 // 音频列表渲染完成隐藏
 function audioListisloading(){
 	$("#audioList").removeClass("loader")
 }
-
-var t1="/music/动物/猴子.wav"
-var id='#audio0'
-wave[0] = new_wave(id,t1)
-
-var t1="/music/管风琴/3.mp3"
-var id='#audio1'
-wave[1] = new_wave(id,t1)
-
-var t1="/music/管风琴/3.mp3"
-var id='#audio2'
-wave[2] = new_wave(id,t1)
-
-var t1="/music/管风琴/3.mp3"
-var id='#audio3'
-wave[3] = new_wave(id,t1)
-
-var t1="/music/管风琴/3.mp3"
-var id='#audio4'
-wave[4] = new_wave(id,t1)
-
-var t1="/music/管风琴/3.mp3"
-var id='#audio5'
-wave[5] = new_wave(id,t1)
-
-var t1="/music/管风琴/3.mp3"
-var id='#audio6'
-wave[6] = new_wave(id,t1)
-
-var t1="/music/管风琴/3.mp3"
-var id='#audio7'
-wave[7] = new_wave(id,t1)
-
-var t1="/music/管风琴/3.mp3"
-var id='#audio8'
-wave[8] = new_wave(id,t1)
-
-var t1="/music/管风琴/3.mp3"
-var id='#audio9'
-wave[9] = new_wave(id,t1)
 
 // 创建音频对象
 function new_wave(name,music){

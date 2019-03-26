@@ -14,18 +14,20 @@ var List = new Vue({
             one:2132,
             unlimited:231233,
         }]
-    ////////////////////////测试用数据结束//////////////
+        /////////////////////测试用数据结束//////////////
     // 根据地址请求列表数据
         var self=this;
         var url = GetUrlRelativePath();
         // console.log("我知道啦，是这里:"+url)
         if(url == "/cart"){
-            var data=getCookie("shoppingcart")
-            data=JSON.parse(data)
-            if(data!=""){
-                self.List = data 
+            // 将cookie数据渲染到购物车表
+            var cartdata=getCookie("shoppingcart")
+            cartdata=JSON.parse(cartdata)
+            if(cartdata!=""){
+                self.List = cartdata 
             }
         }else if(url == "/order"){
+            // 将请求获得的数据渲染到已购表
             self.List = data 
             checkOrderNum(data)
         }
