@@ -52,7 +52,7 @@ UserModel.create(user)
     // 写入 flash
     req.flash('success', '注册成功')
     // 跳转到首页
-    return res.redirect('/signup')
+    return res.redirect('/')
   })
   .catch(function (e) {
     // 用户名被占用则跳回注册页，而不是错误页
