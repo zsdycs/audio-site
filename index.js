@@ -35,7 +35,6 @@ app.use(favicon(__dirname + '/public/images/common/favicon.ico'));
 // 静态文件默认路径
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ---
 // session 中间件
 app.use(session({
   name: config.session.key, // 设置 cookie 中保存 session id 的字段名称
@@ -55,11 +54,7 @@ app.use(flash())
 
 app.use(multipart())
 
-// 设置模板全局常量
-app.locals.audiosite = {
-  title: pkg.name,
-}
-// ---
+
 // 添加模板必需的三个变量
 app.use(function (req, res, next) {
   res.locals.user = req.session.user
@@ -67,9 +62,7 @@ app.use(function (req, res, next) {
   res.locals.error = req.flash('error').toString()
   next()
 })
-// ---
 
-// ---
 // 正常请求的日志
 app.use(expressWinston.logger({
   transports: [
@@ -82,13 +75,11 @@ app.use(expressWinston.logger({
     })
   ]
 }))
-// ---
 
 
 // 路由
 routes(app)
 
-// ----
 // 错误请求的日志
 app.use(expressWinston.errorLogger({
   transports: [
@@ -101,7 +92,6 @@ app.use(expressWinston.errorLogger({
     })
   ]
 }))
-// ----
 
 app.use(function (err, req, res, next) {
   console.error(err)
