@@ -43,6 +43,7 @@ $(function(){
         var exp = new Date();
         exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
         document.cookie = "shoppingcart=" + JSON.stringify(cartList) + ";expires=" + exp.toGMTString()+ ";path=/";
+
         var cartList=getCookie("shoppingcart")
         cartList=JSON.parse(cartList)
         cartList=JSON.stringify(cartList)
@@ -122,6 +123,40 @@ $(function(){
         // console.log(">>>>:"+data)
         // 局部刷新？？？？？
         window.location.reload()
+    })
+
+    // 结算按钮，提交请求，order表取自shoppingcart（id，price价格，name名称，license许可证）
+    // 清空购物车，忽略支付，直接跳转到已购买
+    $(document).on("click","#listPostButton",function(){
+        
+        var updata=JSON.stringify(JSON.parse(getCookie("shoppingcart")))
+        $.ajax({
+                type:"post",
+                contentType:'application/json',
+            	data:updata,
+                url: "/cart",
+                dataType: 'json',
+                cache: false,
+                timeout: 5000,
+                success: function (data) {
+                    if(data.status == false){
+                        window.location.href = '/signin';
+                    }else{
+                        var cartList=getCookie("shoppingcart")
+                        cartList=JSON.parse(cartList)
+                        // 清空数组
+                        cartList.splice(0)
+                        // 更新购物车商品信息cookie
+                        var exp = new Date();
+                        exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
+                        document.cookie = "shoppingcart=" + JSON.stringify(cartList) + ";expires=" + exp.toGMTString()+ ";path=/";
+                        window.location.href = '/order'
+                    }
+                },
+                error:function (err) {
+                    console.log(JSON.stringify(err));
+                }
+            })
     })
 
 })

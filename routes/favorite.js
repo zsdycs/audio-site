@@ -6,6 +6,8 @@ var checkLogin = require('../middlewares/check').checkLogin
 router.get('/',checkLogin, function(req, res, next) {
   res.render('favorite', { title: '收藏' });
 });
-
+router.post('/',checkLogin, function(req, res, next) {
+  res.send("收藏");
+});
 
 module.exports = router

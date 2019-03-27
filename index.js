@@ -1,7 +1,7 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+var multipart = require('connect-multiparty');
 var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
 var favicon = require('serve-favicon');
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
@@ -11,19 +11,28 @@ const routes = require('./routes')
 const pkg = require('./package')
 const winston = require('winston')
 const expressWinston = require('express-winston')
+    
 
-
+// 创建服务
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
-app.use(express.json());
+
+// 使用body-parser中间件来获取req.body
+// create application/json parser
+app.use(bodyParser.json()) 
+// create application/x-www-form-urlencoded parser
+app.use(bodyParser.urlencoded({extended: false}));
+
+// 设置统一网页图标
 app.use(favicon(__dirname + '/public/images/common/favicon.ico'));
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+
+// app.use(cookieParser());获取cookie解析req.headers.cookie
+
+// 静态文件默认路径
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ---
@@ -40,17 +49,17 @@ app.use(session({
     url: config.mongodb// mongodb 地址
   })
 }))
+
 // flash 中间件，用来显示通知
 app.use(flash())
-// ---
 
 // 处理表单及文件上传的中间件
-app.use(require('express-formidable')({
-  uploadDir: path.join(__dirname, 'public/updata'), // 上传文件目录
-  keepExtensions: true// 保留后缀
-}))
-// ---
-// ----
+// app.use(require('express-formidable')({
+//   uploadDir: path.join(__dirname, 'public/updata'), // 上传文件目录
+//   keepExtensions: true// 保留后缀
+// }))
+app.use(multipart())
+
 // 设置模板全局常量
 app.locals.audiosite = {
   title: pkg.name,

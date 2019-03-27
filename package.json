@@ -16,10 +16,10 @@
     "config-lite": "2.1.0",
     "connect-flash": "0.1.1",
     "connect-mongo": "2.0.3",
+    "connect-multiparty": "2.2.0",
     "cookie-parser": "1.4.3",
     "debug": "2.6.9",
     "ejs": "2.5.7",
-    "express": "4.16.0",
     "express-formidable": "1.2.0",
     "express-session": "1.15.6",
     "express-winston": "3.1.0",
@@ -34,6 +34,8 @@
     "winston": "3.2.1"
   },
   "devDependencies": {
+    "body-parser": "1.18.3",
+    "express": "4.16.0",
     "istanbul": "0.4.5",
     "mocha": "6.0.2",
     "supertest": "4.0.2"
