@@ -29,7 +29,6 @@ var audioList = new Vue({
             {
 
                 fileName:'仙女df棒',
-                author_name:'佚名',
                 price_one:'131',
                 price_unlimited:'3223',
                 sales:'33',
@@ -39,7 +38,6 @@ var audioList = new Vue({
             },
             {
                 fileName:'仙女aa棒ffasae',
-                author_name:'佚名',
                 price_one:'331',
                 price_unlimited:'433',
                 sales:'33',
@@ -49,7 +47,6 @@ var audioList = new Vue({
             },
             {
                 fileName:'仙ae女棒',
-                author_name:'佚名',
                 price_one:'41',
                 price_unlimited:'523',
                 sales:'33',
@@ -59,7 +56,6 @@ var audioList = new Vue({
             },
             {
                 fileName:'仙女棒',
-                author_name:'佚名',
                 price_one:'21',
                 price_unlimited:'143',
                 sales:'33',
@@ -69,7 +65,6 @@ var audioList = new Vue({
             },
             {
                 fileName:'ased仙女棒',
-                author_name:'佚名',
                 price_one:'231',
                 price_unlimited:'323',
                 sales:'33',
@@ -79,7 +74,6 @@ var audioList = new Vue({
             },
             {
                 fileName:'asdf仙女棒',
-                author_name:'佚名',
                 price_one:'2361',
                 price_unlimited:'3323',
                 sales:'33',
@@ -89,7 +83,6 @@ var audioList = new Vue({
             },
             {
                 fileName:'仙女棒asd',
-                author_name:'佚名',
                 price_one:'7231',
                 price_unlimited:'9323',
                 sales:'33',
@@ -99,7 +92,6 @@ var audioList = new Vue({
             },
             {
                 fileName:'ff仙女棒',
-                author_name:'佚名',
                 price_one:'2431',
                 price_unlimited:'22323',
                 sales:'33',
@@ -109,7 +101,6 @@ var audioList = new Vue({
             },
             {
                 fileName:'asdfff仙女棒',
-                author_name:'佚名',
                 price_one:'23531',
                 price_unlimited:'36423',
                 sales:'33',
@@ -119,7 +110,6 @@ var audioList = new Vue({
             },
             {
                 fileName:'仙女棒dsff',
-                author_name:'佚名',
                 price_one:'2531',
                 price_unlimited:'8323',
                 sales:'33',
