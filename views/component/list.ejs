@@ -3,6 +3,17 @@
     <div class="">
         <section class="page-section" data-view="cartPage">
             <div class="grid-container">
+                <% if (success) { %>
+                <div class="ui success message">
+                    <p><%= success %></p>
+                </div>
+                <% } %>
+            
+                <% if (error) { %>
+                <div class="ui error message">
+                    <p><%= error %></p>
+                </div>
+                <% } %>
                 <section class="layout -sidebar-right">
                     <div class="layout__main-content">
                         <div class="cart-header">

@@ -130,6 +130,7 @@ $(function(){
     $(document).on("click","#listPostButton",function(){
         
         var updata=JSON.stringify(JSON.parse(getCookie("shoppingcart")))
+        
         $.ajax({
                 type:"post",
                 contentType:'application/json',
@@ -139,19 +140,24 @@ $(function(){
                 cache: false,
                 timeout: 5000,
                 success: function (data) {
-                    if(data.status == false){
+                    if(data.status == "nosigin"){
                         window.location.href = '/signin';
-                    }else{
+                    }else if(data.status == "success"){
+                        // 清空数组
                         var cartList=getCookie("shoppingcart")
                         cartList=JSON.parse(cartList)
-                        // 清空数组
                         cartList.splice(0)
                         // 更新购物车商品信息cookie
                         var exp = new Date();
                         exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
                         document.cookie = "shoppingcart=" + JSON.stringify(cartList) + ";expires=" + exp.toGMTString()+ ";path=/";
                         window.location.href = '/order'
-                    }
+                        
+                    }else if(data.status == "nosuccess"){
+                        window.location.reload()
+                    }else(
+                        console.log("非法请求"+data.status)
+                    )
                 },
                 error:function (err) {
                     console.log(JSON.stringify(err));

@@ -1,4 +1,6 @@
 var router = require('express').Router();
+
+const OrderModel = require('../models/order')
 var checkLogin = require('../middlewares/checkForAjax').checkLogin
 
 
@@ -8,8 +10,36 @@ router.get('/', function(req, res, next) {
 })
 // post,结算
 router.post('/',checkLogin, function(req, res, next) {
-  console.log(req.body);
-  res.send({"status":true});
+  console.log(req.body.length);
+  if(req.body.length != 0){
+    for(var i=0;i<req.body.length;i++){
+      // var id = req.body[i].id
+      // var name = req.body[i].name
+      // var price = req.body[i].price
+      // var license = req.body[i].license
+      var onerow =  req.body[i]
+      // 用户信息写入数据库
+      OrderModel.create(onerow)
+      .then(function (result) {
+        // 此 onerow 是插入 mongodb 后的值，包含 _id
+        onerow = result.ops[0]
+        // 写入 flash
+        req.flash('success', '结算成功')
+        // 返回结算成功状态
+        return res.send({"status":"success"})
+      })
+      .catch(function (e) {
+        // id被占用返回nosuccess
+        if (e.message.match('duplicate key')) {
+          req.flash('error', '存在已购买的音频')
+          res.send({"status":"nosuccess"})
+        }
+      })
+    }
+  }else{
+    // 非法请求length为0
+    res.send({"status":"非法请求"})
+  }
 });
 
 module.exports = router
