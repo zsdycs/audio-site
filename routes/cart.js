@@ -13,10 +13,6 @@ router.post('/',checkLogin, function(req, res, next) {
   console.log(req.body.length);
   if(req.body.length != 0){
     for(var i=0;i<req.body.length;i++){
-      // var id = req.body[i].id
-      // var name = req.body[i].name
-      // var price = req.body[i].price
-      // var license = req.body[i].license
       var onerow =  req.body[i]
       // 用户信息写入数据库
       OrderModel.create(onerow)
