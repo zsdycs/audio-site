@@ -10,15 +10,15 @@ router.get('/', function(req, res, next) {
 })
 // post,结算
 router.post('/',checkLogin, function(req, res, next) {
-  console.log(req.body.length);
+  // console.log(req.body.length);
   if(req.body.length != 0){
     for(var i=0;i<req.body.length;i++){
+      console.log(req.session.user.name)
+      req.body[i].username = req.session.user.name
       var onerow =  req.body[i]
       // 用户信息写入数据库
       OrderModel.create(onerow)
-      .then(function (result) {
-        // 此 onerow 是插入 mongodb 后的值，包含 _id
-        onerow = result.ops[0]
+      .then(function () {
         // 写入 flash
         req.flash('success', '结算成功')
         // 返回结算成功状态
