@@ -12,19 +12,15 @@ var List = new Vue({
             price:"21",
             license:"无限制",
             id:2453231,
-            one:2132,
-            unlimited:231233,
         },
         {
             name:"仙女棒",
             price:"21",
             license:"无限制",
             id:2453231,
-            one:2132,
-            unlimited:231233,
         }
     ]
-        /////////////////////测试用数据结束//////////////
+    /////////////////////测试用数据结束//////////////
     // 根据地址请求列表数据
         var self=this;
         var url = GetUrlRelativePath();
@@ -38,6 +34,8 @@ var List = new Vue({
             }
         }else if(url == "/order"){
             // 将请求获得的数据渲染到已购表
+            
+            // console.log(JSON.parse(JSON.stringify(data)))
             self.List = data 
             checkOrderNum(data)
         }

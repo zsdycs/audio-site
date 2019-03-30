@@ -21,7 +21,8 @@
       <div v-cloak v-for="item in tagList" class="item">
           <div class="ui checkbox">
             <input v-bind:id="item.id" class="input-check-tag" type="checkbox" name="example">
-            <label>{{item.tag_name}}</label>
+            <label style="white-space: nowrap;overflow: hidden;
+            text-overflow: ellipsis;">{{item._id}}</label>
             <span style="color: #999;font-size:12px;">{{item.music_num}}</span>
           </div>
       </div>

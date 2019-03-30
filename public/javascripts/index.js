@@ -156,7 +156,9 @@ $(document).on("click",".labeltag",function(){
 var tag = new Array()
 // 价格，最大金额通过cookie获得，测试使用固定值
 var price = new Array()
-price[0] = 1,price[1] = 9999
+maxandnumlist=JSON.parse(getCookie("maxAndNum"))
+var max_price = maxandnumlist[0].max_price
+price[0] = 1,price[1] = max_price
 // 时间,状态值=1:所有，2：最近一周，3：最近一个月，4：最近3个月，5：最近1年。
 var time = 1
 var filtrate = { tag:tag,price:price,time:time },filtrateList = [];

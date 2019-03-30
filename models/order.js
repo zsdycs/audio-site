@@ -7,8 +7,14 @@ module.exports = {
     return Order.create(order).exec()
   },
 
-  getOrderlist: function getOrderlist(){
-    return Order.find().exec()
+  getOrderlist: function getOrderlist(username){
+    const query = {}
+    if (username) {
+      query.username = username
+    }
+    return Order
+    .find(query)
+    .exec()
   }
 
 }
