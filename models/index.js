@@ -14,16 +14,20 @@ module.exports = {
     // 去除末尾的逗号
     str = str.substring(0, str.lastIndexOf(','));
     console.log(str)
+    str = eval("({"+str+"})")
+    console.log("-->"+str)
     return Audio
     // .find({})
     // .sort({'music_num':-1})
     // "type":"xxxx","type":"xxx"
-    .aggregate([
+    .aggregate(
+      [
+        {$match:str},
         {$unwind:"$type"},
-        {$match:{"type":"music"}},
         {$group : {_id: "$type", music_num : {$sum : 1}}},
         {$sort:{"music_num":-1}}
-    ])  
+      ]
+    )  
     .exec()
   }
 

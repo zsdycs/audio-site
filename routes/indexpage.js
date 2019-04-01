@@ -9,7 +9,7 @@ router.get('/list', function(req, res, next) {
 });
 // post filtrateTag
 router.post('/filtrate/tag', function (req, res, next) {
-    console.log(req.body.tag[0])
+    console.log("---"+JSON.stringify(req.body))
     IndexModel.getFiltrateTag(req.body)
     .then(function (data) {
         res.send(data)

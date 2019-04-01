@@ -28,7 +28,7 @@ var tagList = new Vue({
 		
 		var tag = JSON.parse(getCookie("filtrateTagList"))[0].tag, match = {};
 		match.tag=tag
-		console.log(JSON.stringify(match))
+		// console.log(JSON.stringify(match))
 		// 去除末尾的逗号
 		// match = match.substring(0, match.lastIndexOf(','));
 		// console.log(match)
@@ -42,20 +42,31 @@ var tagList = new Vue({
 			cache: false,
 			timeout: 5000,
 			success: function (data) {
-
-				// 通过get获得页面状态，最大价格max_price,当前音频数量voice_num写入cookie
-				var max_price = 1998,voice_num = 52112
-				var maxandnum = { max_price:max_price,voice_num:voice_num },maxandnumlist = [];
-				maxandnumlist.push(maxandnum);	
-				var exp = new Date();
-				exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
-				document.cookie = "maxAndNum=" + JSON.stringify(maxandnumlist) + ";expires=" + exp.toGMTString()+ ";path=/";
-
+				filtrateList=JSON.parse(getCookie("filtrateTagList"))
+				// 标签第一项不为初始""，或不为不存在,filtrateList[0].tag[0] != "" &&
+				if(data[0]._id == "music"){
+					data.splice(0,1)
+				}else if(filtrateList[0].tag[0] !=undefined){
+					// console.log(JSON.stringify(filtrateList)+filtrateList[0].tag[0])
+					for(var i = 0;i<data.length;i++){
+						// 获得，到music的项，不在cookie的，去掉
+						if(data[i]._id == "music"){
+							data.splice(i,1)
+							var k = 0
+							for(var j = filtrateList[0].tag.length;j<i;j++){
+								// console.log("--->>>"+j)
+								data.splice(j-k,1)
+								k++
+							}
+							break;
+						}	
+					}
+				}
+				
 				self.tagList = data
                 // console.log("1---"+data)
 				data=JSON.stringify(data)
 				// console.log("2---"+data)
-
 			}
 		})
 	},
@@ -63,6 +74,7 @@ var tagList = new Vue({
 		tagList:function(){  
 			this.$nextTick(function (){
 				tagListisloading()
+				FiltrateAndAudioByCookie()
 				// console.log('v-for渲染已经完成')
 			}
 		

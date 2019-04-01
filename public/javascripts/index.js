@@ -9,6 +9,7 @@ $(document).ready(function () {
       $('.fixed.menu').transition('fade out');
     }
   });
+
   // create sidebar and attach to menu open
   $('.ui.sidebar').sidebar('attach events', '.toc.item')
   // $("#segment").animate({"opacity":"0.8"},15000); 
@@ -24,9 +25,17 @@ if(getCookie("shoppingcart")==""){
 	exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
 	document.cookie = "shoppingcart=[];expires=" + exp.toGMTString()+ ";path=/";
 }
+// 通过get获得页面状态，最大价格max_price,当前音频数量voice_num写入cookie
+var max_price = 1998,voice_num = 52112
+var maxandnum = { max_price:max_price,voice_num:voice_num },maxandnumlist = [];
+maxandnumlist.push(maxandnum);	
+var exp = new Date();
+exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
+document.cookie = "maxAndNum=" + JSON.stringify(maxandnumlist) + ";expires=" + exp.toGMTString()+ ";path=/";
+
 $(function(){
-  FiltrateAndAudioByCookie()
   getFiltrateByCookieForRtopList()
+  // FiltrateAndAudioByCookie()
   //筛选列表折叠事件
   $(document).on("click",".filtrate-button",function(){
     if($(this).attr("aria-label")=="collapse"){
@@ -73,9 +82,12 @@ function getFiltrateByCookieForRtopList(){
     filtrateList=JSON.parse(getCookie("filtrateTagList"))
     // 标签
     for(var i = 0;i<filtrateList[0].tag.length;i++){
-      var tag_name=filtrateList[0].tag[i]
-      var tag_one = {tag_name:tag_name}
-      data.push(tag_one)
+      if(filtrateList[0].tag[i] != ""){
+        var tag_name=filtrateList[0].tag[i]
+        var tag_one = {tag_name:tag_name}
+        data.push(tag_one)
+      }
+      
     }
     // 价格
     // 通过cookie获得最大价格
@@ -156,6 +168,7 @@ $(document).on("click",".labeltag",function(){
 var tag = new Array()
 // 价格，最大金额通过cookie获得，测试使用固定值
 var price = new Array()
+// tag[0] = ""
 maxandnumlist=JSON.parse(getCookie("maxAndNum"))
 var max_price = maxandnumlist[0].max_price
 price[0] = 1,price[1] = max_price
@@ -175,7 +188,7 @@ function FiltrateAndAudioByCookie(){
   maxandnumlist=JSON.parse(getCookie("maxAndNum"))
   // 关联数量
   $(".audio_num").text(maxandnumlist[0].voice_num)
-  // 关联标签
+  // 关联标签$(".demo:eq(n)")
   $(".input-check-tag").each(function(){
     filtrateList=JSON.parse(getCookie("filtrateTagList"))
       for(var i=0;i<filtrateList[0].tag.length;i++){
@@ -217,7 +230,11 @@ $(document).on("click",".input-check-tag",function(){
       //   console.log(i+":"+filtrateList[0].tag[i])
       // }
     }else{
-      filtrateList[0].tag[filtrateList[0].tag.length] = $(this).next().text()
+        if(filtrateList[0].tag[0] == ""){
+          filtrateList[0].tag[i] = $(this).next().text()
+        }else{
+          filtrateList[0].tag[filtrateList[0].tag.length] = $(this).next().text()
+        }
     }
     document.cookie = "filtrateTagList=" + JSON.stringify(filtrateList) + ";expires=" + exp.toGMTString()+ ";path=/";
     // console.log("ed:"+$(this).next().text())
