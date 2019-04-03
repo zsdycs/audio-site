@@ -1,5 +1,5 @@
 // 分页
-// 请求获得最大分页，当前页码
+// 请求获得音频数量，最大价格，写入cookie，计算页码
 
 var maxpage=11,nowpage=10
 $(function(){

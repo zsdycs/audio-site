@@ -27,11 +27,11 @@ if(getCookie("shoppingcart")==""){
 }
 // 通过get获得页面状态，最大价格max_price,当前音频数量voice_num写入cookie
 var max_price = 1998,voice_num = 52112
-var maxandnum = { max_price:max_price,voice_num:voice_num },maxandnumlist = [];
-maxandnumlist.push(maxandnum);	
+var maxNumPage = { max_price:max_price, voice_num:voice_num, page:1 },maxNumPagelist = [];
+maxNumPagelist.push(maxNumPage);	
 var exp = new Date();
 exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
-document.cookie = "maxAndNum=" + JSON.stringify(maxandnumlist) + ";expires=" + exp.toGMTString()+ ";path=/";
+document.cookie = "maxNumPage=" + JSON.stringify(maxNumPagelist) + ";expires=" + exp.toGMTString()+ ";path=/";
 
 $(function(){
   getFiltrateByCookieForRtopList()
@@ -91,8 +91,8 @@ function getFiltrateByCookieForRtopList(){
     }
     // 价格
     // 通过cookie获得最大价格
-    maxandnumlist=JSON.parse(getCookie("maxAndNum"))
-    var max_price = maxandnumlist[0].max_price
+    maxNumPagelist=JSON.parse(getCookie("maxNumPage"))
+    var max_price = maxNumPagelist[0].max_price
     if(!(filtrateList[0].price[0]==1 && filtrateList[0].price[1]==max_price)){
       var tag_name="￥"+filtrateList[0].price[0]+" - ￥"+filtrateList[0].price[1]
       var tag_one = {tag_name:tag_name}
@@ -148,8 +148,8 @@ $(document).on("click",".labeltag",function(){
   }
   if($(this).text().indexOf("￥") >= 0 ){
     // cookie获得最大值
-    maxandnumlist=JSON.parse(getCookie("maxAndNum"))
-    var max_price = maxandnumlist[0].max_price
+    maxNumPagelist=JSON.parse(getCookie("maxNumPage"))
+    var max_price = maxNumPagelist[0].max_price
     filtrateList[0].price[0] = 1
     filtrateList[0].price[1] = max_price
   }
@@ -169,8 +169,8 @@ var tag = new Array()
 // 价格，最大金额通过cookie获得，测试使用固定值
 var price = new Array()
 // tag[0] = ""
-maxandnumlist=JSON.parse(getCookie("maxAndNum"))
-var max_price = maxandnumlist[0].max_price
+maxNumPagelist=JSON.parse(getCookie("maxNumPage"))
+var max_price = maxNumPagelist[0].max_price
 price[0] = 1,price[1] = max_price
 // 时间,状态值=1:所有，2：最近一周，3：最近一个月，4：最近3个月，5：最近1年。
 var time = 1
@@ -185,9 +185,9 @@ if(getCookie("filtrateTagList")==""){
 // 根据cookie筛选项显示页面筛选项状态，数据绑定
 function FiltrateAndAudioByCookie(){
   filtrateList=JSON.parse(getCookie("filtrateTagList"))
-  maxandnumlist=JSON.parse(getCookie("maxAndNum"))
+  maxNumPagelist=JSON.parse(getCookie("maxNumPage"))
   // 关联数量
-  $(".audio_num").text(maxandnumlist[0].voice_num)
+  $(".audio_num").text(maxNumPagelist[0].voice_num)
   // 关联标签$(".demo:eq(n)")
   $(".input-check-tag").each(function(){
     filtrateList=JSON.parse(getCookie("filtrateTagList"))
@@ -198,7 +198,7 @@ function FiltrateAndAudioByCookie(){
       }
   })
   // 关联价格状态
-  var price_max =maxandnumlist[0].max_price
+  var price_max =maxNumPagelist[0].max_price
   if(price_max == filtrateList[0].price[1]){
     $(".price-r-input").attr("placeholder",price_max)
   }else{
@@ -259,8 +259,8 @@ $(document).on("click",".input-check-tag",function(){
 // 价格--------------------
 $(document).on("click",".price_button",function(){
   // 通过cookie获得最大价格》》》
-  maxandnumlist=JSON.parse(getCookie("maxAndNum"))
-  var price_max =maxandnumlist[0].max_price
+  maxNumPagelist=JSON.parse(getCookie("maxNumPage"))
+  var price_max =maxNumPagelist[0].max_price
 
   if($(".price-l-input").val()!="" && $(".price-r-input").val()==""){
     console.log(1)
@@ -273,6 +273,7 @@ $(document).on("click",".price_button",function(){
     console.log(3)
     todo(1,price_max,price_max)
   }else{
+    console.log(4)
     todo($(".price-l-input").val(),$(".price-r-input").val(),price_max)
   }
 
@@ -282,7 +283,8 @@ $(document).on("click",".price_button",function(){
     // 流程，取出标签，遍历找到数组所在位置，移除位置的值
     filtrateList=JSON.parse(getCookie("filtrateTagList"))
     var price_l = l, price_r = r
-    if(price_l > price_r){
+    if(parseInt(price_l) > parseInt(price_r)){
+      console.log("l:"+price_l+"---r:"+price_r)
       $(".price-r-input").val(max)
       price_r = $(".price-r-input").val()
     }
@@ -317,8 +319,8 @@ $(document).on("keyup",".price-l-input",function(){
   // if(isNaN(this.value)||this.value==''||this.value==0){
   //   this.value=1;
   // }
-  maxandnumlist=JSON.parse(getCookie("maxAndNum"))
-  var max_price = maxandnumlist[0].max_price
+  maxNumPagelist=JSON.parse(getCookie("maxNumPage"))
+  var max_price = maxNumPagelist[0].max_price
   if(this.value>max_price){
     this.value=max_price;
   }
@@ -339,8 +341,8 @@ $(document).on("blur",".price-l-input",function(){
 // 右边
 $(document).on("keyup",".price-r-input",function(){
   // 获取页面加载获得的cookie，得到最大价格
-  maxandnumlist=JSON.parse(getCookie("maxAndNum"))
-  var max_price = maxandnumlist[0].max_price
+  maxNumPagelist=JSON.parse(getCookie("maxNumPage"))
+  var max_price = maxNumPagelist[0].max_price
   if(this.value>max_price){
     this.value=max_price;
   }
@@ -353,8 +355,8 @@ $(document).on("keyup",".price-r-input",function(){
 // 粘贴
 $(document).on("blur",".price-r-input",function(){
   // 获取页面加载获得的cookie，得到最大价格
-  maxandnumlist=JSON.parse(getCookie("maxAndNum"))
-  var max_price=maxandnumlist[0].max_price
+  maxNumPagelist=JSON.parse(getCookie("maxNumPage"))
+  var max_price=maxNumPagelist[0].max_price
   // if(isNaN(this.value)||this.value==''||this.value==0){
   //   this.value=max_price;
   // }

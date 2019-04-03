@@ -33,90 +33,8 @@ var audioList = new Vue({
                 price_unlimited:'3223',
                 sales:'33',
                 filePath:'/music/动物/猴子.wav',
-                div_id:'audio0',
-                audio_id:'2031',
+                _id:'2031',
             },
-            {
-                fileName:'仙女aa棒ffasae',
-                price_one:'331',
-                price_unlimited:'433',
-                sales:'33',
-                filePath:'/music/管风琴/3.mp3',
-                div_id:'audio1',
-                audio_id:'42333231',
-            },
-            {
-                fileName:'仙ae女棒',
-                price_one:'41',
-                price_unlimited:'523',
-                sales:'33',
-                filePath:'/music/管风琴/3.mp3',
-                div_id:'audio2',
-                audio_id:'243231',
-            },
-            {
-                fileName:'仙女棒',
-                price_one:'21',
-                price_unlimited:'143',
-                sales:'33',
-                filePath:'/music/管风琴/3.mp3',
-                div_id:'audio3',
-                audio_id:'2453231',
-            },
-            {
-                fileName:'ased仙女棒',
-                price_one:'231',
-                price_unlimited:'323',
-                sales:'33',
-                filePath:'/music/管风琴/3.mp3',
-                div_id:'audio4',
-                audio_id:'221131',
-            },
-            {
-                fileName:'asdf仙女棒',
-                price_one:'2361',
-                price_unlimited:'3323',
-                sales:'33',
-                filePath:'/music/动物/猴子.wav',
-                div_id:'audio5',
-                audio_id:'2031',
-            },
-            {
-                fileName:'仙女棒asd',
-                price_one:'7231',
-                price_unlimited:'9323',
-                sales:'33',
-                filePath:'/music/动物/猴子.wav',
-                div_id:'audio6',
-                audio_id:'29311',
-            },
-            {
-                fileName:'ff仙女棒',
-                price_one:'2431',
-                price_unlimited:'22323',
-                sales:'33',
-                filePath:'/music/动物/猴子.wav',
-                div_id:'audio7',
-                audio_id:'24231',
-            },
-            {
-                fileName:'asdfff仙女棒',
-                price_one:'23531',
-                price_unlimited:'36423',
-                sales:'33',
-                filePath:'/music/动物/猴子.wav',
-                div_id:'audio8',
-                audio_id:'21231',
-            },
-            {
-                fileName:'仙女棒dsff',
-                price_one:'2531',
-                price_unlimited:'8323',
-                sales:'33',
-                filePath:'/music/动物/猴子.wav',
-                div_id:'audio9',
-                audio_id:'23112',
-            }
         ]
 			//////////测试用数据结束////////////
         // audioList=JSON.parse(this.audioList)
@@ -129,6 +47,7 @@ var audioList = new Vue({
 		// 	dataType: 'json',
 		// 	success: function (data) {
                 for(var i=0;i<data.length;i++){
+                    data[i].div_id = "audio"+i
                     t[i] = data[i].filePath
                     id[i] = "#audio"+i
                 }
