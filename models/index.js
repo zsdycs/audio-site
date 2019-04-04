@@ -29,62 +29,111 @@ module.exports = {
 
   // 获取音频列表，根据侧边标签、价格范围、发布时间
   getAudioList: function getAudioList(find){
-  // find = {tag:[xx,xx],price:[xx,xx],time:[xx,xx],sort:xx,page:xx}
+  // find = {tag:[xx,xx],price:[xx,xx],time:xx,sort:xx,page:xx}
   // type ={ $eq: "music",$eq: "music"}
   // price = {$gte:1,$lte:1998}
-  // time = {$gte : ISODate("2017-02-01T00:00:00Z"),$lt: ISODate("2019-05-04T00:00:00Z")}
-  var type = "",price = "",time ="",sort =find.sort,page =find.page
+  // sort = 排序类型price...
+  // page = num
+  var type = "",price = "",time =find.time,sort =find.sort,page =find.page
+  // type处理
   for(var i = 0;i<find.tag.length;i++){
     type += "\"$eq\":\""+ find.tag[i] +"\","
   }
   // 去除末尾的逗号
   type = type.substring(0, type.lastIndexOf(','));
-  type = eval("({"+type+"})")
-  time = "\"$gte\":\""+ find.time[0] +"\","+"\"$gte\":\""+ find.time[1] +"\""
-  time = eval("({"+time+"})")
-    if(sort == "price"){
-      //价格排序
-      return AudioList
-      .find({
-        "type":{ $elemMatch: type},
-        "price_one": price,
-        "createTime": time
-        })
-      .sort({"price_one":1})
-      .skip(page).limit(10)
-      .exec()
-    }else if(sort == "sales"){
-      //销量排序
-      return AudioList
-      .find({
-        "type":{ $elemMatch: type},
-        "price_one": price,
-        "createTime": time
-      })
-      .sort({"sales":-1})
-      .skip(page).limit(10)
-      .exec()
-    }else if(sort == "time"){
-      // 日期排序
-      return AudioList
-      .find({
-        "type":{ $elemMatch: type},
-        "price_one": price,
-        "createTime": time
-      })
-      .sort({"createTime":-1})
-      .skip(page).limit(10)
-      .exec()
-    }else{
-      return AudioList
-      .find({
-        "type":{ $elemMatch: type},
-        "price_one": price,
-        "createTime": time
-      })
-      .skip(page).limit(10)
-      .exec()
+  type = JSON.parse("{"+type+"}")
+  // price处理
+  price = "{\"$gte\":"+ find.price[0] +","+"\"$lte\":"+ find.price[1] +"}"
+  price = JSON.parse(price)
+
+  const t = new Date()
+  const today = new Date(t.getFullYear(),t.getMonth()+1,t.getDate());
+  
+  const sevenday = new Date(today.getTime() - 168*60*60*1000);
+  const thirtyday = new Date(today.getTime() - 720*60*60*1000);
+  const ninetyday = new Date(today.getTime() - 2160*60*60*1000);
+  const year = new Date(today.getTime() - 9760*60*60*1000);
+
+  function whattime(time){
+    // 时间设置
+    if(time == 1){
+      // 所有
+      const end = new Date(1949,10,1);
+      return end
+    }else if(time == 2){
+      // 7天
+      const end = new Date(sevenday.getFullYear(),sevenday.getMonth()+1,sevenday.getDate());
+      return end
+    }else if(time == 3){
+      // 30天
+      const end = new Date(thirtyday.getFullYear(),thirtyday.getMonth()+1,thirtyday.getDate());
+      return end
+    }else if(time = 4){
+      // 90天
+      const end = new Date(ninetyday.getFullYear(),ninetyday.getMonth()+1,ninetyday.getDate());
+      return end
+    }else if(time = 5){
+      // 一年
+      const end = new Date(year.getFullYear(),year.getMonth()+1,year.getDate());
+      return end
     }
   }
+  
+  // 判断排序类型-->返回结果
+  if(sort == "price"){
+    console.log("price呀~")
+    //价格排序
+    return AudioList
+    .find({
+      "type":{ $elemMatch: type},
+      "price_one": price,
+      "createTime":  {$gte: whattime(time),$lte: today}
+      })
+    .sort({"price_one":1})
+    .skip(page).limit(10)
+    .exec()
+  }else if(sort == "sales"){
+    //销量排序
+    return AudioList
+    .find({
+      "type":{ $elemMatch: type},
+      "price_one": price,
+      "createTime": {$gte : today,$lte: end}
+    })
+    .sort({"sales":-1})
+    .skip(page).limit(10)
+    .exec()
+  }else if(sort == "time"){
+    // 日期排序
+    return AudioList
+    .find({
+      "type":{ $elemMatch: type},
+      "price_one": price,
+      "createTime": {$gte : today,$lte: end}
+    })
+    .sort({"createTime":-1})
+    .skip(page).limit(10)
+    .exec()
+  }else{
+    console.log("this is else return")
+    return AudioList
+    .find({
+      "type":{ $elemMatch: type},
+      "price_one": price,
+      "createTime": {$gte : today,$lte: end}
+    })
+    .skip(page).limit(10)
+    .exec()
+  }
+  // ----------------测试-----------------
+    // return AudioList
+    // .find({
+    //   "type":{ $elemMatch: { $eq: "music",$eq: "Loops"}},
+    //   "price_one": {$gte:1,$lte:18},
+    //   })
+    // .sort({"price_one":1})
+    // .skip(0).limit(10)
+    // .exec()
+  },
 
 }

@@ -6,6 +6,7 @@ const IndexModel = require('../models/index')
 /* POST */ //首页音频列表--->/index/list
 router.post('/list', function(req, res, next) {
     console.log("list---"+JSON.stringify(req.body))
+    // res.send(req.body)
     IndexModel.getAudioList(req.body)
     .then(function (data) {
         res.send(data)
