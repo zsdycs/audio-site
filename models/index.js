@@ -98,7 +98,7 @@ module.exports = {
     .find({
       "type":{ $elemMatch: type},
       "price_one": price,
-      "createTime": {$gte : today,$lte: end}
+      "createTime": {$gte : whattime(time),$lte: today}
     })
     .sort({"sales":-1})
     .skip(page).limit(10)
@@ -109,7 +109,7 @@ module.exports = {
     .find({
       "type":{ $elemMatch: type},
       "price_one": price,
-      "createTime": {$gte : today,$lte: end}
+      "createTime": {$gte : whattime(time),$lte: today}
     })
     .sort({"createTime":-1})
     .skip(page).limit(10)
@@ -120,7 +120,7 @@ module.exports = {
     .find({
       "type":{ $elemMatch: type},
       "price_one": price,
-      "createTime": {$gte : today,$lte: end}
+      "createTime": {$gte : whattime(time),$lte: today}
     })
     .skip(page).limit(10)
     .exec()
