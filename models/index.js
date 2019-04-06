@@ -1,5 +1,6 @@
 const AudiofiltrateTag  = require('../lib/mongo').AudiofiltrateTag 
 const AudioList  = require('../lib/mongo').AudioList
+const AudioNum = require('../lib/mongo').AudioNum
 
 module.exports = {
   
@@ -114,7 +115,6 @@ module.exports = {
     .skip(page).limit(10)
     .exec()
   }else{
-    console.log("this is else return")
     return AudioList
     .find({
       "type":{ $elemMatch: type},
@@ -135,4 +135,67 @@ module.exports = {
     // .exec()
   },
 
+  getAudioNum: function getAudioNum(find){
+
+    var type = "",price = "",time =find.time
+
+    // type处理
+    for(var i = 0;i<find.tag.length;i++){
+      type += "\"$eq\":\""+ find.tag[i] +"\","
+    }
+    // 去除末尾的逗号
+    type = type.substring(0, type.lastIndexOf(','));
+    type = JSON.parse("{"+type+"}")
+
+    // price处理
+    price = "{\"$gte\":"+ find.price[0] +","+"\"$lte\":"+ find.price[1] +"}"
+    price = JSON.parse(price)
+
+    const t = new Date()
+    const today = new Date(t.getFullYear(),t.getMonth()+1,t.getDate());
+    
+    const sevenday = new Date(today.getTime() - 168*60*60*1000);
+    const thirtyday = new Date(today.getTime() - 720*60*60*1000);
+    const ninetyday = new Date(today.getTime() - 2160*60*60*1000);
+    const year = new Date(today.getTime() - 9760*60*60*1000);
+
+    function whattime(time){
+      // 时间设置
+      if(time == 1){
+        // 所有
+        const end = new Date(1949,10,1);
+        return end
+      }else if(time == 2){
+        // 7天
+        const end = new Date(sevenday.getFullYear(),sevenday.getMonth()+1,sevenday.getDate());
+        return end
+      }else if(time == 3){
+        // 30天
+        const end = new Date(thirtyday.getFullYear(),thirtyday.getMonth()+1,thirtyday.getDate());
+        return end
+      }else if(time = 4){
+        // 90天
+        const end = new Date(ninetyday.getFullYear(),ninetyday.getMonth()+1,ninetyday.getDate());
+        return end
+      }else if(time = 5){
+        // 一年
+        const end = new Date(year.getFullYear(),year.getMonth()+1,year.getDate());
+        return end
+      }
+    }
+    
+    return  AudioNum
+    .aggregate( [
+      {$match : {
+        "type":{ $elemMatch: type},
+        "price_one": price,
+        "createTime": {$gte : whattime(time),$lte: today}
+        }},
+      {$group:{_id:"$audio",voice_num:{$sum:1},max_price : {$max : "$price_unlimited"}}}
+    ])
+    .exec()
+    },
+
+
+  
 }

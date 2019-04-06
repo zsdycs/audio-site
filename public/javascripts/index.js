@@ -28,12 +28,32 @@ if(getCookie("shoppingcart")==""){
 	document.cookie = "shoppingcart=[];expires=" + exp.toGMTString()+ ";path=/";
 }
 // 通过get获得页面状态，最大价格max_price,当前音频数量voice_num写入cookie
-var max_price = 1998,voice_num = 52112
-var maxNumPage = { max_price:max_price, voice_num:voice_num, page:1 },maxNumPagelist = [];
-maxNumPagelist.push(maxNumPage);	
-var exp = new Date();
-exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
-document.cookie = "maxNumPage=" + JSON.stringify(maxNumPagelist) + ";expires=" + exp.toGMTString()+ ";path=/";
+var data={tag:[],price:[],time:""}
+var filtrateTagList = JSON.parse(getCookie("filtrateTagList"))
+data.price[0] = filtrateTagList[0].price[0]
+data.price[1] = filtrateTagList[0].price[1]
+data.time = filtrateTagList[0].time
+for(var i =0;i<filtrateTagList[0].tag.length;i++){
+  data.tag[i] = filtrateTagList[0].tag[i]
+}
+$.ajax({
+  type: "post",
+  data:JSON.stringify(data),
+  url: "/index/pages",
+  contentType:'application/json',
+  dataType: 'json',
+  cache: false,
+  timeout: 5000,
+  success: function (data) {
+    var max_price = data[0].max_price
+    var voice_num = data[0].voice_num
+    var maxNumPage = { max_price:max_price, voice_num:voice_num, page:1 },maxNumPagelist = [];
+    maxNumPagelist.push(maxNumPage);	
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
+    document.cookie = "maxNumPage=" + JSON.stringify(maxNumPagelist) + ";expires=" + exp.toGMTString()+ ";path=/";
+  }
+})
 
 $(function(){
   getFiltrateByCookieForRtopList()
@@ -381,7 +401,6 @@ function sort(title){
   exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
   filtrateList=JSON.parse(getCookie("filtrateTagList"))
   filtrateList[0].sort = sort
-  console.log(sort + title)
   document.cookie = "filtrateTagList=" + JSON.stringify(filtrateList) + ";expires=" + exp.toGMTString()+ ";path=/";
 }
   

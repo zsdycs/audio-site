@@ -1,20 +1,10 @@
 // 分页
-// 请求获得音频数量，最大价格，写入cookie，计算页码
-
-var maxpage=11,nowpage=10
 $(function(){
-    isInsufficientPage()
-    pageinitial(maxpage,nowpage)
-})
-// 点击页码事件
-$(document).on("click",".paging",function(){
-  $(".paging").removeClass("active")
-  $(this).addClass("active")
-// 更新当前页码
-  nowpage = parseInt($(this).text())
-//   上传当前页码
-
-})
+// 通过cookie绑定当前页码，选择页码时修改cookie，上传局部刷新音频列表
+var maxpage=parseInt(JSON.parse(getCookie("maxNumPage"))[0].voice_num/10+1)
+var nowpage=JSON.parse(getCookie("maxNumPage"))[0].page
+isInsufficientPage()
+pageinitial(maxpage,nowpage)
 // 分页→右
 $(document).on("click",".toendpage",function(){
   if(parseInt($(".pageend").text()) < maxpage){
@@ -49,6 +39,7 @@ $(document).on("click",".tofistpage",function(){
     }
   }
 })
+
 // 页码超出隐藏
 function isInsufficientPage(){
   for(i=0; i<$(".paging").length; i++){
@@ -72,3 +63,5 @@ function pageinitial(maxpage,nowpage){
         }
     }
 }
+
+})
