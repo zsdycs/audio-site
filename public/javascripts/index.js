@@ -9,7 +9,7 @@ $(document).ready(function () {
       $('.fixed.menu').transition('fade out');
     }
   });
-
+  
   // create sidebar and attach to menu open
   $('.ui.sidebar').sidebar('attach events', '.toc.item')
   // $("#segment").animate({"opacity":"0.8"},15000); 
@@ -18,6 +18,8 @@ $(document).ready(function () {
   var y = 1;     
   var rand = parseInt(Math.random() * (x - y + 1) + y);
   $("#segment").addClass("bg"+rand)
+
+  newsorttitle()
 });
 // 如果购物车cookie不存在写入空购物车cookie
 if(getCookie("shoppingcart")==""){
@@ -49,15 +51,7 @@ $(function(){
     }
   })
 
-  // 排序选项列表
-  $('.ui.dropdown').dropdown();
-  $(document).on("click",".rank-a",function(){
-    // console.log($(this).text()) 
-    // ajax排序请求局部刷新audioList
-    
-    // 修改列表标题
-    $('.dropdown-title').html($(this).text())
-  })
+
 })
 
 
@@ -82,7 +76,7 @@ function getFiltrateByCookieForRtopList(){
     filtrateList=JSON.parse(getCookie("filtrateTagList"))
     // 标签
     for(var i = 0;i<filtrateList[0].tag.length;i++){
-      if(filtrateList[0].tag[i] != ""){
+      if(filtrateList[0].tag[i] != "music"){
         var tag_name=filtrateList[0].tag[i]
         var tag_one = {tag_name:tag_name}
         data.push(tag_one)
@@ -168,7 +162,7 @@ $(document).on("click",".labeltag",function(){
 var tag = new Array()
 // 价格，最大金额通过cookie获得，测试使用固定值
 var price = new Array()
-// tag[0] = ""
+tag[0] = "music"
 maxNumPagelist=JSON.parse(getCookie("maxNumPage"))
 var max_price = maxNumPagelist[0].max_price
 price[0] = 1,price[1] = max_price
@@ -221,21 +215,14 @@ $(document).on("click",".input-check-tag",function(){
     // 写入cookie
     var exp = new Date();
     exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
-    //流程，取出标签，判断是否为空，为空直接添加进数组，不为空通过length添加到空位
+    //流程，取出标签，通过length添加到空位
     filtrateList=JSON.parse(getCookie("filtrateTagList"))
     // console.log("filtrateList[0].tag.length:"+filtrateList[0].tag.length)
-    if(filtrateList[0].tag.length==0){
-      filtrateList[0].tag[0] = $(this).next().text()
-      // for(var i=0;i<filtrateList[0].tag.length;i++){
-      //   console.log(i+":"+filtrateList[0].tag[i])
-      // }
-    }else{
-        if(filtrateList[0].tag[0] == ""){
-          filtrateList[0].tag[i] = $(this).next().text()
-        }else{
-          filtrateList[0].tag[filtrateList[0].tag.length] = $(this).next().text()
-        }
-    }
+    // if(filtrateList[0].tag.length==0){
+    //   filtrateList[0].tag[0] = $(this).next().text()
+    // }else{
+      filtrateList[0].tag[filtrateList[0].tag.length] = $(this).next().text()
+    // }
     document.cookie = "filtrateTagList=" + JSON.stringify(filtrateList) + ";expires=" + exp.toGMTString()+ ";path=/";
     // console.log("ed:"+$(this).next().text())
   }else{
@@ -369,6 +356,32 @@ $(document).on("blur",".price-r-input",function(){
       this.value=this.value.replace(/\D/g,'')
     }
 })
-
-
+// 根据cookie初始化排序
+function newsorttitle(){
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
+    filtrateList=JSON.parse(getCookie("filtrateTagList"))
+    filtrateList[0].sort = "null"
+    document.cookie = "filtrateTagList=" + JSON.stringify(filtrateList) + ";expires=" + exp.toGMTString()+ ";path=/";
+}
+function sort(title){
+  // 绑定排序方式
+  // 写入cookie
+  var sort = ""
+  if(title == "综合排序"){
+    sort = "null"
+  }else if(title == "销售最高"){
+    sort = "sales"
+  }else if(title == "价格最低"){
+    sort = "price"
+  }else if(title == "日期最新"){
+    sort = "time"
+  }
+  var exp = new Date();
+  exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
+  filtrateList=JSON.parse(getCookie("filtrateTagList"))
+  filtrateList[0].sort = sort
+  console.log(sort + title)
+  document.cookie = "filtrateTagList=" + JSON.stringify(filtrateList) + ";expires=" + exp.toGMTString()+ ";path=/";
+}
   

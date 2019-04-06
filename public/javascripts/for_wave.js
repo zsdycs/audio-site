@@ -19,33 +19,47 @@ var id = new Array()
 
 //音频列表
 var audioList = new Vue({
-	el: '#audioList',
+    el: '#audioList',
+    inject:["reload"],
 	data: {
 		audioList: [],
 	},
 	created() {
         ////////////测试用数据//////////////
-		data=[
-            {
+		// data=[
+        //     {
 
-                fileName:'仙女df棒',
-                price_one:'131',
-                price_unlimited:'3223',
-                sales:'33',
-                filePath:'/music/动物/猴子.wav',
-                _id:'2031',
-            },
-        ]
-			//////////测试用数据结束////////////
-        // audioList=JSON.parse(this.audioList)
-		var self=this;
-		// var updata = {id:1};
-		// $.ajax({
-		// 	type: "get",
-		// 	data:updata,
-		// 	url: "",
-		// 	dataType: 'json',
-		// 	success: function (data) {
+        //         fileName:'仙女df棒',
+        //         price_one:'131',
+        //         price_unlimited:'3223',
+        //         sales:'33',
+        //         filePath:'/music/动物/猴子.wav',
+        //         _id:'2031',
+        //     }
+        // ]
+		//////////测试用数据结束////////////
+        var self=this;
+        // {tag:[xx,xx],price:[xx,xx],time:xx,sort:xx,page:xx}
+        data={tag:[],price:[],time:"",sort:"",page:""}
+        var filtrateTagList = JSON.parse(getCookie("filtrateTagList"))
+        var maxNumPage = JSON.parse(getCookie("maxNumPage"))
+        data.price[0] = filtrateTagList[0].price[0]
+        data.price[1] = filtrateTagList[0].price[1]
+        data.time = filtrateTagList[0].time
+        data.sort = filtrateTagList[0].sort
+        data.page = (maxNumPage[0].page-1)*10
+        for(var i =0;i<filtrateTagList[0].tag.length;i++){
+            data.tag[i] = filtrateTagList[0].tag[i]
+        }
+		$.ajax({
+			type: "post",
+			data:JSON.stringify(data),
+			url: "/index/list",
+			contentType:'application/json',
+			dataType: 'json',
+			cache: false,
+			timeout: 5000,
+			success: function (data) {
                 for(var i=0;i<data.length;i++){
                     data[i].div_id = "audio"+i
                     t[i] = data[i].filePath
@@ -57,41 +71,76 @@ var audioList = new Vue({
 				data=JSON.stringify(data)
 				// console.log(data)
                 
-		// 	}
-		// })
+			}
+        })
+        // 排序选项列表
+        $('.ui.dropdown').dropdown();
+        $(document).on("click",".rank-a",function(){
+            $("#audioList").addClass("loader")
+            $(".audioLis_ul").css("display","none")
+            // console.log($(this).text()) 
+            // ajax排序请求局部刷新audioList
+            // 修改列表标题
+            $('.dropdown-title').html($(this).text())
+            sort($(this).text())
+            data={tag:[],price:[],time:"",sort:"",page:""}
+            var filtrateTagList = JSON.parse(getCookie("filtrateTagList"))
+            var maxNumPage = JSON.parse(getCookie("maxNumPage"))
+            data.price[0] = filtrateTagList[0].price[0]
+            data.price[1] = filtrateTagList[0].price[1]
+            data.time = filtrateTagList[0].time
+            data.sort = filtrateTagList[0].sort
+            data.page = (maxNumPage[0].page-1)*10
+            for(var i =0;i<filtrateTagList[0].tag.length;i++){
+                data.tag[i] = filtrateTagList[0].tag[i]
+            }
+            $.ajax({
+                type: "post",
+                data:JSON.stringify(data),
+                url: "/index/list",
+                contentType:'application/json',
+                dataType: 'json',
+                cache: false,
+                timeout: 5000,
+                success: function (data) {
+                    for(var i=0;i<data.length;i++){
+                        data[i].div_id = "audio"+i
+                        t[i] = data[i].filePath
+                        id[i] = "#audio"+i
+                    }
+                    $("wave").remove()
+                    Vue.set(audioList.audioList=data)
+                    // self.audioList = data
+                    // console.log(data)
+                    
+                    data=JSON.stringify(data)
+                    // console.log(data)
+                    
+                }
+            })
+        })
 	},
 	watch:{    
 		audioList:function(){  
 			this.$nextTick(function (){
-				audioListisloading()
+                audioListisloading()
+                for(var i = 0;i<this.audioList.length;i++){
+                    wave[i] = new_wave(id[i],t[i])
+                }
 				// console.log('v-for渲染已经完成')
 			}
 		
 		)}
-	}
+    },
+    
 });
-wave[0] = new_wave(id[0],t[0])
 
-wave[1] = new_wave(id[1],t[1])
 
-wave[2] = new_wave(id[2],t[2])
 
-wave[3] = new_wave(id[3],t[3])
-
-wave[4] = new_wave(id[4],t[4])
-
-wave[5] = new_wave(id[5],t[5])
-
-wave[6] = new_wave(id[6],t[6])
-
-wave[7] = new_wave(id[7],t[7])
-
-wave[8] = new_wave(id[8],t[8])
-
-wave[9] = new_wave(id[9],t[9])
 // 音频列表渲染完成隐藏
 function audioListisloading(){
-	$("#audioList").removeClass("loader")
+    $("#audioList").removeClass("loader")
+    $(".audioLis_ul").css("display","block")
 }
 
 // 创建音频对象

@@ -81,7 +81,6 @@ module.exports = {
   
   // 判断排序类型-->返回结果
   if(sort == "price"){
-    console.log("price呀~")
     //价格排序
     return AudioList
     .find({
