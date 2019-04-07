@@ -15,7 +15,7 @@ $(function(){
         cartList=JSON.parse(cartList)
         // 遍历cookie中相同的id商品
 		for(var i=0;i<cartList.length;i++){
-			if(cartList[i].id === id){
+			if(cartList[i].audioId === id){
                 cartList.splice(i,1)//移除对应位置的商品信息
                 console.log(i)
 				break;
@@ -110,7 +110,7 @@ $(function(){
         var audioList=JSON.parse(getCookie("shoppingcart"))
         // 先判断cookie中有无相同的id商品
         for(var i=0;i<audioList.length;i++){
-            if(audioList[i].id === id){
+            if(audioList[i].audioId == id){
             audioList[i].price = $("#selected-price").text()
             audioList[i].license = $("#selected-license").text()
             break;

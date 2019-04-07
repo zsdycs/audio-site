@@ -13,8 +13,8 @@ router.post('/',checkLogin, function(req, res, next) {
   // console.log(req.body.length);
   if(req.body.length != 0){
     for(var i=0;i<req.body.length;i++){
-      // console.log(req.session.user.name)
-      req.body[i].username = req.session.user.name
+      // console.log(req.session.user._id)
+      req.body[i].userId = req.session.user._id
       var onerow =  req.body[i]
       // 用户信息写入数据库
       OrderModel.create(onerow)

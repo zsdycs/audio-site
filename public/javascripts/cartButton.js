@@ -60,7 +60,7 @@ $(document).on("click",".add-cart-button",function(){
     var exp = new Date();
     exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
     var name = $("#hadSelectName").text(),price = $("#hadSelectPrice").text(), license = $("#hadSelectLicenses").text()
-    var audios = {id:id,name:name,price:price,license:license,one:one,unlimited:unlimited}
+    var audios = {audioId:id,name:name,price:price,license:license,one:one,unlimited:unlimited}
     var audioList = []
     // 如果cooki为空，直接添加
     if(getCookie("shoppingcart").length==0){
@@ -71,7 +71,7 @@ $(document).on("click",".add-cart-button",function(){
       // 购物车有商品，判断当前加入是否包含，包含则移除，再添加
       // 先判断cookie中有无相同的id商品
       for(var i=0;i<audioList.length;i++){
-        if(audioList[i].id === id){
+        if(audioList[i].audioId === id){
           audioList.splice(i,1)
           audioList.push(audios);
           break;
