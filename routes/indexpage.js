@@ -11,7 +11,7 @@ router.post('/list', function(req, res, next) {
         res.send(data)
     })
 });
-// post filtrateTag 标签及标签下音频数量
+// POST filtrateTag 标签及标签下音频数量
 router.post('/filtrate/tag', function (req, res, next) {
     // console.log("tag---"+JSON.stringify(req.body))
     IndexModel.getFiltrateTag(req.body)
@@ -22,6 +22,14 @@ router.post('/filtrate/tag', function (req, res, next) {
 // POST // 获取音频数量
 router.post('/pages', function (req, res, next) {
     IndexModel.getAudioNum(req.body)
+    .then(function (data) {
+        res.send(data)
+    })
+})
+
+// POST // 搜索，模糊查询，音频名字，不区分大小写
+router.post('/search', function (req, res, next) {
+    IndexModel.getAudioBySearch(req.body)
     .then(function (data) {
         res.send(data)
     })

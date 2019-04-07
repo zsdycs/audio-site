@@ -50,7 +50,7 @@
                   <span>
                     <div class="text-align-r">
                       <div class="down-icon">
-                        <a download="文件名称.mp3" role="button" href="#">
+                        <a v-bind:download="item.fileName" role="button" v-bind:href="item.filePath">
                           <svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em"
                             viewBox="0 0 16 16" class="down-svg" style="vertical-align: middle;">
                             <title>Download</title>

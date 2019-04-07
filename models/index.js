@@ -1,13 +1,14 @@
 const AudiofiltrateTag  = require('../lib/mongo').AudiofiltrateTag 
 const AudioList  = require('../lib/mongo').AudioList
 const AudioNum = require('../lib/mongo').AudioNum
+const SearchAudio = require('../lib/mongo').SearchAudio
 
 module.exports = {
   
   // 获取标签项
   getFiltrateTag: function getFiltrateTag(match){
     var str = ""
-    console.log(match)
+    // console.log(match)
     // match = JSON.parse(match)
     for(var i = 0;i<match.tag.length;i++){
         str += "\"type\":\""+ match.tag[i] +"\","
@@ -154,10 +155,10 @@ module.exports = {
     const t = new Date()
     const today = new Date(t.getFullYear(),t.getMonth()+1,t.getDate());
     
-    const sevenday = new Date(today.getTime() - 168*60*60*1000);
-    const thirtyday = new Date(today.getTime() - 720*60*60*1000);
-    const ninetyday = new Date(today.getTime() - 2160*60*60*1000);
-    const year = new Date(today.getTime() - 9760*60*60*1000);
+    const sevenday = new Date(today.getTime()-168*60*60*1000);
+    const thirtyday = new Date(today.getTime()-720*60*60*1000);
+    const ninetyday = new Date(today.getTime()-2160*60*60*1000);
+    const year = new Date(today.getTime()-9760*60*60*1000);
 
     function whattime(time){
       // 时间设置
@@ -167,19 +168,19 @@ module.exports = {
         return end
       }else if(time == 2){
         // 7天
-        const end = new Date(sevenday.getFullYear(),sevenday.getMonth()+1,sevenday.getDate());
+        const end = new Date(sevenday.getFullYear(),sevenday.getMonth(),sevenday.getDate());
         return end
       }else if(time == 3){
         // 30天
-        const end = new Date(thirtyday.getFullYear(),thirtyday.getMonth()+1,thirtyday.getDate());
+        const end = new Date(thirtyday.getFullYear(),thirtyday.getMonth(),thirtyday.getDate());
         return end
       }else if(time = 4){
         // 90天
-        const end = new Date(ninetyday.getFullYear(),ninetyday.getMonth()+1,ninetyday.getDate());
+        const end = new Date(ninetyday.getFullYear(),ninetyday.getMonth(),ninetyday.getDate());
         return end
       }else if(time = 5){
         // 一年
-        const end = new Date(year.getFullYear(),year.getMonth()+1,year.getDate());
+        const end = new Date(year.getFullYear(),year.getMonth(),year.getDate());
         return end
       }
     }
@@ -196,6 +197,17 @@ module.exports = {
     .exec()
     },
 
+
+  getAudioBySearch: function getAudioBySearch(fileName){
+    // fileName = {fileName: 'xxx'}
+    // fileName: { $regex: 'Ele', $options: 'i'} 
+    var str = {$options: 'i'}
+    str.$regex = fileName.fileName
+    return SearchAudio
+    .find({ fileName: str})
+    .skip(fileName.page).limit(10)
+    .exec()
+  },
 
   
 }
