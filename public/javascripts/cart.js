@@ -1,11 +1,11 @@
-// 判断shoppingcart是否有商品
 $(function(){
     // 根据shoppingcart cookie绑定数据
     // var data=getCookie("shoppingcart")
     // data=JSON.parse(data)
     // data=JSON.stringify(data)
     // console.log(">>>>:"+data)
-
+    
+    // 判断shoppingcart是否有商品
     checkshoppingcartnum()
 
     // 删除商品
@@ -15,7 +15,8 @@ $(function(){
         cartList=JSON.parse(cartList)
         // 遍历cookie中相同的id商品
 		for(var i=0;i<cartList.length;i++){
-			if(cartList[i].audioId === id){
+            console.log(cartList[i].audioId+"---"+id)
+			if(cartList[i].audioId == id){
                 cartList.splice(i,1)//移除对应位置的商品信息
                 console.log(i)
 				break;
