@@ -455,7 +455,7 @@ $(document).on('keypress','.forsearch', function (event) {
     var exp = new Date();
     exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
     document.cookie = "filtrateTagList=" + JSON.stringify(filtrateTagList) + ";expires=" + exp.toGMTString()+ ";path=/";
-    $('html,body').animate({scrollTop:$("#main").offset().top-70+"px"},{duration:1500,easing:'swing'});
+    
     $("#audioList").addClass("loader")
     $(".audioLis_ul").css("display","none")
     var data = {}

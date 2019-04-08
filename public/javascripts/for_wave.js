@@ -83,14 +83,24 @@ var audioList = new Vue({
                 for(var i = 0;i<this.audioList.length;i++){
                     wave[i] = new_wave(id[i],t[i])
                 }
-                
+                // 鼠标移入移出增加小圆点
+                $(".row_div").hover(function(){
+                    // 移入
+                    $(this).removeClass("display_3qnOD")
+                },function(){
+                    $(this).addClass("display_3qnOD")
+                });
                 // 播放结束事件
                 wave_finish()
                 // 已播放时间
                 wave_audioprocess()
                 // 获取声音片段时间
                 getTime()
-				// console.log('v-for渲染已经完成')
+                // 如果为收藏页，增加红心效果
+                var url = GetUrlRelativePath();
+                if(url == "/favorite"){
+                    $(".like-a").addClass("add-like")
+                }
 			}
 		
 		)}
@@ -146,13 +156,7 @@ $(function(){
         }
         
     })
-    // 鼠标移入移出增加小圆点
-    $(".row_div").hover(function(){
-        // 移入
-        $(this).removeClass("display_3qnOD")
-    },function(){
-        $(this).addClass("display_3qnOD")
-    });
+    
 })
 // 秒——>00:00
 function secondToDate(result) {

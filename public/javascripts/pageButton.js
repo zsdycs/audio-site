@@ -8,7 +8,7 @@ pageinitial(maxpage,nowpage)
 
 // 点击页码事件
 $(document).on("click",".paging",function(){
-  $('html,body').animate({scrollTop:$("#main").offset().top-70+"px"},{duration:1500,easing:'swing'});
+  
   $("#audioList").addClass("loader")
   $(".audioLis_ul").css("display","none")
   $(".paging").removeClass("active")
