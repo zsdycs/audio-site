@@ -120,10 +120,13 @@ $(function(){
         document.cookie = "shoppingcart=" + JSON.stringify(audioList) + ";expires=" + exp.toGMTString()+ ";path=/";
         var data=getCookie("shoppingcart")
         data=JSON.parse(data)
+        // 局部刷新
+        Vue.set(List.List=data)
         data=JSON.stringify(data)
         // console.log(">>>>:"+data)
-        // 局部刷新？？？？？
-        window.location.reload()
+        $("#select-price").empty()
+        $("#SelectLicenses").css("display","none")
+        $('body').css('overflow','auto');
     })
 
     // 结算按钮，提交请求，order表取自shoppingcart（id，price价格，name名称，license许可证）

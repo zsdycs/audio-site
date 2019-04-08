@@ -37,7 +37,7 @@ var price = new Array()
 tag[0] = "music"
 price[0] = 1,price[1] = 1998
 // 时间,状态值=1:所有，2：最近一周，3：最近一个月，4：最近3个月，5：最近1年。
-var filtrate = { tag:tag,price:price,time:1 },filtrateList = [];
+var filtrate = { tag:tag,price:price,time:1,searchValue:"" },filtrateList = [];
 filtrateList.push(filtrate);
 // 如果筛选项cookie不存在，写入空筛选项cookie
 if(getCookie("filtrateTagList")==""){

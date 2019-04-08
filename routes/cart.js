@@ -8,7 +8,7 @@ var checkLogin = require('../middlewares/checkForAjax').checkLogin
 router.get('/', function(req, res, next) {
   res.render('cart', { title: '购物车' });
 })
-// post,结算
+// POST,结算
 router.post('/',checkLogin, function(req, res, next) {
   // console.log(req.body.length);
   if(req.body.length != 0){

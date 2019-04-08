@@ -6,15 +6,31 @@ module.exports = {
   create: function create (order) {
     return Order.create(order).exec()
   },
-
-  getOrderlist: function getOrderlist(username){
-    const query = {}
-    if (username) {
-      query.username = username
-    }
+  // 通过用户id获取订单列表
+  getOrderlist: function getOrderlist(userId){
+    const find = {}
+      find.userId = userId
     return Order
-    .find(query)
+    .find(find)
+    .sort({"_id":-1})
     .exec()
-  }
+  },
+
+  // 通过用户id，删除该用户的所有订单
+  removeAllOrderByUserId: function removeAllOrderByUserId(userId){
+    const find = {}
+      find.userId = userId
+    return Order
+    .remove(find)
+    .exec()
+  },
+
+  // 通过文档id，删除一条订单的文档
+  removeOneOrderById: function removeOneOrderById(find){
+    console.log(find)
+    return Order
+    .remove(find)
+    .exec()
+  },
 
 }
