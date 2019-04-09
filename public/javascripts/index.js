@@ -477,8 +477,11 @@ $(document).on('keypress','.forsearch', function (event) {
           }
           $("wave").remove()
           Vue.set(audioList.audioList=data)
-          
-          
+          checkAudioNum(data)
+          if(data.length == 0){
+            $(".audio_num").text("0")
+            $(".pagination").css("display","none")
+          }
       }
     })
   }

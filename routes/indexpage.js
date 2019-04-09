@@ -3,6 +3,7 @@ var router = express.Router();
 
 const IndexModel = require('../models/index')
 
+
 /* POST */ //首页音频列表--->/index/list
 router.post('/list', function(req, res, next) {
     // console.log("list---"+JSON.stringify(req.body))
@@ -34,5 +35,7 @@ router.post('/search', function (req, res, next) {
         res.send(data)
     })
 })
+
+
 
 module.exports = router

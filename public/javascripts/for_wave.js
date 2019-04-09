@@ -28,7 +28,6 @@ var audioList = new Vue({
         ////////////测试用数据//////////////
 		// data=[
         //     {
-
         //         fileName:'仙女df棒',
         //         price_one:'131',
         //         price_unlimited:'3223',
@@ -39,40 +38,70 @@ var audioList = new Vue({
         // ]
 		//////////测试用数据结束////////////
         var self=this;
-        // {tag:[xx,xx],price:[xx,xx],time:xx,sort:xx,page:xx}
-        var data={tag:[],price:[],time:"",sort:"",page:""}
-        var filtrateTagList = JSON.parse(getCookie("filtrateTagList"))
-        var maxNumPage = JSON.parse(getCookie("maxNumPage"))
-        data.price[0] = filtrateTagList[0].price[0]
-        data.price[1] = filtrateTagList[0].price[1]
-        data.time = filtrateTagList[0].time
-        data.sort = filtrateTagList[0].sort
-        data.page = (maxNumPage[0].page-1)*10
-        for(var i =0;i<filtrateTagList[0].tag.length;i++){
-            data.tag[i] = filtrateTagList[0].tag[i]
-        }
-		$.ajax({
-			type: "post",
-			data:JSON.stringify(data),
-			url: "/index/list",
-			contentType:'application/json',
-			dataType: 'json',
-			cache: false,
-			timeout: 5000,
-			success: function (data) {
-                for(var i=0;i<data.length;i++){
-                    data[i].div_id = "audio"+i
-                    t[i] = data[i].filePath
-                    id[i] = "#audio"+i
+        // 获取当前地址路由，如果是首页列表，上传tag筛选项数据，返回列表。
+        var url = GetUrlRelativePath();
+        if(url == "/"){
+            // {tag:[xx,xx],price:[xx,xx],time:xx,sort:xx,page:xx}
+            var data={tag:[],price:[],time:"",sort:"",page:""}
+            var filtrateTagList = JSON.parse(getCookie("filtrateTagList"))
+            var maxNumPage = JSON.parse(getCookie("maxNumPage"))
+            data.price[0] = filtrateTagList[0].price[0]
+            data.price[1] = filtrateTagList[0].price[1]
+            data.time = filtrateTagList[0].time
+            data.sort = filtrateTagList[0].sort
+            data.page = (maxNumPage[0].page-1)*10
+            for(var i =0;i<filtrateTagList[0].tag.length;i++){
+                data.tag[i] = filtrateTagList[0].tag[i]
+            }
+            $.ajax({
+                type: "post",
+                data:JSON.stringify(data),
+                url: "/index/list",
+                contentType:'application/json',
+                dataType: 'json',
+                cache: false,
+                timeout: 5000,
+                success: function (data) {
+                    for(var i=0;i<data.length;i++){
+                        data[i].div_id = "audio"+i
+                        t[i] = data[i].filePath
+                        id[i] = "#audio"+i
+                    }
+                    self.audioList = data
+                    // console.log(data)
+                    checkAudioNum(data)
+                    data=JSON.stringify(data)
+                    // console.log(data)
+                    
                 }
-                self.audioList = data
-                // console.log(data)
-                
-				data=JSON.stringify(data)
-				// console.log(data)
-                
-			}
-        })
+            })
+        }else if(url == "/favorite"){
+            // 请求获取当前登录用户的收藏音频列表
+            $.ajax({
+                type:"post",
+                contentType:'application/json',
+                url: "/favorite",
+                dataType: 'json',
+                cache: false,
+                timeout: 5000,
+                success: function (data) {
+                    // console.log(JSON.parse(JSON.stringify(data)))
+                    var dataList = []
+                    for(var i = 0;i<data.length;i++){
+                        data[i].audioInfo[0].div_id = "audio"+i
+                        t[i] = data[i].audioInfo[0].filePath
+                        id[i] = "#audio"+i
+                        dataList.push(data[i].audioInfo[0])
+                    }
+                    self.audioList = dataList
+                    checkAudioNum(dataList)
+                },
+                error:function (err) {
+                    console.log(JSON.stringify(err));
+                }
+            })
+        }
+        
         
         
 	},
@@ -99,7 +128,38 @@ var audioList = new Vue({
                 // 如果为收藏页，增加红心效果
                 var url = GetUrlRelativePath();
                 if(url == "/favorite"){
+                    // 红心样式
                     $(".like-a").addClass("add-like")
+                }else if(url == "/"){
+                    // 根据用户id返回收藏音频id，对页面已渲染出的音频id查找，有相同的，则添加已收藏样式
+                    $.ajax({
+                        type:"post",
+                        contentType:'application/json',
+                        url: "/favorite/is-like",
+                        dataType: 'json',
+                        cache: false,
+                        timeout: 5000,
+                        success: function (data) {
+                            // console.log(JSON.parse(JSON.stringify(data)))
+                            if(data.status == "nosigin"){
+                                // console.log("这是个没有登录的用户")
+                            }else{
+                                // 已登录
+                                // console.log(JSON.stringify(data))
+                                $(".like-a").each(function(){
+                                    for(var i = 0;i<data.length;i++){
+                                        if($(this).data("audio_id") == data[i].audioId){
+                                            $(this).addClass("add-like")
+                                        }
+                                    }
+                                    
+                                })
+                            }
+                        },
+                        error:function (err) {
+                            console.log(JSON.stringify(err));
+                        }
+                    })
                 }
 			}
 		
@@ -107,8 +167,15 @@ var audioList = new Vue({
     },
     
 });
-
-
+// 如果音频表没有数据，显示啥也没
+function checkAudioNum(List){
+    var num = List.length
+    if(num == 0){
+        $(".cart-list").css("display","none")
+        $(".cart-no").css("display","block")
+        $(".head-title").text("这里什么都没有")
+    }
+}
 
 // 音频列表渲染完成隐藏
 function audioListisloading(){
@@ -144,15 +211,44 @@ function new_wave(name,music){
 $(function(){
     // 添加like事件
     $(document).on("click",".like-a",function(){
-        // 判断登录状态
-        
-        // 请求改变数据库数据
-
-        // 样式变化
+        var data = {}
+        data.audioId = $(this).data("audio_id")
+        var self = $(this)
         if($(this).attr("class")=="like-a add-like"){
-            $(this).removeClass("add-like")
+            
+            $.ajax({
+                type: "post",
+                data:JSON.stringify(data),
+                url: "/favorite/cancel-like",
+                contentType:'application/json',
+                dataType: 'json',
+                cache: false,
+                timeout: 5000,
+                success: function (data) {
+                    if(data.status == "success"){
+                        self.removeClass("add-like")
+                        // console.log("取消收藏成功")
+                    }
+                }
+            })
         }else{
-            $(this).addClass("add-like")
+            $.ajax({
+                type: "post",
+                data:JSON.stringify(data),
+                url: "/favorite/add-like",
+                contentType:'application/json',
+                dataType: 'json',
+                cache: false,
+                timeout: 5000,
+                success: function (data) {
+                    if(data.status == "nosigin"){
+                        window.location.href = '/signin';
+                    }else if(data.status == "success"){
+                        self.addClass("add-like")
+                        // console.log("添加收藏成功")
+                    }
+                }
+            })
         }
         
     })

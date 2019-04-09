@@ -21,15 +21,15 @@ module.exports = {
     const find = {}
       find.userId = userId
     return Order
-    .remove(find)
+    .deleteMany(find)
     .exec()
   },
 
   // 通过文档id，删除一条订单的文档
   removeOneOrderById: function removeOneOrderById(find){
-    console.log(find)
+    // console.log(find)
     return Order
-    .remove(find)
+    .deleteOne(find)
     .exec()
   },
 
