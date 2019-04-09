@@ -70,6 +70,9 @@ var audioList = new Vue({
                     self.audioList = data
                     // console.log(data)
                     checkAudioNum(data)
+                    if(data.length == 0){
+                        $("#pagediv").css("display","none")
+                    }
                     data=JSON.stringify(data)
                     // console.log(data)
                     

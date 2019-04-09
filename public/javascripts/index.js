@@ -73,9 +73,13 @@ $.ajax({
   cache: false,
   timeout: 5000,
   success: function (data) {
-    var max_price = data[0].max_price
-    var voice_num = data[0].voice_num
-    var maxNumPage = { max_price:max_price, voice_num:voice_num, page:1 },maxNumPagelist = [];
+    // console.log(JSON.stringify(data))
+    if(data.length == 0){
+      var maxNumPage = { max_price:1998, voice_num:0, page:4 }
+    }else{
+      var maxNumPage = { max_price:data[0].max_price, voice_num:data[0].voice_num, page:1 }
+    }
+    var maxNumPagelist = [];
     maxNumPagelist.push(maxNumPage);	
     var exp = new Date();
     exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
@@ -479,8 +483,8 @@ $(document).on('keypress','.forsearch', function (event) {
           Vue.set(audioList.audioList=data)
           checkAudioNum(data)
           if(data.length == 0){
-            $(".audio_num").text("0")
-            $(".pagination").css("display","none")
+            // $(".audio_num").text("0")
+            $("#pagediv").css("display","none")
           }
       }
     })

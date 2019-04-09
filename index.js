@@ -2,7 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var multipart = require('connect-multiparty');
 var path = require('path');
-var favicon = require('serve-favicon');
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const flash = require('connect-flash')
@@ -27,8 +26,6 @@ app.use(bodyParser.json())
 // create application/x-www-form-urlencoded parser
 app.use(bodyParser.urlencoded({extended: false}));
 
-// 设置统一网页图标
-app.use(favicon(__dirname + '/public/images/common/favicon.ico'));
 
 // app.use(cookieParser());获取cookie解析req.headers.cookie
 
