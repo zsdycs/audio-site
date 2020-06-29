@@ -18,7 +18,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// 使用body-parser中间件来获取req.body
+// 使用 body-parser 中间件来获取 req.body
 // create application/json parser
 app.use(bodyParser.json())
 // create application/x-www-form-urlencoded parser
@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-// app.use(cookieParser());获取cookie解析req.headers.cookie
+// app.use(cookieParser()); 获取 cookie 解析 req.headers.cookie
 
 // 静态文件默认路径
 app.use(express.static(path.join(__dirname, 'public')));
@@ -52,7 +52,7 @@ app.use(flash())
 app.use(multipart())
 
 
-// 添加模板必需的三个变量
+// 添加模板必需的 3 个变量
 app.use(function (req, res, next) {
   res.locals.user = req.session.user
   res.locals.success = req.flash('success').toString()
