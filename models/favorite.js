@@ -22,10 +22,10 @@ module.exports = {
         },
         {
           $lookup: {
-            from: 'audios', //关联查询表2
-            localField: 'audioId', //关联表1的商品编号ID
-            foreignField: '_id', //匹配表2中的ID与关联表1商品编号ID对应
-            as: 'audioInfo' //满足 localField与foreignField的信息加入audioInfo集合
+            from: 'audios', // 关联查询表2
+            localField: 'audioId', // 关联表1的商品编号ID
+            foreignField: '_id', // 匹配表2中的ID与关联表1商品编号ID对应
+            as: 'audioInfo' // 满足 localField与foreignField的信息加入audioInfo集合
           }
         }
       ])

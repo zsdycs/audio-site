@@ -24,7 +24,7 @@ $(document).on("click", "#del-all", function () {
     })
 })
 $(document).on("click", ".btn-link", function () {
-    // 请求删除订单表的该id的商品---->>刷新页面，重新获得订单列表
+    // 请求删除订单表的该 id 的商品 -> 刷新页面，重新获得订单列表
     var row_id = $(this).data("row_id")
     var updata = {}
     updata._id = row_id

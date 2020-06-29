@@ -1,6 +1,6 @@
 // 分页
 $(function () {
-  // 通过cookie绑定当前页码，选择页码时修改cookie，上传局部刷新音频列表
+  // 通过 cookie 绑定当前页码，选择页码时修改 cookie，上传局部刷新音频列表
   var maxpage = parseInt(JSON.parse(getCookie("maxNumPage"))[0].voice_num / 10 + 1)
   var nowpage = JSON.parse(getCookie("maxNumPage"))[0].page
   isInsufficientPage()
@@ -83,7 +83,7 @@ $(function () {
     }
   })
 
-  // 分页→右
+  // 分页 → 右
   $(document).on("click", ".toendpage", function () {
     if (parseInt($(".pageend").text()) < maxpage) {
       for (i = 0; i < $(".paging").length; i++) {
@@ -99,7 +99,7 @@ $(function () {
       }
     }
   })
-  // 分页←左
+  // 分页 ← 左
   $(document).on("click", ".tofistpage", function () {
     if (parseInt($(".pagefist").text()) > 1 && parseInt($(".pagefist").text()) <= 4) {
       for (i = 0; i < $(".paging").length; i++) {

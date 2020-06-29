@@ -4,7 +4,7 @@ module.exports = {
 
   // 创建订单
   create: function create(onerow) {
-    // 更新音频表sales字段的值
+    // 更新音频表 sales 字段的值
     var find = {}
     find._id = onerow.audioId
     Audio.update(find, {
@@ -15,7 +15,7 @@ module.exports = {
       .exec()
     return Order.create(onerow).exec()
   },
-  // 通过用户id获取订单列表
+  // 通过用户 id 获取订单列表
   getOrderlist: function getOrderlist(userId) {
     const find = {}
     find.userId = userId
@@ -27,7 +27,7 @@ module.exports = {
       .exec()
   },
 
-  // 通过用户id，删除该用户的所有订单
+  // 通过用户 id，删除该用户的所有订单
   removeAllOrderByUserId: function removeAllOrderByUserId(userId) {
     const find = {}
     find.userId = userId
@@ -36,7 +36,7 @@ module.exports = {
       .exec()
   },
 
-  // 通过文档id，删除一条订单的文档
+  // 通过文档 id，删除一条订单的文档
   removeOneOrderById: function removeOneOrderById(find) {
     // console.log(find)
     return Order

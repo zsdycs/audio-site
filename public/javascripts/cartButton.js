@@ -58,9 +58,9 @@ $(document).on("click", ".s-button", function () {
   var one = $(this).data("one")
   var unlimited = $(this).data("unlimited")
 
-  // 写入购物车cookie，名字，金额，许可证，id
+  // 写入购物车 cookie，名字，金额，许可证，id
   var exp = new Date();
-  exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
+  exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); // 24 小时
   var name = $("#hadSelectName").text(),
     price = $("#hadSelectPrice").text(),
     license = $("#hadSelectLicenses").text()
@@ -73,14 +73,14 @@ $(document).on("click", ".s-button", function () {
     unlimited: unlimited
   }
   var audioList = []
-  // 如果cooki为空，直接添加
+  // 如果 cooki 为空，直接添加
   if (getCookie("shoppingcart").length == 0) {
-    // 添加到audioList
+    // 添加到 audioList
     audioList.push(audios);
   } else {
     audioList = JSON.parse(getCookie("shoppingcart"))
     // 购物车有商品，判断当前加入是否包含，包含则移除，再添加
-    // 先判断cookie中有无相同的id商品
+    // 先判断 cookie 中有无相同的id商品
     for (var i = 0; i < audioList.length; i++) {
       if (audioList[i].audioId === id) {
         audioList.splice(i, 1)
@@ -88,9 +88,9 @@ $(document).on("click", ".s-button", function () {
         break;
       }
     }
-    // 如果原cookie中没有当前商品
+    // 如果原cookie 中没有当前商品
     if (i === audioList.length) {
-      // 添加到audioList
+      // 添加到 audioList
       audioList.push(audios);
     }
   }
@@ -102,7 +102,7 @@ $(document).on("click", ".s-button", function () {
 
 
 })
-// 加入成功-马上结算->购物车页！！！不做结算页啦啦啦
+// 加入成功-马上结算 -> 购物车页！！！不做结算页啦啦啦
 $(document).on("click", ".add-s-button", function () {
   window.location.href = "/cart"
   $("#HadSelect").css("display", "none")

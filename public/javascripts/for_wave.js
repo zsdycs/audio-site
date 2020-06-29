@@ -140,7 +140,7 @@ var audioList = new Vue({
                         // 红心样式
                         $(".like-a").addClass("add-like")
                     } else if (url == "/") {
-                        // 根据用户id返回收藏音频id，对页面已渲染出的音频id查找，有相同的，则添加已收藏样式
+                        // 根据用户 id 返回收藏音频 id，对页面已渲染出的音频 id 查找，有相同的，则添加已收藏样式
                         $.ajax({
                             type: "post",
                             contentType: 'application/json',
@@ -264,7 +264,7 @@ $(function () {
     })
 
 })
-// 秒——>00:00
+// 秒 —> 00:00
 function secondToDate(result) {
     var m = Math.floor((result / 60 % 60)) < 10 ? '0' + Math.floor((result / 60 % 60)) : Math.floor((result / 60 % 60));
     var s = Math.floor((result % 60)) < 10 ? '0' + Math.floor((result % 60)) : Math.floor((result % 60));
@@ -297,7 +297,7 @@ $(document).on('click', '.btnPlay', function () {
                 // console.log(i)
                 // 开始播放
                 wave[i].play();
-                // 修改图标->移除内容->增加内容
+                // 修改图标 -> 移除内容 -> 增加内容
                 $(this).empty()
                 $(this).append(playing_svg_str)
                 $(this).removeClass("btnPlay")
@@ -310,7 +310,7 @@ $(document).on('click', '.btnPlay', function () {
                 // console.log(i)
                 // 开始播放
                 wave[i].play();
-                // 修改图标->移除内容->增加内容
+                // 修改图标 -> 移除内容 -> 增加内容
                 $(this).empty()
                 $(this).append(playing_svg_str)
                 $(this).removeClass("btnPlay")
@@ -326,7 +326,7 @@ $(document).on('click', '.btnPause', function () {
         if (id == "audio" + i) {
             // 暂停播放
             wave[i].pause();
-            // 修改图标->移除内容->增加内容
+            // 修改图标 -> 移除内容 -> 增加内容
             $(this).empty()
             $(this).append(play_svg_str)
             $(this).removeClass("btnPause")

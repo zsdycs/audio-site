@@ -17,14 +17,14 @@ $(function () {
         for (var i = 0; i < cartList.length; i++) {
             console.log(cartList[i].audioId + "---" + id)
             if (cartList[i].audioId == id) {
-                cartList.splice(i, 1) //移除对应位置的商品信息
+                cartList.splice(i, 1) // 移除对应位置的商品信息
                 console.log(i)
                 break;
             }
         }
-        // 更新购物车商品信息cookie
+        // 更新购物车商品信息 cookie
         var exp = new Date();
-        exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
+        exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); // 24 小时
         document.cookie = "shoppingcart=" + JSON.stringify(cartList) + ";expires=" + exp.toGMTString() + ";path=/";
         var cartList = getCookie("shoppingcart")
         cartList = JSON.parse(cartList)
@@ -40,9 +40,9 @@ $(function () {
         cartList = JSON.parse(cartList)
         // 清空数组
         cartList.splice(0)
-        // 更新购物车商品信息cookie
+        // 更新购物车商品信息 cookie
         var exp = new Date();
-        exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
+        exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); // 24 小时
         document.cookie = "shoppingcart=" + JSON.stringify(cartList) + ";expires=" + exp.toGMTString() + ";path=/";
 
         var cartList = getCookie("shoppingcart")
@@ -106,12 +106,12 @@ $(function () {
 
     // 确认加入
     $(document).on("click", ".s-button", function () {
-        // 根据id修改 "许可证" 、 "金额" ，写入购物车cookie
+        // 根据 id 修改 "许可证" 、 "金额" ，写入购物车cookie
         var exp = new Date();
-        exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
+        exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); // 24 小时
         var id = $(this).data("id")
         var audioList = JSON.parse(getCookie("shoppingcart"))
-        // 先判断cookie中有无相同的id商品
+        // 先判断 cookie 中有无相同的id商品
         for (var i = 0; i < audioList.length; i++) {
             if (audioList[i].audioId == id) {
                 audioList[i].price = $("#selected-price").text()
@@ -131,7 +131,7 @@ $(function () {
         $('body').css('overflow', 'auto');
     })
 
-    // 结算按钮，提交请求，order表取自shoppingcart（id，price价格，name名称，license许可证）
+    // 结算按钮，提交请求，order 表取自 shoppingcart（id，price 价格，name 名称，license 许可证）
     // 清空购物车，忽略支付，直接跳转到已购买
     $(document).on("click", "#listPostButton", function () {
 
@@ -153,9 +153,9 @@ $(function () {
                     var cartList = getCookie("shoppingcart")
                     cartList = JSON.parse(cartList)
                     cartList.splice(0)
-                    // 更新购物车商品信息cookie
+                    // 更新购物车商品信息 cookie
                     var exp = new Date();
-                    exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
+                    exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24 小时
                     document.cookie = "shoppingcart=" + JSON.stringify(cartList) + ";expires=" + exp.toGMTString() + ";path=/";
                     window.location.href = '/order'
 

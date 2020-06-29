@@ -81,15 +81,15 @@ module.exports = {
         const end = new Date(1949, 10, 1);
         return end
       } else if (time == 2) {
-        // 7天
+        // 7 天
         const end = new Date(sevenday.getFullYear(), sevenday.getMonth() + 1, sevenday.getDate());
         return end
       } else if (time == 3) {
-        // 30天
+        // 30 天
         const end = new Date(thirtyday.getFullYear(), thirtyday.getMonth() + 1, thirtyday.getDate());
         return end
       } else if (time = 4) {
-        // 90天
+        // 90 天
         const end = new Date(ninetyday.getFullYear(), ninetyday.getMonth() + 1, ninetyday.getDate());
         return end
       } else if (time = 5) {
@@ -99,9 +99,9 @@ module.exports = {
       }
     }
 
-    // 判断排序类型-->返回结果
+    // 判断排序类型 -> 返回结果
     if (sort == "price") {
-      //价格排序
+      // 价格排序
       return AudioList
         .find({
           "type": {
@@ -119,7 +119,7 @@ module.exports = {
         .skip(page).limit(10)
         .exec()
     } else if (sort == "sales") {
-      //销量排序
+      // 销量排序
       return AudioList
         .find({
           "type": {
@@ -186,7 +186,7 @@ module.exports = {
       price = "",
       time = find.time
 
-    // type处理
+    // type 处理
     for (var i = 0; i < find.tag.length; i++) {
       type += "\"$eq\":\"" + find.tag[i] + "\","
     }
@@ -194,7 +194,7 @@ module.exports = {
     type = type.substring(0, type.lastIndexOf(','));
     type = JSON.parse("{" + type + "}")
 
-    // price处理
+    // price 处理
     price = "{\"$gte\":" + find.price[0] + "," + "\"$lte\":" + find.price[1] + "}"
     price = JSON.parse(price)
 
@@ -213,15 +213,15 @@ module.exports = {
         const end = new Date(1949, 10, 1);
         return end
       } else if (time == 2) {
-        // 7天
+        // 7 天
         const end = new Date(sevenday.getFullYear(), sevenday.getMonth(), sevenday.getDate());
         return end
       } else if (time == 3) {
-        // 30天
+        // 30 天
         const end = new Date(thirtyday.getFullYear(), thirtyday.getMonth(), thirtyday.getDate());
         return end
       } else if (time = 4) {
-        // 90天
+        // 90 天
         const end = new Date(ninetyday.getFullYear(), ninetyday.getMonth(), ninetyday.getDate());
         return end
       } else if (time = 5) {

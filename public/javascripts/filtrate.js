@@ -1,4 +1,4 @@
-//标签列表
+// 标签列表
 var tagList = new Vue({
 	el: '#tagList',
 	data: {

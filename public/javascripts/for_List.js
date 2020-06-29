@@ -20,7 +20,7 @@ var List = new Vue({
         var url = GetUrlRelativePath();
         // console.log("我知道啦，是这里:"+url)
         if (url == "/cart") {
-            // 将cookie数据渲染到购物车表
+            // 将 cookie 数据渲染到购物车表
             var cartdata = getCookie("shoppingcart")
             cartdata = JSON.parse(cartdata)
             if (cartdata != "") {
@@ -72,7 +72,7 @@ var List = new Vue({
     },
 });
 
-// 根据order ajax请求，显示订单list或no，并关联 "数量"、"总价" 显示
+// 根据 order ajax 请求，显示订单 list 或 no，并关联 "数量"、"总价" 显示
 function checkOrderNum(List) {
 
     var num = List.length
@@ -94,7 +94,7 @@ function checkOrderNum(List) {
 }
 
 
-// 根据购物车cookie，显示购物车list或no，并关联 "数量"、"总价" 显示
+// 根据购物车 cookie，显示购物车 list 或 no，并关联 "数量"、"总价" 显示
 function checkshoppingcartnum() {
     var cartList = JSON.parse(getCookie("shoppingcart"))
     var num = cartList.length
