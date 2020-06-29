@@ -3,7 +3,7 @@ var router = express.Router();
 var checkLogin = require('../middlewares/check').checkLogin
 
 /* GET */
-router.get('/', checkLogin, function(req, res, next) {
+router.get('/', checkLogin, function (req, res, next) {
   // 清空 session 中用户信息
   req.session.user = null
   // req.flash('success', '登出成功')

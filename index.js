@@ -10,7 +10,6 @@ const routes = require('./routes')
 const pkg = require('./package')
 const winston = require('winston')
 const expressWinston = require('express-winston')
-    
 
 // 创建服务
 var app = express();
@@ -19,12 +18,13 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-
 // 使用body-parser中间件来获取req.body
 // create application/json parser
-app.use(bodyParser.json()) 
+app.use(bodyParser.json())
 // create application/x-www-form-urlencoded parser
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 
 // app.use(cookieParser());获取cookie解析req.headers.cookie
@@ -39,10 +39,10 @@ app.use(session({
   resave: true, // 强制更新 session
   saveUninitialized: false, // 设置为 false，强制创建一个 session，即使用户未登录
   cookie: {
-    maxAge: config.session.maxAge// 过期时间，过期后 cookie 中的 session id 自动删除
+    maxAge: config.session.maxAge // 过期时间，过期后 cookie 中的 session id 自动删除
   },
-  store: new MongoStore({// 将 session 存储到 mongodb
-    url: config.mongodb// mongodb 地址
+  store: new MongoStore({ // 将 session 存储到 mongodb
+    url: config.mongodb // mongodb 地址
   })
 }))
 
@@ -63,7 +63,7 @@ app.use(function (req, res, next) {
 // 正常请求的日志
 app.use(expressWinston.logger({
   transports: [
-    new (winston.transports.Console)({
+    new(winston.transports.Console)({
       json: true,
       colorize: true
     }),
@@ -100,4 +100,3 @@ app.use(function (err, req, res, next) {
 app.listen(config.port, function () {
   console.log(`${pkg.name} listening on port ${config.port}`)
 })
-

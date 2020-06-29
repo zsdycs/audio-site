@@ -1,8 +1,10 @@
 module.exports = function (app) {
   app.get('/', function (req, res) {
-    res.render('index', { title: '你来啦~' });
+    res.render('index', {
+      title: '你来啦~'
+    });
   })
-  
+
   app.use('/index', require('./indexpage'))
   app.use('/cart', require('./cart'))
   app.use('/order', require('./order'))
@@ -18,4 +20,3 @@ module.exports = function (app) {
     }
   })
 }
-

@@ -1,43 +1,43 @@
 <div class="ui inverted vertical masthead center aligned segment" id="segment">
-    <div class="ui inverted menu PCtop">
-        <div class="ui container">
-            <a href="/" class="header item">
-                <img class="logo" src="/images/common/favicon.ico" title="首页">
-                Audiosite
-            </a>
-            <a href="/cart" class="item">购物车</a>
-            <% if (user) { %>
-                <div class="ui simple dropdown right item" style="width:auto"><%= user.name %><i class="dropdown icon"></i>
-                  <div class="menu">
-                    <a class="item" href="/favorite"><i class="heart icon"></i>收藏</a>
-                    <div class="divider" style="margin:0"></div>
-                    <a class="item" href="/order"><i class="itunes note icon"></i>已购</a>
-                    <div class="divider" style="margin:0"></div>
-                    <a class="item" href="/signout"><i class="sign-out icon"></i>退出</a>
-                  </div>
-                </div>
-              <% } else { %>
-                <div class="ui simple dropdown right item" style="width:99px">登录<i class="dropdown icon"></i>
-                  <div class="menu">
-                    <a class="item" href="/signin"><i class="user icon"></i>登录</a>
-                    <div class="divider" style="margin:0"></div>
-          
-                    <a class="item" href="/signup"><i class="user plus icon"></i>注册</a>
-                  </div>
-                </div>
-              <% } %>
+  <div class="ui inverted menu PCtop">
+    <div class="ui container">
+      <a href="/" class="header item">
+        <img class="logo" src="/images/common/favicon.ico" title="首页">
+        Audiosite
+      </a>
+      <a href="/cart" class="item">购物车</a>
+      <% if (user) { %>
+      <div class="ui simple dropdown right item" style="width:auto"><%= user.name %><i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item" href="/favorite"><i class="heart icon"></i>收藏</a>
+          <div class="divider" style="margin:0"></div>
+          <a class="item" href="/order"><i class="itunes note icon"></i>已购</a>
+          <div class="divider" style="margin:0"></div>
+          <a class="item" href="/signout"><i class="sign-out icon"></i>退出</a>
         </div>
-    </div>
-    <div class="ui text container">
-        <h1 class="ui inverted header">Audiosite</h1>
-        <h2>收录超过50000个音频片段</h2>
-        <div class="ui search">
-            <div class="ui icon input">
-            <input class="prompt forsearch" type="text" placeholder="Search">
-            <i class="search icon"></i>
-            </div>
-            <div class="results"></div>
+      </div>
+      <% } else { %>
+      <div class="ui simple dropdown right item" style="width:99px">登录<i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item" href="/signin"><i class="user icon"></i>登录</a>
+          <div class="divider" style="margin:0"></div>
+
+          <a class="item" href="/signup"><i class="user plus icon"></i>注册</a>
         </div>
+      </div>
+      <% } %>
     </div>
+  </div>
+  <div class="ui text container">
+    <h1 class="ui inverted header">Audiosite</h1>
+    <h2>收录超过50000个音频片段</h2>
+    <div class="ui search">
+      <div class="ui icon input">
+        <input class="prompt forsearch" type="text" placeholder="Search">
+        <i class="search icon"></i>
+      </div>
+      <div class="results"></div>
+    </div>
+  </div>
 
 </div>

@@ -1,60 +1,60 @@
 /* 获取指定cookie */
 function getCookie(name) {
-    var arrCookie = document.cookie.split("; ");
-    for (var i = 0; i < arrCookie.length; i++) {
-        var arr = arrCookie[i].split("=");
-        if (arr[0] == name){
-			return arr[1];
-		}
+  var arrCookie = document.cookie.split("; ");
+  for (var i = 0; i < arrCookie.length; i++) {
+    var arr = arrCookie[i].split("=");
+    if (arr[0] == name) {
+      return arr[1];
     }
-    return "";
+  }
+  return "";
 }
 $(document).ready(function () {
-    // fix menu when passed
-    $('.masthead').visibility({
-      once: false,
-      onBottomPassed: function () {
-        $('.fixed.menu').transition('fade in');
-      },
-      onBottomPassedReverse: function () {
-        $('.fixed.menu').transition('fade out');
-      }
-    });
-    // create sidebar and attach to menu open
-    $('.ui.sidebar').sidebar('attach events', '.toc.item')
-    
+  // fix menu when passed
+  $('.masthead').visibility({
+    once: false,
+    onBottomPassed: function () {
+      $('.fixed.menu').transition('fade in');
+    },
+    onBottomPassedReverse: function () {
+      $('.fixed.menu').transition('fade out');
+    }
   });
-  // 侧边栏
-  $(function(){
-    var url = GetUrlRelativePath();
-    // console.log("现在位于:"+url)
-      if(url == "/cart"){
-        $(".item").removeClass("active")
-        $("#cart-item").addClass("active")
-      }else if(url == "/favorite"){
-        $(".item").removeClass("active")
-        $("#favorite-item").addClass("active")
-      }else if(url == "/order"){
-        $(".item").removeClass("active")
-        $("#order-item").addClass("active")
-      }else if(url == "/signin"){
-        $(".item").removeClass("active")
-        $("#signin-item").addClass("active")
-      }else if(url == "/signup"){
-        $(".item").removeClass("active")
-        $("#signup-item").addClass("active")
-      }
-  })
-  function GetUrlRelativePath(){
-　　var url = document.location.toString();
-　　var arrUrl = url.split("//");
+  // create sidebar and attach to menu open
+  $('.ui.sidebar').sidebar('attach events', '.toc.item')
 
-　　var start = arrUrl[1].indexOf("/");
-　　var relUrl = arrUrl[1].substring(start);
+});
+// 侧边栏
+$(function () {
+  var url = GetUrlRelativePath();
+  // console.log("现在位于:"+url)
+  if (url == "/cart") {
+    $(".item").removeClass("active")
+    $("#cart-item").addClass("active")
+  } else if (url == "/favorite") {
+    $(".item").removeClass("active")
+    $("#favorite-item").addClass("active")
+  } else if (url == "/order") {
+    $(".item").removeClass("active")
+    $("#order-item").addClass("active")
+  } else if (url == "/signin") {
+    $(".item").removeClass("active")
+    $("#signin-item").addClass("active")
+  } else if (url == "/signup") {
+    $(".item").removeClass("active")
+    $("#signup-item").addClass("active")
+  }
+})
 
-　　if(relUrl.indexOf("?") != -1){
-　　　relUrl = relUrl.split("?")[0];
-　　}
-　　return relUrl;
-　}
-  
+function GetUrlRelativePath() {
+  var url = document.location.toString();
+  var arrUrl = url.split("//");
+
+  var start = arrUrl[1].indexOf("/");
+  var relUrl = arrUrl[1].substring(start);
+
+  if (relUrl.indexOf("?") != -1) {
+    relUrl = relUrl.split("?")[0];
+  }
+  return relUrl;
+}

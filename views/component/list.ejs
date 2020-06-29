@@ -8,7 +8,7 @@
                     <p><%= success %></p>
                 </div>
                 <% } %>
-            
+
                 <% if (error) { %>
                 <div class="ui error message">
                     <p><%= error %></p>
@@ -54,10 +54,9 @@
                                                     <div class="cart-entry__license">
                                                         <p class="t-body -size-s h-m0">
                                                             <strong>许可证：</strong>
-                                                            <a  v-bind:data-id="item.audioId"
-                                                                v-bind:data-price="item.price" 
-                                                                v-bind:data-name="item.name" 
-                                                                v-bind:data-one="item.one" 
+                                                            <a v-bind:data-id="item.audioId"
+                                                                v-bind:data-price="item.price"
+                                                                v-bind:data-name="item.name" v-bind:data-one="item.one"
                                                                 v-bind:data-unlimited="item.unlimited"
                                                                 class="cart_entry__information-detail">{{item.license}}</a>
                                                         </p>
@@ -68,7 +67,9 @@
 
                                             <div class="item-result__price">
                                                 <div class="cart-entry__remove">
-                                                    <button v-bind:data-audio_id="item.audioId" v-bind:data-row_id="item._id" name="button" class="btn-link"><i class="x icon"></i></button>
+                                                    <button v-bind:data-audio_id="item.audioId"
+                                                        v-bind:data-row_id="item._id" name="button" class="btn-link"><i
+                                                            class="x icon"></i></button>
                                                 </div>
                                                 <div class="cart-entry__price">
                                                     <h6 class="t-heading -size-l h-m0">
@@ -84,7 +85,7 @@
                                             </div>
                                         </div>
 
-                                       
+
                                     </div>
 
                                 </article>
@@ -99,9 +100,10 @@
                                     </span>
                                     <span class="t-heading -size-l">
                                         <font style="vertical-align: inherit;">
-                                            <font style="vertical-align: inherit;">￥<span id="total-price">0</span></font>
+                                            <font style="vertical-align: inherit;">￥<span id="total-price">0</span>
+                                            </font>
                                         </font>
-                                        </span>
+                                    </span>
                                     </span>
                                     <span class="cart-footer__checkout">
                                         <button class="ui secondary button" id="listPostButton">结 算</button>

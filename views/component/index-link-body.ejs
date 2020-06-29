@@ -9,61 +9,62 @@
 </head>
 
 <body>
-<!-- 移动端mobile header -->
-<%- include('./mobile-header') %>
+  <!-- 移动端mobile header -->
+  <%- include('./mobile-header') %>
 
-<!-- Sidebar Menu -->
-<%- include('./sidebar-menu') %>
+  <!-- Sidebar Menu -->
+  <%- include('./sidebar-menu') %>
 
-<!-- PC顶部fixed -->
-<%- include('./top') %>
+  <!-- PC顶部fixed -->
+  <%- include('./top') %>
 
 
-<!-- Page Contents -->
-<div class="pusher" id="pusher">
-<%- include('./index-contents') %>
+  <!-- Page Contents -->
+  <div class="pusher" id="pusher">
+    <%- include('./index-contents') %>
 
-<div class="two column stackable ui grid" id="main">
-  <div class="three wide column">
-    <%- include('./index-filtrate') %>
-  </div>
-  <div class="thirteen wide column">
-    <div class="ui mini menu">
-      <!-- 标签组 -->
-    <div class="ui labels">
-      <p class="_1X0WU"><span class="_3HYTF audio_num">0</span>条</p>
-      <div id="labeltagList">
-        <a v-cloak v-for="item in labeltagList" class="ui label labeltag loader">{{item.tag_name}}<i class="delete icon"></i></a>
+    <div class="two column stackable ui grid" id="main">
+      <div class="three wide column">
+        <%- include('./index-filtrate') %>
       </div>
-    </div>
-    <script>
-    </script>
-      <!-- 右边下拉列表（排序） -->
-      <div class="right menu">
-        <div class="ui dropdown item">
-          <div class="dropdown-title">综合排序</div>
-          <i class="dropdown icon"></i>
-          <div class="menu">
-            <a class="rank-a item active selected">综合排序</a>
-            <a class="rank-a item">销售最高</a>
-            <a class="rank-a item">价格最低</a>
-            <a class="rank-a item">日期最新</a>
+      <div class="thirteen wide column">
+        <div class="ui mini menu">
+          <!-- 标签组 -->
+          <div class="ui labels">
+            <p class="_1X0WU"><span class="_3HYTF audio_num">0</span>条</p>
+            <div id="labeltagList">
+              <a v-cloak v-for="item in labeltagList" class="ui label labeltag loader">{{item.tag_name}}<i
+                  class="delete icon"></i></a>
+            </div>
           </div>
+          <script>
+          </script>
+          <!-- 右边下拉列表（排序） -->
+          <div class="right menu">
+            <div class="ui dropdown item">
+              <div class="dropdown-title">综合排序</div>
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <a class="rank-a item active selected">综合排序</a>
+                <a class="rank-a item">销售最高</a>
+                <a class="rank-a item">价格最低</a>
+                <a class="rank-a item">日期最新</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 音频片段 -->
+        <%- include('./audioList') %>
+        <%- include('./list-no') %>
+        <!-- 分页按钮 -->
+        <%- include('../component/pageButton') %>
+        <!-- 添加到购物车-选择 "许可证" 列表 -->
+        <div id="SelectLicenses" style="display:none">
+          <%- include('./select-licenses') %>
+        </div>
+        <!-- "许可证" 已选择，是否跳转购物车 -->
+        <div id="HadSelect" style="display:none">
+          <%- include('./index-had-selected') %>
         </div>
       </div>
     </div>
-    <!-- 音频片段 -->
-    <%- include('./audioList') %>
-    <%- include('./list-no') %>
-    <!-- 分页按钮 -->
-    <%- include('../component/pageButton') %>
-    <!-- 添加到购物车-选择 "许可证" 列表 -->
-    <div id="SelectLicenses" style="display:none">
-      <%- include('./select-licenses') %>
-    </div>
-    <!-- "许可证" 已选择，是否跳转购物车 -->
-    <div id="HadSelect" style="display:none">
-      <%- include('./index-had-selected') %>
-    </div>
-  </div>
-</div>

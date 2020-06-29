@@ -6,8 +6,10 @@ const UserModel = require('../models/users')
 const checkNotLogin = require('../middlewares/check').checkNotLogin
 
 // GET signin 登录页
-router.get('/', checkNotLogin, function(req, res, next) {
-  res.render('signin',{ title: '登录' });
+router.get('/', checkNotLogin, function (req, res, next) {
+  res.render('signin', {
+    title: '登录'
+  });
 });
 
 // POST /signin 用户登录

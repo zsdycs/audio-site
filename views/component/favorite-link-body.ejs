@@ -9,33 +9,33 @@
 </head>
 
 <body>
-<!-- 移动端mobile header -->
-<%- include('./mobile-header') %>
+    <!-- 移动端mobile header -->
+    <%- include('./mobile-header') %>
 
-<!-- Sidebar Menu -->
-<%- include('./sidebar-menu') %>
+    <!-- Sidebar Menu -->
+    <%- include('./sidebar-menu') %>
 
-<!-- PC顶部fixed -->
-<%- include('./top') %>
+    <!-- PC顶部fixed -->
+    <%- include('./top') %>
 
 
-<!-- Page Contents -->
-<div class="pusher" id="pusher">
-    <div class="ui grid">
-        <div class="center aligned sixteen wide column audioList-column">
-            <!-- 音频 -->
-            <%- include('./audioList') %>
-            <%- include('./list-no') %>
+    <!-- Page Contents -->
+    <div class="pusher" id="pusher">
+        <div class="ui grid">
+            <div class="center aligned sixteen wide column audioList-column">
+                <!-- 音频 -->
+                <%- include('./audioList') %>
+                <%- include('./list-no') %>
+            </div>
+        </div>
+
+        <!-- 添加到购物车-选择列表 -->
+        <div id="SelectLicenses" style="display:none">
+            <%- include('./select-licenses') %>
+        </div>
+        <!-- 已选择，是否跳转购物车 -->
+        <div id="HadSelect" style="display:none">
+            <%- include('./index-had-selected') %>
         </div>
     </div>
-    
-    <!-- 添加到购物车-选择列表 -->
-    <div id="SelectLicenses" style="display:none">
-        <%- include('./select-licenses') %>
     </div>
-    <!-- 已选择，是否跳转购物车 -->
-    <div id="HadSelect" style="display:none">
-        <%- include('./index-had-selected') %>
-    </div>
-</div>
-</div>
