@@ -98,5 +98,7 @@ app.use(function (err, req, res, next) {
 
 // 监听端口，启动程序
 app.listen(config.port, function () {
-  console.log("\033[42;30m " +pkg.name + " \033[40;32m Web Server is available at http://localhost:" + config.port +"/ (bind address 127.0.0.1)\033[0m")
+  console.log("\n \033[42;30m" + pkg.name +
+    "\033[40;32m Web Server: http://localhost:" + config.port + " (bind address 127.0.0.1)\n" +
+    "\n \033[47;30m Press Ctrl+C to stop \033[0m \n");
 })
