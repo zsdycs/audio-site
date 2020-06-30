@@ -45,7 +45,7 @@ var tagList = new Vue({
 			success: function (data) {
 				filtrateList = JSON.parse(getCookie("filtrateTagList"))
 				// 标签第一项不为初始""，或不为不存在,filtrateList[0].tag[0] != "" &&
-				if (data[0]._id == "music") {
+				if (data.length !== 0 && data[0]._id == "music") {
 					data.splice(0, 1)
 				} else if (filtrateList[0].tag[0] != undefined) {
 					// console.log(JSON.stringify(filtrateList)+filtrateList[0].tag[0])

@@ -7,4 +7,8 @@ TODO
 ```node
 npm i  // 下载 package.json 中指明的依赖
 npm start  // 具体看package.json
+
+production:
+npm run deploy:start
+npm run deploy:stop
 ```
