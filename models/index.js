@@ -8,7 +8,6 @@ module.exports = {
   // 获取标签项
   getFiltrateTag: function getFiltrateTag(match) {
     var str = ""
-    // console.log(match)
     // match = JSON.parse(match)
     for (var i = 0; i < match.tag.length; i++) {
       str += "\"type\":\"" + match.tag[i] + "\","

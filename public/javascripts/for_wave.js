@@ -74,13 +74,11 @@ var audioList = new Vue({
                         id[i] = "#audio" + i
                     }
                     self.audioList = data
-                    // console.log(data)
                     checkAudioNum(data)
                     if (data.length == 0) {
                         $("#pagediv").css("display", "none")
                     }
                     data = JSON.stringify(data)
-                    // console.log(data)
 
                 }
             })
@@ -94,7 +92,6 @@ var audioList = new Vue({
                 cache: false,
                 timeout: 5000,
                 success: function (data) {
-                    // console.log(JSON.parse(JSON.stringify(data)))
                     var dataList = []
                     for (var i = 0; i < data.length; i++) {
                         data[i].audioInfo[0].div_id = "audio" + i
@@ -106,7 +103,7 @@ var audioList = new Vue({
                     checkAudioNum(dataList)
                 },
                 error: function (err) {
-                    console.log(JSON.stringify(err));
+                    console.error(JSON.stringify(err));
                 }
             })
         }
@@ -149,12 +146,9 @@ var audioList = new Vue({
                             cache: false,
                             timeout: 5000,
                             success: function (data) {
-                                // console.log(JSON.parse(JSON.stringify(data)))
                                 if (data.status == "nosigin") {
-                                    // console.log("这是个没有登录的用户")
                                 } else {
                                     // 已登录
-                                    // console.log(JSON.stringify(data))
                                     $(".like-a").each(function () {
                                         for (var i = 0; i < data.length; i++) {
                                             if ($(this).data("audio_id") == data[i].audioId) {
@@ -166,7 +160,7 @@ var audioList = new Vue({
                                 }
                             },
                             error: function (err) {
-                                console.log(JSON.stringify(err));
+                                console.error(JSON.stringify(err));
                             }
                         })
                     }
@@ -237,7 +231,6 @@ $(function () {
                 success: function (data) {
                     if (data.status == "success") {
                         self.removeClass("add-like")
-                        // console.log("取消收藏成功")
                     }
                 }
             })
@@ -255,7 +248,6 @@ $(function () {
                         window.location.href = '/signin';
                     } else if (data.status == "success") {
                         self.addClass("add-like")
-                        // console.log("添加收藏成功")
                     }
                 }
             })
@@ -294,7 +286,6 @@ $(document).on('click', '.btnPlay', function () {
         $(playing_id).parent().prev().prev().addClass("btnPlay")
         for (var i = 0; i < 10; i++) {
             if (id == "audio" + i) {
-                // console.log(i)
                 // 开始播放
                 wave[i].play();
                 // 修改图标 -> 移除内容 -> 增加内容
@@ -307,7 +298,6 @@ $(document).on('click', '.btnPlay', function () {
     } else {
         for (var i = 0; i < wave.length; i++) {
             if (id == "audio" + i) {
-                // console.log(i)
                 // 开始播放
                 wave[i].play();
                 // 修改图标 -> 移除内容 -> 增加内容
@@ -356,8 +346,6 @@ function wave_audioprocess() {
             for (var i = 0; i < wave.length; i++) {
                 wave[i].getDuration()
                 var id = "#audio" + i
-                // console.log(id)
-                // console.info(secondToDate(wave[i].getCurrentTime()))
                 $(id).parent().prev().text(secondToDate(wave[i].getCurrentTime()))
             }
         })

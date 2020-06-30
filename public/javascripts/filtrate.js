@@ -29,10 +29,8 @@ var tagList = new Vue({
 		var tag = JSON.parse(getCookie("filtrateTagList"))[0].tag,
 			match = {};
 		match.tag = tag
-		// console.log(JSON.stringify(match))
 		// 去除末尾的逗号
 		// match = match.substring(0, match.lastIndexOf(','));
-		// console.log(match)
 		var self = this;
 		$.ajax({
 			type: "post",
@@ -48,14 +46,12 @@ var tagList = new Vue({
 				if (data.length !== 0 && data[0]._id == "music") {
 					data.splice(0, 1)
 				} else if (filtrateList[0].tag[0] != undefined) {
-					// console.log(JSON.stringify(filtrateList)+filtrateList[0].tag[0])
 					for (var i = 0; i < data.length; i++) {
 						// 获得，到music的项，不在cookie的，去掉
 						if (data[i]._id == "music") {
 							data.splice(i, 1)
 							var k = 0
 							for (var j = filtrateList[0].tag.length; j < i; j++) {
-								// console.log("--->>>"+j)
 								data.splice(j - k, 1)
 								k++
 							}
@@ -65,9 +61,7 @@ var tagList = new Vue({
 				}
 
 				self.tagList = data
-				// console.log("1---"+data)
 				data = JSON.stringify(data)
-				// console.log("2---"+data)
 			}
 		})
 	},
@@ -76,7 +70,7 @@ var tagList = new Vue({
 			this.$nextTick(function () {
 					tagListisloading()
 					FiltrateAndAudioByCookie()
-					// console.log('v-for渲染已经完成')
+					// console.log('v-for 渲染已经完成')
 				}
 
 			)

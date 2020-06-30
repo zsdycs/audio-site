@@ -38,7 +38,6 @@ module.exports = {
 
   // 通过文档 id，删除一条订单的文档
   removeOneOrderById: function removeOneOrderById(find) {
-    // console.log(find)
     return Order
       .deleteOne(find)
       .exec()

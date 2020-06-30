@@ -3,9 +3,8 @@ $(function () {
     // var data=getCookie("shoppingcart")
     // data=JSON.parse(data)
     // data=JSON.stringify(data)
-    // console.log(">>>>:"+data)
 
-    // 判断shoppingcart是否有商品
+    // 判断 shoppingcart 是否有商品
     checkshoppingcartnum()
 
     // 删除商品
@@ -15,10 +14,8 @@ $(function () {
         cartList = JSON.parse(cartList)
         // 遍历cookie中相同的id商品
         for (var i = 0; i < cartList.length; i++) {
-            console.log(cartList[i].audioId + "---" + id)
             if (cartList[i].audioId == id) {
                 cartList.splice(i, 1) // 移除对应位置的商品信息
-                console.log(i)
                 break;
             }
         }
@@ -29,7 +26,6 @@ $(function () {
         var cartList = getCookie("shoppingcart")
         cartList = JSON.parse(cartList)
         cartList = JSON.stringify(cartList)
-        // console.log("new-del-com>>>>>:"+cartList)
         $(this).parent().parent().parent().parent().parent().parent().remove()
         checkshoppingcartnum()
     })
@@ -48,7 +44,6 @@ $(function () {
         var cartList = getCookie("shoppingcart")
         cartList = JSON.parse(cartList)
         cartList = JSON.stringify(cartList)
-        // console.log("new-del-com>>>>>:"+cartList)
         $(".shopping-cart__group").remove()
         checkshoppingcartnum()
     })
@@ -125,7 +120,6 @@ $(function () {
         // 局部刷新
         Vue.set(List.List = data)
         data = JSON.stringify(data)
-        // console.log(">>>>:"+data)
         $("#select-price").empty()
         $("#SelectLicenses").css("display", "none")
         $('body').css('overflow', 'auto');
@@ -162,11 +156,11 @@ $(function () {
                 } else if (data.status == "nosuccess") {
                     window.location.reload()
                 } else(
-                    console.log("非法请求" + data.status)
+                    console.error("非法请求" + data.status)
                 )
             },
             error: function (err) {
-                console.log(JSON.stringify(err));
+                console.error(JSON.stringify(err));
             }
         })
     })

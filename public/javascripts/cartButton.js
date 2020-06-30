@@ -13,7 +13,6 @@ $(document).on("click", ".add-cart-button", function () {
   var audio_id = $(this).data("audio_id")
   $("#select-price").append("<option value =\"" + one + "\">一次性 - ￥" + one + "</option>")
   $("#select-price").append("<option value =\"" + unlimited + "\">无限制 - ￥" + unlimited + "</option>")
-  // console.log(name)
   $("#selected-audio-name").text(name)
 
   $(".s-button").data("audio_id", audio_id)
@@ -36,7 +35,6 @@ $(document).on("click", "#select-price", function () {
   } else {
     $("#selected-license").text("无限制")
   }
-  // console.log($("#select-price").val())
 })
 // 取消加入
 $(document).on("click", ".c-button", function () {
@@ -46,7 +44,6 @@ $(document).on("click", ".c-button", function () {
 })
 // 确认加入
 $(document).on("click", ".s-button", function () {
-  // console.log($("#select-price").val())
   $("#SelectLicenses").css("display", "none")
   $("#HadSelect").css("display", "block")
   // 绑定添加成功弹框数据
@@ -98,7 +95,6 @@ $(document).on("click", ".s-button", function () {
   var data = getCookie("shoppingcart")
   data = JSON.parse(data)
   data = JSON.stringify(data)
-  // console.log(">>>>:"+data)
 
 
 })

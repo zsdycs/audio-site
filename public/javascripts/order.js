@@ -13,13 +13,12 @@ $(document).on("click", "#del-all", function () {
         cache: false,
         timeout: 5000,
         success: function (data) {
-            // console.log(JSON.stringify(data));
             $(".cart-list").css("display", "none")
             $(".cart-no").css("display", "block")
             $(".head-title").text("一条音频都没购买")
         },
         error: function (err) {
-            console.log(JSON.stringify(err));
+            console.error(JSON.stringify(err));
         }
     })
 })
@@ -37,11 +36,10 @@ $(document).on("click", ".btn-link", function () {
         cache: false,
         timeout: 5000,
         success: function (data) {
-            // console.log(JSON.stringify(data));
             window.location.reload()
         },
         error: function (err) {
-            console.log(JSON.stringify(err));
+            console.error(JSON.stringify(err));
         }
     })
 })

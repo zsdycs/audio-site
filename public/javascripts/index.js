@@ -88,7 +88,6 @@ $.ajax({
   cache: false,
   timeout: 5000,
   success: function (data) {
-    // console.log(JSON.stringify(data))
     if (data.length == 0) {
       var maxNumPage = {
         max_price: 1998,
@@ -131,7 +130,6 @@ $(function () {
   $(document).on("click", ".rank-a", function () {
     $("#audioList").addClass("loader")
     $(".audioLis_ul").css("display", "none")
-    // console.log($(this).text()) 
     // ajax 排序请求局部刷新 audioList
     // 修改列表标题
     $('.dropdown-title').html($(this).text())
@@ -172,10 +170,8 @@ $(function () {
         $("wave").remove()
         Vue.set(audioList.audioList = data)
         // self.audioList = data
-        // console.log(data)
 
         data = JSON.stringify(data)
-        // console.log(data)
 
       }
     })
@@ -246,15 +242,13 @@ function getFiltrateByCookieForRtopList() {
       }
 
       self.labeltagList = data
-      // console.log("1---"+data)
       data = JSON.stringify(data)
-      // console.log("2---"+data)
     },
     watch: {
       labeltagList: function () {
         this.$nextTick(function () {
             labeltagListisloading()
-            // console.log('v-for渲染已经完成')
+            // console.log('v-for 渲染已经完成')
           }
 
         )
@@ -341,10 +335,8 @@ $(document).on("click", ".input-check-tag", function () {
     filtrateList[0].searchValue = ""
     filtrateList[0].tag[filtrateList[0].tag.length] = $(this).next().text()
     document.cookie = "filtrateTagList=" + JSON.stringify(filtrateList) + ";expires=" + exp.toGMTString() + ";path=/";
-    // console.log("ed:"+$(this).next().text())
   } else {
     // 取消选中修改 cookie
-    // console.log("didn't:"+$(this).next().text())
     var exp = new Date();
     exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
     // 流程，取出标签，遍历找到数组所在位置，移除位置的值
@@ -362,22 +354,17 @@ $(document).on("click", ".input-check-tag", function () {
 })
 // 价格--------------------
 $(document).on("click", ".price_button", function () {
-  // 通过 cookie 获得最大价格》》》
   maxNumPagelist = JSON.parse(getCookie("maxNumPage"))
   var price_max = maxNumPagelist[0].max_price
 
   if ($(".price-l-input").val() != "" && $(".price-r-input").val() == "") {
-    // console.log(1)
     todo($(".price-l-input").val(), price_max, price_max)
   } else if ($(".price-l-input").val() == "" && $(".price-r-input").val() != "") {
-    // console.log(2)
     todo(1, $(".price-r-input").val(), price_max)
 
   } else if ($(".price-r-input").val() == "" && $(".price-l-input").val() == "") {
-    // console.log(3)
     todo(1, price_max, price_max)
   } else {
-    // console.log(4)
     todo($(".price-l-input").val(), $(".price-r-input").val(), price_max)
   }
 
@@ -391,14 +378,12 @@ $(document).on("click", ".price_button", function () {
     var price_l = l,
       price_r = r
     if (parseInt(price_l) > parseInt(price_r)) {
-      console.log("l:" + price_l + "---r:" + price_r)
       $(".price-r-input").val(max)
       price_r = $(".price-r-input").val()
     }
     // 写入 cookie
     filtrateList[0].price[0] = price_l, filtrateList[0].price[1] = price_r
     document.cookie = "filtrateTagList=" + JSON.stringify(filtrateList) + ";expires=" + exp.toGMTString() + ";path=/";
-    // console.log("min:"+price_l+"  max:"+price_r)
     // 上传 cookie（上传所有筛选项，返回音频列表与可筛选项，刷新列表，可复用函数）
     window.location.reload()
   }

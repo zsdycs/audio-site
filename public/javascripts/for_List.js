@@ -18,7 +18,6 @@ var List = new Vue({
         // 根据地址请求列表数据
         var self = this;
         var url = GetUrlRelativePath();
-        // console.log("我知道啦，是这里:"+url)
         if (url == "/cart") {
             // 将 cookie 数据渲染到购物车表
             var cartdata = getCookie("shoppingcart")
@@ -36,12 +35,11 @@ var List = new Vue({
                 cache: false,
                 timeout: 5000,
                 success: function (data) {
-                    // console.log(JSON.parse(JSON.stringify(data)))
                     self.List = data
                     checkOrderNum(data)
                 },
                 error: function (err) {
-                    console.log(JSON.stringify(err));
+                    console.error(JSON.stringify(err));
                 }
             })
         }

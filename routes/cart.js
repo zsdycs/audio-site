@@ -10,12 +10,10 @@ router.get('/', function (req, res, next) {
     title: '购物车'
   });
 })
-// POST,结算
+// POST 结算
 router.post('/', checkLogin, function (req, res, next) {
-  // console.log(req.body.length);
   if (req.body.length != 0) {
     for (var i = 0; i < req.body.length; i++) {
-      // console.log(req.session.user._id)
       req.body[i].userId = req.session.user._id
       var onerow = req.body[i]
       // 用户信息写入数据库
@@ -29,7 +27,7 @@ router.post('/', checkLogin, function (req, res, next) {
           })
         })
         .catch(function (e) {
-          // id被占用返回nosuccess
+          // id 被占用返回 nosuccess
           if (e.message.match('duplicate key')) {
             req.flash('error', '存在已购买的音频')
             res.send({
@@ -39,7 +37,7 @@ router.post('/', checkLogin, function (req, res, next) {
         })
     }
   } else {
-    // 非法请求length为0
+    // 非法请求 length 为 0
     res.send({
       "status": "非法请求"
     })

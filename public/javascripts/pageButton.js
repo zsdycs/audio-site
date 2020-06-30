@@ -50,10 +50,8 @@ $(function () {
           $("wave").remove()
           Vue.set(audioList.audioList = data)
           // self.audioList = data
-          // console.log(data)
 
           data = JSON.stringify(data)
-          // console.log(data)
 
         }
       })
