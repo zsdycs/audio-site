@@ -140,7 +140,7 @@ $(function () {
             cache: false,
             timeout: 5000,
             success: function (data) {
-                if (data.status == "nosigin") {
+                if (data.status == "notLoggedIn") {
                     window.location.href = '/signin';
                 } else if (data.status == "success") {
                     // 清空数组

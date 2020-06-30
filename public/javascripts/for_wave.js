@@ -146,7 +146,7 @@ var audioList = new Vue({
                             cache: false,
                             timeout: 5000,
                             success: function (data) {
-                                if (data.status == "nosigin") {
+                                if (data.status == "notLoggedIn") {
                                 } else {
                                     // 已登录
                                     $(".like-a").each(function () {
@@ -244,7 +244,7 @@ $(function () {
                 cache: false,
                 timeout: 5000,
                 success: function (data) {
-                    if (data.status == "nosigin") {
+                    if (data.status == "notLoggedIn") {
                         window.location.href = '/signin';
                     } else if (data.status == "success") {
                         self.addClass("add-like")
