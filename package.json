@@ -25,7 +25,7 @@
     "express-winston": "3.1.0",
     "http-errors": "1.6.2",
     "moment": "2.24.0",
-    "mongodb": "~3.3.2",
+    "mongodb": "~3.6.1",
     "mongolass": "~4.4.6",
     "objectid-to-timestamp": "1.3.0",
     "sha1": "1.1.1",
