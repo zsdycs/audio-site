@@ -15,7 +15,7 @@
     "@tensorflow/tfjs": "1.0.2",
     "@types/core-js": "2.5.4",
     "body-parser": "1.18.3",
-    "config-lite": "2.1.0",
+    "config-lite": "3.0.0",
     "connect-flash": "0.1.1",
     "connect-mongo": "2.0.3",
     "connect-multiparty": "2.2.0",
