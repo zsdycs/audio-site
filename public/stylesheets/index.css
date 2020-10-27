@@ -1,355 +1,400 @@
-
-
 /* .hidden.menu {
 display: none;
 } */
 
-.two.column.stackable.ui.grid .thirteen.wide.column{
-    text-align: center;
-}
-.ui.label.labeltag{
-    margin-bottom: 4px;
+.two.column.stackable.ui.grid .thirteen.wide.column {
+  text-align: center;
 }
 
-.two.column.stackable.ui.grid{
-    margin: auto;
+.ui.label.labelTag {
+  margin-bottom: 4px;
 }
-.two.column.stackable.ui.grid .ui.list{
-    margin-top: 5.5px;
-    margin-bottom: 24px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    max-height: 267px;
+
+.two.column.stackable.ui.grid {
+  margin: auto;
+}
+
+.two.column.stackable.ui.grid .ui.list {
+  margin-top: 5.5px;
+  margin-bottom: 24px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 267px;
 }
 
 
 .masthead.segment {
-min-height: 700px;
-padding: 1em 0em;
+  min-height: 700px;
+  padding: 1em 0em;
 }
-.ui .large .top .fixed .menu .transition .visible{
-display: flex !important;
+
+.ui .large .top .fixed .menu .transition .visible {
+  display: flex !important;
 }
 
 .masthead .logo.item img {
-margin-right: 1em;
+  margin-right: 1em;
 }
-.two.column.stackable.ui.grid .ui.labels{
-    margin-left: 10px;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -ms-flex-align: baseline;
-    align-items: baseline;
+
+.two.column.stackable.ui.grid .ui.labels {
+  margin-left: 10px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: baseline;
+  align-items: baseline;
 }
+
 .masthead .ui.menu .ui.button {
-margin-left: 0.5em;
+  margin-left: 0.5em;
 }
-.ui.mini.menu{
-    margin: 0 16px;
+
+.ui.mini.menu {
+  margin: 0 16px;
 }
+
 ._1X0WU {
-    -ms-flex-item-align: baseline;
-    align-self: baseline;
-    font-size: 16px;
-    font-family: -apple-system,BlinkMacSystemFont,segoe ui,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,arial,sans-serif;
-    color: #333;
-    -webkit-font-smoothing: subpixel-antialiased;
-    font-weight: 400;
-    font-size: 14px;
-    color: #4d4d4d;
-    margin: 0;
-    margin-right: 8px!important;
-    line-height: 32px;
+  -ms-flex-item-align: baseline;
+  align-self: baseline;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, arial, sans-serif;
+  color: #333;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-weight: 400;
+  font-size: 14px;
+  color: #4d4d4d;
+  margin: 0;
+  margin-right: 8px !important;
+  line-height: 32px;
 }
+
 ._3HYTF {
-    font-weight: 700;
+  font-weight: 700;
 }
+
 .masthead h1.ui.header {
-margin-top: 2em;
-margin-bottom: 0em;
-font-size: 4em;
-font-weight: normal;
+  margin-top: 2em;
+  margin-bottom: 0em;
+  font-size: 4em;
+  font-weight: normal;
 }
 
 .masthead h2 {
-font-size: 1.7em;
-font-weight: normal;
+  font-size: 1.7em;
+  font-weight: normal;
 }
 
 .ui.vertical.stripe {
-padding: 8em 0em;
+  padding: 8em 0em;
 }
 
 .ui.vertical.stripe h3 {
-font-size: 2em;
+  font-size: 2em;
 }
 
 .ui.vertical.stripe .button+h3,
 .ui.vertical.stripe p+h3 {
-margin-top: 3em;
+  margin-top: 3em;
 }
 
 .ui.vertical.stripe .floated.image {
-clear: both;
+  clear: both;
 }
 
 .ui.vertical.stripe p {
-font-size: 1.33em;
+  font-size: 1.33em;
 }
 
 .ui.vertical.stripe .horizontal.divider {
-margin: 3em 0em;
+  margin: 3em 0em;
 }
 
 .quote.stripe.segment {
-padding: 0em;
+  padding: 0em;
 }
+
 /* 左侧筛选列表 */
-.filtrate-div{
-    margin-bottom: 16px;
-    border-bottom: 1px solid #e6e6e6;
+.filtrate-div {
+  margin-bottom: 16px;
+  border-bottom: 1px solid #e6e6e6;
 }
+
 .filtrate-div svg {
-    transition: all .4s ease-out;
-    transform: rotate(0deg);
+  transition: all .4s ease-out;
+  transform: rotate(0deg);
 }
-.filtrate-button{
-    border-radius: 2px;
-    cursor: pointer;
-    font-family: -apple-system,BlinkMacSystemFont,segoe ui,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,arial,sans-serif;
-    -webkit-font-smoothing: subpixel-antialiased;
-    font-size: 14px;
-    transition: all .2s ease-in;
-    box-shadow: 1px 1px 3px -1px #e6e6e6;
-    background-color: transparent;
-    border: none;
-    color: #b3b3b3;
-    box-shadow: none;
-    padding: 0;
-    width: 100%;
-    display: block;
-    outline:none;
+
+.filtrate-button {
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, arial, sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-size: 14px;
+  transition: all .2s ease-in;
+  box-shadow: 1px 1px 3px -1px #e6e6e6;
+  background-color: transparent;
+  border: none;
+  color: #b3b3b3;
+  box-shadow: none;
+  padding: 0;
+  width: 100%;
+  display: block;
+  outline: none;
 }
-.filtrate-button div{
-    margin-top: 4px;
-    margin-bottom: 16px;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+
+.filtrate-button div {
+  margin-top: 4px;
+  margin-bottom: 16px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
-.filtrate-button div h3{
-    margin: 0px;
-    font-family: -apple-system,BlinkMacSystemFont,segoe ui,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,arial,sans-serif;
-    -webkit-font-smoothing: subpixel-antialiased;
-    font-size: 16px;
-    color: #4d4d4d;
-    font-weight: 500;
+
+.filtrate-button div h3 {
+  margin: 0px;
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, arial, sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-size: 16px;
+  color: #4d4d4d;
+  font-weight: 500;
 }
-.filtrate-button svg{
-    transition: all .4s ease-out;
-    transform: rotate(0deg);
+
+.filtrate-button svg {
+  transition: all .4s ease-out;
+  transform: rotate(0deg);
 }
-.open-filtrate svg{
-    transform: rotate(180deg);
+
+.open-filtrate svg {
+  transform: rotate(180deg);
 }
-@media only screen and (max-width: 767px){
-    .filtrate-div{
+
+@media only screen and (max-width: 767px) {
+  .filtrate-div {
     margin-left: 4%;
     float: left;
     width: 44%;
+  }
 }
-}
+
 ._25r2q {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    padding-bottom: 24px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-bottom: 24px;
 }
+
 ._3BYKu {
-    position: relative;
+  position: relative;
 }
 
 ._1hMyj {
-    position: absolute;
-    top: 6px;
-    left: 8px;
+  position: absolute;
+  top: 6px;
+  left: 8px;
 }
+
 ._3yPNI {
-    font-family: -apple-system,BlinkMacSystemFont,segoe ui,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,arial,sans-serif;
-    -webkit-font-smoothing: subpixel-antialiased;
-    font-size: 16px;
-    color: #1a1a1a;
-    border: 2px solid #e6e6e6;
-    background-color: #fff;
-    -webkit-appearance: none;
-    font-size: 12px;
-    border-width: 1px;
-    border-radius: 2px;
-    padding: 8px;
-    padding-left: 22px;
-    width: 100%;
-    height: 32px;
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, arial, sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-size: 16px;
+  color: #1a1a1a;
+  border: 2px solid #e6e6e6;
+  background-color: #fff;
+  -webkit-appearance: none;
+  font-size: 12px;
+  border-width: 1px;
+  border-radius: 2px;
+  padding: 8px;
+  padding-left: 22px;
+  width: 100%;
+  height: 32px;
 }
+
 ._2zSyE {
-    margin: 0 4px;
+  margin: 0 4px;
 }
 
 ._3WEcW {
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    font-family: -apple-system,BlinkMacSystemFont,segoe ui,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,arial,sans-serif;
-    -webkit-font-smoothing: subpixel-antialiased;
-    font-size: 14px;
-    transition: all .2s ease-in;
-    box-shadow: 1px 1px 3px -1px #e6e6e6;
-    background-color: #e6e6e6;
-    color: #666;
-    width: 37%;
-    height: 32px;
-    margin-left: 8px;
-    text-align: center;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, arial, sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-size: 14px;
+  transition: all .2s ease-in;
+  box-shadow: 1px 1px 3px -1px #e6e6e6;
+  background-color: #e6e6e6;
+  color: #666;
+  width: 37%;
+  height: 32px;
+  margin-left: 8px;
+  text-align: center;
 }
-._3WEcW:hover{
-    background-color: rgb(240, 240, 240);
+
+._3WEcW:hover {
+  background-color: rgb(240, 240, 240);
 }
-.grouped.fields{
-    margin-bottom: 24px;
+
+.grouped.fields {
+  margin-bottom: 24px;
 }
-.grouped.fields .field{
-    /* margin-bottom: 4px; */
-    display: -ms-flexbox;
-    display: flex;
-    line-height: 32px;
-    margin-right: 0px;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
+
+.grouped.fields .field {
+  /* margin-bottom: 4px; */
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 32px;
+  margin-right: 0px;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
-.filtrate-div .ui.radio.checkbox{
-    padding-top: 7px;
+
+.filtrate-div .ui.radio.checkbox {
+  padding-top: 7px;
 }
+
 /* 筛选列表结束 */
-.ui.checkbox{
-    display: flex;
-    justify-content: space-between;
-    margin-right: 24px;
+.ui.checkbox {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 24px;
 }
+
 .quote.stripe.segment .grid .column {
-padding-top: 5em;
-padding-bottom: 5em;
+  padding-top: 5em;
+  padding-bottom: 5em;
 }
 
 
 @media only screen and (max-width: 700px) {
-    
-
-    
 
 
-    .masthead.segment {
-      min-height: 350px;
-    }
 
-    .masthead h1.ui.header {
-      font-size: 2em;
-      margin-top: 104px;
-    }
 
-    .masthead h2 {
-      margin-top: 0.5em;
-      font-size: 1em;
-    }
+
+  .masthead.segment {
+    min-height: 350px;
+  }
+
+  .masthead h1.ui.header {
+    font-size: 2em;
+    margin-top: 104px;
+  }
+
+  .masthead h2 {
+    margin-top: 0.5em;
+    font-size: 1em;
+  }
 }
 
 
 
 /* 移动端顶栏-搜索结束 */
 
-.fixed.inverted.menu{
-    display: none;
-}
-#pusher .masthead:after{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    content: '';
-    background-size: cover;
-    opacity: 0.45;
-}
-#pusher .vertical.masthead,#pusher .masthead:after {
-    -ms-transition: background 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s, opacity 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s;
-    -moz-transition: background 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s, opacity 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s;
-    -webkit-transition: background 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s, opacity 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s;
-    transition: background 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s, opacity 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s;
-}
-#pusher .masthead{
-    background-color: #000000;  
-    -webkit-transform: translate3d(0, 0, 0); 
-    transform: translate3d(0, 0, 0);
-}
-#pusher .inverted.vertical.masthead.bg1:after {
-    background-image: url("/images/index/1.jpg");
-  }
-  #pusher .inverted.vertical.masthead.bg2:after {
-    background-image: url("/images/index/2.jpg");
-  }
-  #pusher .inverted.vertical.masthead.bg3:after {
-    background-image: url("/images/index/3.jpg");
-  }
-  #pusher .inverted.vertical.masthead.bg4:after {
-    background-image: url("/images/index/4.jpg");
-  }
-  #pusher .inverted.vertical.masthead.bg5:after {
-    background-image: url("/images/index/5.jpg");
-  }
-  #pusher .inverted.vertical.masthead.bg6:after {
-    background-image: url("/images/index/6.jpg");
-  }
-  #pusher .inverted.vertical.masthead.bg7:after {
-    background-image: url("/images/index/7.jpg");
-  }
-  #pusher .inverted.vertical.masthead.bg8:after {
-    background-image: url("/images/index/8.jpg");
-  }
-  #pusher .inverted.vertical.masthead.bg9:after {
-    background-image: url("/images/index/9.jpg");
-  }
-  #pusher .inverted.vertical.masthead.bg10:after {
-    background-image: url("/images/index/10.jpg");
-  }
-  #pusher .inverted.vertical.masthead.bg11:after {
-    background-image: url("/images/index/11.jpg");
-  }
-  #pusher .inverted.vertical.masthead.bg12:after {
-    background-image: url("/images/index/12.jpg");
-  }
-  #pusher .inverted.vertical.masthead.bg13:after {
-    background-image: url("/images/index/13.jpg");
-  }
-  #pusher .inverted.vertical.masthead.bg14:after {
-    background-image: url("/images/index/14.jpg");
-  }
-  #pusher .inverted.vertical.masthead.bg15:after {
-    background-image: url("/images/index/15.jpg");
-  }
-  #pusher .inverted.vertical.masthead.bg16:after {
-    background-image: url("/images/index/16.jpg");
-  }  
-/* pc顶栏 */
-.ui.inverted.menu.PCtop{
-    background: #ffffff00;
+.fixed.inverted.menu {
+  display: none;
 }
 
+#pusher .masthead:after {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  content: '';
+  background-size: cover;
+  opacity: 0.45;
+}
+
+#pusher .vertical.masthead,
+#pusher .masthead:after {
+  -ms-transition: background 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s, opacity 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s;
+  -moz-transition: background 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s, opacity 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s;
+  -webkit-transition: background 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s, opacity 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s;
+  transition: background 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s, opacity 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s;
+}
+
+#pusher .masthead {
+  background-color: #000000;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+#pusher .inverted.vertical.masthead.bg1:after {
+  background-image: url("/images/index/1.jpg");
+}
+
+#pusher .inverted.vertical.masthead.bg2:after {
+  background-image: url("/images/index/2.jpg");
+}
+
+#pusher .inverted.vertical.masthead.bg3:after {
+  background-image: url("/images/index/3.jpg");
+}
+
+#pusher .inverted.vertical.masthead.bg4:after {
+  background-image: url("/images/index/4.jpg");
+}
+
+#pusher .inverted.vertical.masthead.bg5:after {
+  background-image: url("/images/index/5.jpg");
+}
+
+#pusher .inverted.vertical.masthead.bg6:after {
+  background-image: url("/images/index/6.jpg");
+}
+
+#pusher .inverted.vertical.masthead.bg7:after {
+  background-image: url("/images/index/7.jpg");
+}
+
+#pusher .inverted.vertical.masthead.bg8:after {
+  background-image: url("/images/index/8.jpg");
+}
+
+#pusher .inverted.vertical.masthead.bg9:after {
+  background-image: url("/images/index/9.jpg");
+}
+
+#pusher .inverted.vertical.masthead.bg10:after {
+  background-image: url("/images/index/10.jpg");
+}
+
+#pusher .inverted.vertical.masthead.bg11:after {
+  background-image: url("/images/index/11.jpg");
+}
+
+#pusher .inverted.vertical.masthead.bg12:after {
+  background-image: url("/images/index/12.jpg");
+}
+
+#pusher .inverted.vertical.masthead.bg13:after {
+  background-image: url("/images/index/13.jpg");
+}
+
+#pusher .inverted.vertical.masthead.bg14:after {
+  background-image: url("/images/index/14.jpg");
+}
+
+#pusher .inverted.vertical.masthead.bg15:after {
+  background-image: url("/images/index/15.jpg");
+}
+
+#pusher .inverted.vertical.masthead.bg16:after {
+  background-image: url("/images/index/16.jpg");
+}
+
+/* pc顶栏 */
+.ui.inverted.menu.PCtop {
+  background: #ffffff00;
+}

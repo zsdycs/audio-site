@@ -1,4 +1,4 @@
-const AudiofiltrateTag = require('../lib/mongo').AudiofiltrateTag
+const AudioFiltrateTag = require('../lib/mongo').AudioFiltrateTag
 const AudioList = require('../lib/mongo').AudioList
 const AudioNum = require('../lib/mongo').AudioNum
 const SearchAudio = require('../lib/mongo').SearchAudio
@@ -15,7 +15,7 @@ module.exports = {
     // 去除末尾的逗号
     str = str.substring(0, str.lastIndexOf(','));
     str = eval("({" + str + "})")
-    return AudiofiltrateTag
+    return AudioFiltrateTag
       // str:{"type":"xxxx","type":"xxx"}
       .aggregate(
         [{
@@ -47,7 +47,7 @@ module.exports = {
     // find = {tag:[xx,xx],price:[xx,xx],time:xx,sort:xx,page:xx}
     // type ={ $eq: "music",$eq: "music"}
     // price = {$gte:1,$lte:1998}
-    // sort = 排序类型price...
+    // sort = 排序类型 price...
     // page = num
     var type = "",
       price = "",
@@ -68,12 +68,12 @@ module.exports = {
     const t = new Date()
     const today = new Date(t.getFullYear(), t.getMonth() + 1, t.getDate());
 
-    const sevenday = new Date(today.getTime() - 168 * 60 * 60 * 1000);
-    const thirtyday = new Date(today.getTime() - 720 * 60 * 60 * 1000);
-    const ninetyday = new Date(today.getTime() - 2160 * 60 * 60 * 1000);
+    const sevenDay = new Date(today.getTime() - 168 * 60 * 60 * 1000);
+    const thirtyDay = new Date(today.getTime() - 720 * 60 * 60 * 1000);
+    const ninetyDay = new Date(today.getTime() - 2160 * 60 * 60 * 1000);
     const year = new Date(today.getTime() - 9760 * 60 * 60 * 1000);
 
-    function whattime(time) {
+    function whatTime(time) {
       // 时间设置
       if (time == 1) {
         // 所有
@@ -81,15 +81,15 @@ module.exports = {
         return end
       } else if (time == 2) {
         // 7 天
-        const end = new Date(sevenday.getFullYear(), sevenday.getMonth() + 1, sevenday.getDate());
+        const end = new Date(sevenDay.getFullYear(), sevenDay.getMonth() + 1, sevenDay.getDate());
         return end
       } else if (time == 3) {
         // 30 天
-        const end = new Date(thirtyday.getFullYear(), thirtyday.getMonth() + 1, thirtyday.getDate());
+        const end = new Date(thirtyDay.getFullYear(), thirtyDay.getMonth() + 1, thirtyDay.getDate());
         return end
       } else if (time = 4) {
         // 90 天
-        const end = new Date(ninetyday.getFullYear(), ninetyday.getMonth() + 1, ninetyday.getDate());
+        const end = new Date(ninetyDay.getFullYear(), ninetyDay.getMonth() + 1, ninetyDay.getDate());
         return end
       } else if (time = 5) {
         // 一年
@@ -108,7 +108,7 @@ module.exports = {
           },
           "price_one": price,
           "createTime": {
-            $gte: whattime(time),
+            $gte: whatTime(time),
             $lte: today
           }
         })
@@ -126,7 +126,7 @@ module.exports = {
           },
           "price_one": price,
           "createTime": {
-            $gte: whattime(time),
+            $gte: whatTime(time),
             $lte: today
           }
         })
@@ -144,7 +144,7 @@ module.exports = {
           },
           "price_one": price,
           "createTime": {
-            $gte: whattime(time),
+            $gte: whatTime(time),
             $lte: today
           }
         })
@@ -161,7 +161,7 @@ module.exports = {
           },
           "price_one": price,
           "createTime": {
-            $gte: whattime(time),
+            $gte: whatTime(time),
             $lte: today
           }
         })
@@ -200,12 +200,12 @@ module.exports = {
     const t = new Date()
     const today = new Date(t.getFullYear(), t.getMonth() + 1, t.getDate());
 
-    const sevenday = new Date(today.getTime() - 168 * 60 * 60 * 1000);
-    const thirtyday = new Date(today.getTime() - 720 * 60 * 60 * 1000);
-    const ninetyday = new Date(today.getTime() - 2160 * 60 * 60 * 1000);
+    const sevenDay = new Date(today.getTime() - 168 * 60 * 60 * 1000);
+    const thirtyDay = new Date(today.getTime() - 720 * 60 * 60 * 1000);
+    const ninetyDay = new Date(today.getTime() - 2160 * 60 * 60 * 1000);
     const year = new Date(today.getTime() - 9760 * 60 * 60 * 1000);
 
-    function whattime(time) {
+    function whatTime(time) {
       // 时间设置
       if (time == 1) {
         // 所有
@@ -213,15 +213,15 @@ module.exports = {
         return end
       } else if (time == 2) {
         // 7 天
-        const end = new Date(sevenday.getFullYear(), sevenday.getMonth(), sevenday.getDate());
+        const end = new Date(sevenDay.getFullYear(), sevenDay.getMonth(), sevenDay.getDate());
         return end
       } else if (time == 3) {
         // 30 天
-        const end = new Date(thirtyday.getFullYear(), thirtyday.getMonth(), thirtyday.getDate());
+        const end = new Date(thirtyDay.getFullYear(), thirtyDay.getMonth(), thirtyDay.getDate());
         return end
       } else if (time = 4) {
         // 90 天
-        const end = new Date(ninetyday.getFullYear(), ninetyday.getMonth(), ninetyday.getDate());
+        const end = new Date(ninetyDay.getFullYear(), ninetyDay.getMonth(), ninetyDay.getDate());
         return end
       } else if (time = 5) {
         // 一年
@@ -238,7 +238,7 @@ module.exports = {
             },
             "price_one": price,
             "createTime": {
-              $gte: whattime(time),
+              $gte: whatTime(time),
               $lte: today
             }
           }

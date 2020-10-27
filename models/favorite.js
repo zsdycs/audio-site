@@ -12,7 +12,7 @@ module.exports = {
       .deleteOne(document)
       .exec()
   },
-  // 通过用户id关联audios表获取收藏音频信息
+  // 通过用户 id 关联 audios 表获取收藏音频信息
   getAudioLikeListByUserId: function getAudioLikeListByUserId(userId) {
     const find = {}
     find.userId = userId
@@ -22,16 +22,16 @@ module.exports = {
         },
         {
           $lookup: {
-            from: 'audios', // 关联查询表2
-            localField: 'audioId', // 关联表1的商品编号ID
-            foreignField: '_id', // 匹配表2中的ID与关联表1商品编号ID对应
-            as: 'audioInfo' // 满足 localField与foreignField的信息加入audioInfo集合
+            from: 'audios', // 关联查询表 2
+            localField: 'audioId', // 关联表 1 的商品编号ID
+            foreignField: '_id', // 匹配表 2 中的 ID 与关联表 1 商品编号 ID 对应
+            as: 'audioInfo' // 满足 localField 与 foreignField 的信息加入 audioInfo 集合
           }
         }
       ])
       .exec()
   },
-  // 根据用户id返回用户收藏的音频id
+  // 根据用户id返回用户收藏的音频 id
   getAudioIdByUserId: function getAudioIdByUserId(userId) {
     const find = {}
     find.userId = userId

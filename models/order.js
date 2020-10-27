@@ -3,20 +3,20 @@ const Audio = require('../lib/mongo').AudioList
 module.exports = {
 
   // 创建订单
-  create: function create(onerow) {
+  create: function create(oneRow) {
     // 更新音频表 sales 字段的值
     var find = {}
-    find._id = onerow.audioId
+    find._id = oneRow.audioId
     Audio.update(find, {
         $inc: {
           sales: 1
         }
       })
       .exec()
-    return Order.create(onerow).exec()
+    return Order.create(oneRow).exec()
   },
   // 通过用户 id 获取订单列表
-  getOrderlist: function getOrderlist(userId) {
+  getOrderList: function getOrderList(userId) {
     const find = {}
     find.userId = userId
     return Order

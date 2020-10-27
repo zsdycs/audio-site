@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 const UserModel = require('../models/users')
-const checkNotLogin = require('../middlewares/check').checkNotLogin
+const checkNotLogin = require('../middleWares/check').checkNotLogin
 
 // GET signin 登录页
 router.get('/', checkNotLogin, function (req, res, next) {

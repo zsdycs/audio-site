@@ -1,16 +1,12 @@
 $(function () {
-    // 根据shoppingcart cookie绑定数据
-    // var data=getCookie("shoppingcart")
-    // data=JSON.parse(data)
-    // data=JSON.stringify(data)
 
-    // 判断 shoppingcart 是否有商品
-    checkshoppingcartnum()
+    // 判断 shoppingCart 是否有商品
+    checkShoppingCartNum()
 
     // 删除商品
     $(document).on("click", ".btn-link", function () {
         var id = $(this).data("audio_id")
-        var cartList = getCookie("shoppingcart")
+        var cartList = getCookie("shoppingCart")
         cartList = JSON.parse(cartList)
         // 遍历cookie中相同的id商品
         for (var i = 0; i < cartList.length; i++) {
@@ -22,30 +18,30 @@ $(function () {
         // 更新购物车商品信息 cookie
         var exp = new Date();
         exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); // 24 小时
-        document.cookie = "shoppingcart=" + JSON.stringify(cartList) + ";expires=" + exp.toGMTString() + ";path=/";
-        var cartList = getCookie("shoppingcart")
+        document.cookie = "shoppingCart=" + JSON.stringify(cartList) + ";expires=" + exp.toGMTString() + ";path=/";
+        var cartList = getCookie("shoppingCart")
         cartList = JSON.parse(cartList)
         cartList = JSON.stringify(cartList)
         $(this).parent().parent().parent().parent().parent().parent().remove()
-        checkshoppingcartnum()
+        checkShoppingCartNum()
     })
 
     // 清除所有
     $(document).on("click", "#del-all", function () {
-        var cartList = getCookie("shoppingcart")
+        var cartList = getCookie("shoppingCart")
         cartList = JSON.parse(cartList)
         // 清空数组
         cartList.splice(0)
         // 更新购物车商品信息 cookie
         var exp = new Date();
         exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); // 24 小时
-        document.cookie = "shoppingcart=" + JSON.stringify(cartList) + ";expires=" + exp.toGMTString() + ";path=/";
+        document.cookie = "shoppingCart=" + JSON.stringify(cartList) + ";expires=" + exp.toGMTString() + ";path=/";
 
-        var cartList = getCookie("shoppingcart")
+        var cartList = getCookie("shoppingCart")
         cartList = JSON.parse(cartList)
         cartList = JSON.stringify(cartList)
         $(".shopping-cart__group").remove()
-        checkshoppingcartnum()
+        checkShoppingCartNum()
     })
 
     // 更换许可证
@@ -101,11 +97,11 @@ $(function () {
 
     // 确认加入
     $(document).on("click", ".s-button", function () {
-        // 根据 id 修改 "许可证" 、 "金额" ，写入购物车cookie
+        // 根据 id 修改 "许可证" 、 "金额" ，写入购物车 cookie
         var exp = new Date();
         exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); // 24 小时
         var id = $(this).data("id")
-        var audioList = JSON.parse(getCookie("shoppingcart"))
+        var audioList = JSON.parse(getCookie("shoppingCart"))
         // 先判断 cookie 中有无相同的id商品
         for (var i = 0; i < audioList.length; i++) {
             if (audioList[i].audioId == id) {
@@ -114,8 +110,8 @@ $(function () {
                 break;
             }
         }
-        document.cookie = "shoppingcart=" + JSON.stringify(audioList) + ";expires=" + exp.toGMTString() + ";path=/";
-        var data = getCookie("shoppingcart")
+        document.cookie = "shoppingCart=" + JSON.stringify(audioList) + ";expires=" + exp.toGMTString() + ";path=/";
+        var data = getCookie("shoppingCart")
         data = JSON.parse(data)
         // 局部刷新
         Vue.set(List.List = data)
@@ -125,16 +121,16 @@ $(function () {
         $('body').css('overflow', 'auto');
     })
 
-    // 结算按钮，提交请求，order 表取自 shoppingcart（id，price 价格，name 名称，license 许可证）
+    // 结算按钮，提交请求，order 表取自 shoppingCart（id，price 价格，name 名称，license 许可证）
     // 清空购物车，忽略支付，直接跳转到已购买
     $(document).on("click", "#listPostButton", function () {
 
-        var updata = JSON.stringify(JSON.parse(getCookie("shoppingcart")))
+        var upData = JSON.stringify(JSON.parse(getCookie("shoppingCart")))
 
         $.ajax({
             type: "post",
             contentType: 'application/json',
-            data: updata,
+            data: upData,
             url: "/cart",
             dataType: 'json',
             cache: false,
@@ -144,16 +140,16 @@ $(function () {
                     window.location.href = '/signin';
                 } else if (data.status == "success") {
                     // 清空数组
-                    var cartList = getCookie("shoppingcart")
+                    var cartList = getCookie("shoppingCart")
                     cartList = JSON.parse(cartList)
                     cartList.splice(0)
                     // 更新购物车商品信息 cookie
                     var exp = new Date();
                     exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24 小时
-                    document.cookie = "shoppingcart=" + JSON.stringify(cartList) + ";expires=" + exp.toGMTString() + ";path=/";
+                    document.cookie = "shoppingCart=" + JSON.stringify(cartList) + ";expires=" + exp.toGMTString() + ";path=/";
                     window.location.href = '/order'
 
-                } else if (data.status == "nosuccess") {
+                } else if (data.status == "noSuccess") {
                     window.location.reload()
                 } else(
                     console.error("非法请求" + data.status)

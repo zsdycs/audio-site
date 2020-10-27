@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var checkLogin = require('../middlewares/check').checkLogin
-var checkForAjax = require('../middlewares/checkForAjax').checkLogin
+var checkLogin = require('../middleWares/check').checkLogin
+var checkForAjax = require('../middleWares/checkForAjax').checkLogin
 const FavoriteModel = require('../models/favorite')
 
 /* GET */
@@ -10,7 +10,7 @@ router.get('/', checkLogin, function (req, res, next) {
     title: '收藏'
   });
 });
-// POST根据用户id获取用户收藏音频表
+// POST 根据用户 id 获取用户收藏音频表
 router.post('/', checkLogin, function (req, res, next) {
   const userId = req.session.user._id
   FavoriteModel.getAudioLikeListByUserId(userId)
@@ -47,7 +47,7 @@ router.post('/cancel-like', function (req, res, next) {
     })
 })
 
-// 对已登录的用户根据其id返回其收藏的音频id
+// 对已登录的用户根据其 id 返回其收藏的音频 id
 router.post('/is-like', checkForAjax, function (req, res, next) {
   var userId = req.session.user._id
   FavoriteModel.getAudioIdByUserId(userId)

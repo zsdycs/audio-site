@@ -9,7 +9,7 @@ $(document).on("click", ".add-cart-button", function () {
   // .data("action")
   var one = $(this).data("price_one")
   var unlimited = $(this).data("price_unlimited")
-  var name = $(this).data("audioname")
+  var name = $(this).data("audioName")
   var audio_id = $(this).data("audio_id")
   $("#select-price").append("<option value =\"" + one + "\">一次性 - ￥" + one + "</option>")
   $("#select-price").append("<option value =\"" + unlimited + "\">无限制 - ￥" + unlimited + "</option>")
@@ -70,14 +70,14 @@ $(document).on("click", ".s-button", function () {
     unlimited: unlimited
   }
   var audioList = []
-  // 如果 cooki 为空，直接添加
-  if (getCookie("shoppingcart").length == 0) {
+  // 如果 cookie 为空，直接添加
+  if (getCookie("shoppingCart").length == 0) {
     // 添加到 audioList
     audioList.push(audios);
   } else {
-    audioList = JSON.parse(getCookie("shoppingcart"))
+    audioList = JSON.parse(getCookie("shoppingCart"))
     // 购物车有商品，判断当前加入是否包含，包含则移除，再添加
-    // 先判断 cookie 中有无相同的id商品
+    // 先判断 cookie 中有无相同的 id 商品
     for (var i = 0; i < audioList.length; i++) {
       if (audioList[i].audioId === id) {
         audioList.splice(i, 1)
@@ -85,14 +85,14 @@ $(document).on("click", ".s-button", function () {
         break;
       }
     }
-    // 如果原cookie 中没有当前商品
+    // 如果原 cookie 中没有当前商品
     if (i === audioList.length) {
       // 添加到 audioList
       audioList.push(audios);
     }
   }
-  document.cookie = "shoppingcart=" + JSON.stringify(audioList) + ";expires=" + exp.toGMTString() + ";path=/";
-  var data = getCookie("shoppingcart")
+  document.cookie = "shoppingCart=" + JSON.stringify(audioList) + ";expires=" + exp.toGMTString() + ";path=/";
+  var data = getCookie("shoppingCart")
   data = JSON.parse(data)
   data = JSON.stringify(data)
 

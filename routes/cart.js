@@ -1,7 +1,7 @@
 var router = require('express').Router();
 
 const OrderModel = require('../models/order')
-var checkLogin = require('../middlewares/checkForAjax').checkLogin
+var checkLogin = require('../middleWares/checkForAjax').checkLogin
 
 
 /* GET */
@@ -15,9 +15,9 @@ router.post('/', checkLogin, function (req, res, next) {
   if (req.body.length != 0) {
     for (var i = 0; i < req.body.length; i++) {
       req.body[i].userId = req.session.user._id
-      var onerow = req.body[i]
+      var oneRow = req.body[i]
       // 用户信息写入数据库
-      OrderModel.create(onerow)
+      OrderModel.create(oneRow)
         .then(function () {
           // 写入 flash
           req.flash('success', '结算成功')
@@ -27,11 +27,11 @@ router.post('/', checkLogin, function (req, res, next) {
           })
         })
         .catch(function (e) {
-          // id 被占用返回 nosuccess
+          // id 被占用返回 noSuccess
           if (e.message.match('duplicate key')) {
             req.flash('error', '存在已购买的音频')
             res.send({
-              "status": "nosuccess"
+              "status": "noSuccess"
             })
           }
         })

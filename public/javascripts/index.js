@@ -20,14 +20,14 @@ $(document).ready(function () {
   // "bg"+rand
   $("#segment").addClass("bg" + 5)
 
-  newsorttitle()
+  newSortTitle()
 });
 
 // 如果购物车 cookie 不存在写入空购物车 cookie
-if (getCookie("shoppingcart") == "") {
+if (getCookie("shoppingCart") == "") {
   var exp = new Date();
   exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); // 24 小时
-  document.cookie = "shoppingcart=[];expires=" + exp.toGMTString() + ";path=/";
+  document.cookie = "shoppingCart=[];expires=" + exp.toGMTString() + ";path=/";
 }
 // 初始化筛选项变量。标签，价格，时间
 // 标签
@@ -60,11 +60,11 @@ if (getCookie("maxNumPage") == "") {
       voice_num: voice_num,
       page: 1
     },
-    maxNumPagelist = [];
-  maxNumPagelist.push(maxNumPage);
+    maxNumPageList = [];
+  maxNumPageList.push(maxNumPage);
   var exp = new Date();
   exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
-  document.cookie = "maxNumPage=" + JSON.stringify(maxNumPagelist) + ";expires=" + exp.toGMTString() + ";path=/";
+  document.cookie = "maxNumPage=" + JSON.stringify(maxNumPageList) + ";expires=" + exp.toGMTString() + ";path=/";
 }
 // 通过 post 获得页面状态，最大价格 max_price,当前音频数量 voice_num 写入 cookie
 var data = {
@@ -101,17 +101,17 @@ $.ajax({
         page: 1
       }
     }
-    var maxNumPagelist = [];
-    maxNumPagelist.push(maxNumPage);
+    var maxNumPageList = [];
+    maxNumPageList.push(maxNumPage);
     var exp = new Date();
     exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); // 24 小时
-    document.cookie = "maxNumPage=" + JSON.stringify(maxNumPagelist) + ";expires=" + exp.toGMTString() + ";path=/";
+    document.cookie = "maxNumPage=" + JSON.stringify(maxNumPageList) + ";expires=" + exp.toGMTString() + ";path=/";
   }
 })
 
 $(function () {
 
-  getFiltrateByCookieForRtopList()
+  getFiltrateByCookieForRightTopList()
   // FiltrateAndAudioByCookie()
   // 筛选列表折叠事件
   $(document).on("click", ".filtrate-button", function () {
@@ -181,12 +181,12 @@ $(function () {
 
 
 // 渲染右边标签项，从 cookie 获取数据
-function getFiltrateByCookieForRtopList() {
+function getFiltrateByCookieForRightTopList() {
   // 已选标签列表
-  var labeltagList = new Vue({
-    el: '#labeltagList',
+  var labelTagList = new Vue({
+    el: '#labelTagList',
     data: {
-      labeltagList: [],
+      labelTagList: [],
     },
     created() {
       ////////////测试用数据//////////////
@@ -212,8 +212,8 @@ function getFiltrateByCookieForRtopList() {
       }
       // 价格
       // 通过 cookie 获得最大价格
-      maxNumPagelist = JSON.parse(getCookie("maxNumPage"))
-      var max_price = maxNumPagelist[0].max_price
+      maxNumPageList = JSON.parse(getCookie("maxNumPage"))
+      var max_price = maxNumPageList[0].max_price
       if (!(filtrateList[0].price[0] == 1 && filtrateList[0].price[1] == max_price)) {
         var tag_name = "￥" + filtrateList[0].price[0] + " - ￥" + filtrateList[0].price[1]
         var tag_one = {
@@ -241,13 +241,13 @@ function getFiltrateByCookieForRtopList() {
         }
       }
 
-      self.labeltagList = data
+      self.labelTagList = data
       data = JSON.stringify(data)
     },
     watch: {
-      labeltagList: function () {
+      labelTagList: function () {
         this.$nextTick(function () {
-            labeltagListisloading()
+            labelTagListIsLoading()
             // console.log('v-for 渲染已经完成')
           }
 
@@ -257,11 +257,11 @@ function getFiltrateByCookieForRtopList() {
   });
 }
 
-function labeltagListisloading() {
-  $(".labeltag").removeClass("loader")
+function labelTagListIsLoading() {
+  $(".labelTag").removeClass("loader")
 }
 // 删除所选标签
-$(document).on("click", ".labeltag", function () {
+$(document).on("click", ".labelTag", function () {
   // 修改 cookie
   var exp = new Date();
   exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
@@ -274,8 +274,8 @@ $(document).on("click", ".labeltag", function () {
   }
   if ($(this).text().indexOf("￥") >= 0) {
     // cookie 获得最大值
-    maxNumPagelist = JSON.parse(getCookie("maxNumPage"))
-    var max_price = maxNumPagelist[0].max_price
+    maxNumPageList = JSON.parse(getCookie("maxNumPage"))
+    var max_price = maxNumPageList[0].max_price
     filtrateList[0].price[0] = 1
     filtrateList[0].price[1] = max_price
   }
@@ -293,9 +293,9 @@ $(document).on("click", ".labeltag", function () {
 // 根据 cookie 筛选项显示页面筛选项状态，数据绑定
 function FiltrateAndAudioByCookie() {
   filtrateList = JSON.parse(getCookie("filtrateTagList"))
-  maxNumPagelist = JSON.parse(getCookie("maxNumPage"))
+  maxNumPageList = JSON.parse(getCookie("maxNumPage"))
   // 关联数量
-  $(".audio_num").text(maxNumPagelist[0].voice_num)
+  $(".audio_num").text(maxNumPageList[0].voice_num)
   // 关联标签 $(".demo:eq(n)")
   $(".input-check-tag").each(function () {
     filtrateList = JSON.parse(getCookie("filtrateTagList"))
@@ -306,7 +306,7 @@ function FiltrateAndAudioByCookie() {
     }
   })
   // 关联价格状态
-  var price_max = maxNumPagelist[0].max_price
+  var price_max = maxNumPageList[0].max_price
   if (price_max == filtrateList[0].price[1]) {
     $(".price-r-input").attr("placeholder", price_max)
   } else {
@@ -354,21 +354,21 @@ $(document).on("click", ".input-check-tag", function () {
 })
 // 价格--------------------
 $(document).on("click", ".price_button", function () {
-  maxNumPagelist = JSON.parse(getCookie("maxNumPage"))
-  var price_max = maxNumPagelist[0].max_price
+  maxNumPageList = JSON.parse(getCookie("maxNumPage"))
+  var price_max = maxNumPageList[0].max_price
 
   if ($(".price-l-input").val() != "" && $(".price-r-input").val() == "") {
-    todo($(".price-l-input").val(), price_max, price_max)
+    setCookie($(".price-l-input").val(), price_max, price_max)
   } else if ($(".price-l-input").val() == "" && $(".price-r-input").val() != "") {
-    todo(1, $(".price-r-input").val(), price_max)
+    setCookie(1, $(".price-r-input").val(), price_max)
 
   } else if ($(".price-r-input").val() == "" && $(".price-l-input").val() == "") {
-    todo(1, price_max, price_max)
+    setCookie(1, price_max, price_max)
   } else {
-    todo($(".price-l-input").val(), $(".price-r-input").val(), price_max)
+    setCookie($(".price-l-input").val(), $(".price-r-input").val(), price_max)
   }
 
-  function todo(l, r, max) {
+  function setCookie(l, r, max) {
     var exp = new Date();
     exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); //24小时
     // 流程，取出标签，遍历找到数组所在位置，移除位置的值
@@ -410,85 +410,79 @@ $(document).on("click", ".label_time", function () {
 
 // 输入,最大值根据请求获得，例 9904
 $(document).on("keyup", ".price-l-input", function () {
-  // if(isNaN(this.value)||this.value==''||this.value==0){
-  //   this.value=1;
-  // }
-  maxNumPagelist = JSON.parse(getCookie("maxNumPage"))
-  var max_price = maxNumPagelist[0].max_price
+  maxNumPageList = JSON.parse(getCookie("maxNumPage"));
+  var max_price = maxNumPageList[0].max_price;
   if (this.value > max_price) {
     this.value = max_price;
   }
   if (this.value.length == 1) {
-    this.value = this.value.replace(/[^1-9]/g, '')
+    this.value = this.value.replace(/[^1-9]/g, '');
   } else {
-    this.value = this.value.replace(/\D/g, '')
+    this.value = this.value.replace(/\D/g, '');
   }
 })
 // 粘贴
 $(document).on("blur", ".price-l-input", function () {
   if (this.value.length == 1) {
-    this.value = this.value.replace(/[^1-9]/g, '')
+    this.value = this.value.replace(/[^1-9]/g, '');
   } else {
-    this.value = this.value.replace(/\D/g, '')
+    this.value = this.value.replace(/\D/g, '');
   }
 })
 // 右边
 $(document).on("keyup", ".price-r-input", function () {
   // 获取页面加载获得的 cookie，得到最大价格
-  maxNumPagelist = JSON.parse(getCookie("maxNumPage"))
-  var max_price = maxNumPagelist[0].max_price
+  maxNumPageList = JSON.parse(getCookie("maxNumPage"));
+  var max_price = maxNumPageList[0].max_price;
   if (this.value > max_price) {
     this.value = max_price;
   }
   if (this.value.length == 1) {
-    this.value = this.value.replace(/[^1-9]/g, '')
+    this.value = this.value.replace(/[^1-9]/g, '');
   } else {
-    this.value = this.value.replace(/\D/g, '')
+    this.value = this.value.replace(/\D/g, '');
   }
 })
 // 粘贴
 $(document).on("blur", ".price-r-input", function () {
   // 获取页面加载获得的 cookie，得到最大价格
-  maxNumPagelist = JSON.parse(getCookie("maxNumPage"))
-  var max_price = maxNumPagelist[0].max_price
-  // if(isNaN(this.value)||this.value==''||this.value==0){
-  //   this.value=max_price;
-  // }
+  maxNumPageList = JSON.parse(getCookie("maxNumPage"));
+  var max_price = maxNumPageList[0].max_price;
   if (this.value > max_price) {
     this.value = max_price;
   }
   if (this.value.length == 1) {
-    this.value = this.value.replace(/[^1-9]/g, '')
+    this.value = this.value.replace(/[^1-9]/g, '');
   } else {
-    this.value = this.value.replace(/\D/g, '')
+    this.value = this.value.replace(/\D/g, '');
   }
 })
 
 
 // 搜索,模糊搜索，不区分大小写，流程 -> 写入列表顶部标签 cookie，搜索请求，局部刷新，侧边标签选择忽略该 key
-$(document).on('keypress', '.forsearch', function (event) {
+$(document).on('keypress', '.forSearch', function (event) {
   if (event.keyCode == "13" && $(this).val() != "") {
-    var searchValue = $(this).val()
-    var filtrateTagList = JSON.parse(getCookie("filtrateTagList"))
+    var searchValue = $(this).val();
+    var filtrateTagList = JSON.parse(getCookie("filtrateTagList"));
 
     // 清空tag、价格、时间
-    filtrateTagList[0].tag.splice(0, filtrateTagList[0].tag.length)
-    filtrateTagList[0].tag[0] = "music"
-    filtrateTagList[0].price[0] = 1
-    filtrateTagList[0].price[1] = 1998
-    filtrateTagList[0].time = 1
-    filtrateTagList[0].sort = "null"
+    filtrateTagList[0].tag.splice(0, filtrateTagList[0].tag.length);
+    filtrateTagList[0].tag[0] = "music";
+    filtrateTagList[0].price[0] = 1;
+    filtrateTagList[0].price[1] = 1998;
+    filtrateTagList[0].time = 1;
+    filtrateTagList[0].sort = "null";
 
-    filtrateTagList[0].searchValue = searchValue
+    filtrateTagList[0].searchValue = searchValue;
     var exp = new Date();
     exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); // 24 小时
     document.cookie = "filtrateTagList=" + JSON.stringify(filtrateTagList) + ";expires=" + exp.toGMTString() + ";path=/";
 
-    $("#audioList").addClass("loader")
-    $(".audioLis_ul").css("display", "none")
-    var data = {}
-    data.page = 1
-    data.fileName = JSON.parse(getCookie("filtrateTagList"))[0].searchValue
+    $("#audioList").addClass("loader");
+    $(".audioLis_ul").css("display", "none");
+    var data = {};
+    data.page = 1;
+    data.fileName = JSON.parse(getCookie("filtrateTagList"))[0].searchValue;
     $.ajax({
       type: "post",
       data: JSON.stringify(data),
@@ -499,16 +493,16 @@ $(document).on('keypress', '.forsearch', function (event) {
       timeout: 5000,
       success: function (data) {
         for (var i = 0; i < data.length; i++) {
-          data[i].div_id = "audio" + i
-          t[i] = data[i].filePath
-          id[i] = "#audio" + i
+          data[i].div_id = "audio" + i;
+          t[i] = data[i].filePath;
+          id[i] = "#audio" + i;
         }
-        $("wave").remove()
-        Vue.set(audioList.audioList = data)
-        checkAudioNum(data)
+        $("wave").remove();
+        Vue.set(audioList.audioList = data);
+        checkAudioNum(data);
         if (data.length == 0) {
           // $(".audio_num").text("0")
-          $("#pagediv").css("display", "none")
+          $("#pageDiv").css("display", "none");
         }
       }
     })
@@ -517,30 +511,29 @@ $(document).on('keypress', '.forsearch', function (event) {
 
 
 // 根据 cookie 初始化排序
-function newsorttitle() {
+function newSortTitle() {
   var exp = new Date();
   exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); // 24 小时
-  filtrateList = JSON.parse(getCookie("filtrateTagList"))
-  filtrateList[0].sort = "null"
+  filtrateList = JSON.parse(getCookie("filtrateTagList"));
+  filtrateList[0].sort = "null";
   document.cookie = "filtrateTagList=" + JSON.stringify(filtrateList) + ";expires=" + exp.toGMTString() + ";path=/";
 }
 
 function sort(title) {
-  // 绑定排序方式
-  // 写入 cookie
-  var sort = ""
+  // 绑定排序方式 写入 cookie
+  var sort = "";
   if (title == "综合排序") {
-    sort = "null"
+    sort = "null";
   } else if (title == "销售最高") {
-    sort = "sales"
+    sort = "sales";
   } else if (title == "价格最低") {
-    sort = "price"
+    sort = "price";
   } else if (title == "日期最新") {
-    sort = "time"
+    sort = "time";
   }
   var exp = new Date();
   exp.setTime(exp.getTime() + 60 * 1000 * 60 * 24); // 24 小时
-  filtrateList = JSON.parse(getCookie("filtrateTagList"))
-  filtrateList[0].sort = sort
+  filtrateList = JSON.parse(getCookie("filtrateTagList"));
+  filtrateList[0].sort = sort;
   document.cookie = "filtrateTagList=" + JSON.stringify(filtrateList) + ";expires=" + exp.toGMTString() + ";path=/";
 }

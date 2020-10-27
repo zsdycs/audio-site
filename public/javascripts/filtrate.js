@@ -42,12 +42,12 @@ var tagList = new Vue({
 			timeout: 5000,
 			success: function (data) {
 				filtrateList = JSON.parse(getCookie("filtrateTagList"))
-				// 标签第一项不为初始""，或不为不存在,filtrateList[0].tag[0] != "" &&
+				// 标签第一项不为初始""，或不为不存在，filtrateList[0].tag[0] != "" &&
 				if (data.length !== 0 && data[0]._id == "music") {
 					data.splice(0, 1)
 				} else if (filtrateList[0].tag[0] != undefined) {
 					for (var i = 0; i < data.length; i++) {
-						// 获得，到music的项，不在cookie的，去掉
+						// 获得 music 的项，不在 cookie 的，去掉
 						if (data[i]._id == "music") {
 							data.splice(i, 1)
 							var k = 0
@@ -68,7 +68,7 @@ var tagList = new Vue({
 	watch: {
 		tagList: function () {
 			this.$nextTick(function () {
-					tagListisloading()
+					tagListIsLoading()
 					FiltrateAndAudioByCookie()
 					// console.log('v-for 渲染已经完成')
 				}
@@ -78,6 +78,6 @@ var tagList = new Vue({
 	}
 });
 // 标签列表渲染完成隐藏
-function tagListisloading() {
+function tagListIsLoading() {
 	$("#tagList").removeClass("loader")
 }

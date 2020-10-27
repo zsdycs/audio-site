@@ -1,4 +1,4 @@
-/* 获取指定cookie */
+/* 获取指定 cookie */
 function getCookie(name) {
   var arrCookie = document.cookie.split("; ");
   for (var i = 0; i < arrCookie.length; i++) {

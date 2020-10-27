@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var checkLogin = require('../middlewares/check').checkLogin
+var checkLogin = require('../middleWares/check').checkLogin
 
 /* GET */
 router.get('/', checkLogin, function (req, res, next) {

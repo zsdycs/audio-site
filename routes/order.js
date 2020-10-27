@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var checkLogin = require('../middlewares/check').checkLogin
+var checkLogin = require('../middleWares/check').checkLogin
 const OrderModel = require('../models/order')
 /* GET */
 router.get('/', checkLogin, function (req, res, next) {
@@ -12,7 +12,7 @@ router.get('/', checkLogin, function (req, res, next) {
 // POST,通过userId获得已购订单
 router.post('/', checkLogin, function (req, res, next) {
   const userId = req.session.user._id
-  OrderModel.getOrderlist(userId)
+  OrderModel.getOrderList(userId)
     .then(function (data) {
       res.send(data)
     })

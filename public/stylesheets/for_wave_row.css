@@ -1,59 +1,84 @@
-*, :after, :before {
+*,
+:after,
+:before {
     box-sizing: inherit;
 }
+
 ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
+
 a {
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
 }
-article, aside, footer, header, nav, section {
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
     display: block;
 }
-*{
+
+* {
     padding: 0;
     margin: 0;
 }
-button, select {
+
+button,
+select {
     text-transform: none;
 }
-button, input, optgroup, select, textarea {
+
+button,
+input,
+optgroup,
+select,
+textarea {
     font-family: sans-serif;
     font-size: 100%;
     line-height: 1.15;
     margin: 0;
 }
+
 [v-cloak] {
     display: none;
 }
-#isloading{
+
+#isloading {
     padding-top: 10px;
     width: 1100px;
     height: 50px;
     margin: 0 auto;
 }
+
 .waveform {
     /* max-width: 800px; */
     height: 36px;
-    margin: auto;    
+    margin: auto;
 }
+
 #waveform {
     height: 36px;
     position: relative;
 }
+
 #waveform1 {
     height: 50px;
     position: relative;
 }
-.play_and_pause_button{
+
+.play_and_pause_button {
     outline: none;
     border: 0;
     padding: 0;
     background-color: transparent;
 }
+
 .play_svg {
     width: 30px;
     height: 30px;
@@ -61,7 +86,8 @@ button, input, optgroup, select, textarea {
     cursor: pointer;
     display: block;
 }
-.row_one{
+
+.row_one {
     position: relative;
     display: -ms-flexbox;
     display: flex;
@@ -70,18 +96,20 @@ button, input, optgroup, select, textarea {
     -ms-flex-direction: column;
     flex-direction: column;
 }
-.audio_ul{
+
+.audio_ul {
     display: block;
     margin: 0 auto;
     max-width: 1104px;
 }
-.audioLidLis_li{
+
+.audioLidLis_li {
     -ms-flex: 1 0 320px;
     flex: 1 0 320px;
     min-width: 0;
 }
 
-.row_div{
+.row_div {
     font-size: 12px;
     color: #999;
     border-radius: 4px;
@@ -91,14 +119,16 @@ button, input, optgroup, select, textarea {
     display: -ms-flexbox;
     display: flex;
 }
-.row_L{
+
+.row_L {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
     width: 100%;
 }
-.row_L_top{
+
+.row_L_top {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: justify;
@@ -106,14 +136,16 @@ button, input, optgroup, select, textarea {
     -ms-flex-align: center;
     align-items: center;
 }
-.row_L_top_div{
+
+.row_L_top_div {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: row;
     flex-direction: row;
     width: 100%;
 }
-.row_L_top_content{
+
+.row_L_top_content {
     width: 100%;
     display: -ms-flexbox;
     display: flex;
@@ -122,14 +154,16 @@ button, input, optgroup, select, textarea {
     -ms-flex-align: center;
     align-items: center;
 }
-.wave_div{
+
+.wave_div {
     width: 100%;
     height: 36px;
     position: relative;
     cursor: -webkit-grab;
     cursor: grab;
 }
-.row_L_bottom{
+
+.row_L_bottom {
     -ms-flex-align: end;
     align-items: flex-end;
     -ms-flex-pack: justify;
@@ -138,27 +172,31 @@ button, input, optgroup, select, textarea {
     display: -ms-flexbox;
     display: flex;
 }
-.row_L_B_L{
+
+.row_L_B_L {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
     align-items: center;
     margin-top: 8px;
 }
-.music_info{
+
+.music_info {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: baseline;
     align-items: baseline;
     overflow: hidden;
 }
-.h3_m_name{
+
+.h3_m_name {
     max-height: 40px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.music_name_a:after{
+
+.music_name_a:after {
     background-color: #4d4d4d;
     content: "";
     height: 1px;
@@ -168,13 +206,14 @@ button, input, optgroup, select, textarea {
     position: absolute;
     top: 100%;
     transform: translateY(1px);
-    transition: all .15s cubic-bezier(.39,.575,.565,1);
-    transition-property: opacity,transform;
+    transition: all .15s cubic-bezier(.39, .575, .565, 1);
+    transition-property: opacity, transform;
     width: 100%;
 }
-.music_name_a{
-    white-space: nowrap; 
-    overflow: hidden; 
+
+.music_name_a {
+    white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
     text-decoration: none;
     font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, 'STKaiti', 'KaiTi', '楷体', 'SimKai', 'DFKai-SB', 'NSimSun', serif;
@@ -185,7 +224,8 @@ button, input, optgroup, select, textarea {
     color: #4d4d4d;
     font-size: 14px;
 }
-.music_by_div{
+
+.music_by_div {
     margin-left: 4px;
     color: #999;
     height: 18px;
@@ -196,6 +236,7 @@ button, input, optgroup, select, textarea {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
 .music_author:after {
     background-color: #999;
     content: "";
@@ -206,11 +247,12 @@ button, input, optgroup, select, textarea {
     position: absolute;
     top: 100%;
     transform: translateY(1px);
-    transition: all .15s cubic-bezier(.39,.575,.565,1);
-    transition-property: opacity,transform;
+    transition: all .15s cubic-bezier(.39, .575, .565, 1);
+    transition-property: opacity, transform;
     width: 100%;
 }
-.music_author{
+
+.music_author {
     font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, 'STKaiti', 'KaiTi', '楷体', 'SimKai', 'DFKai-SB', 'NSimSun', serif;
     -webkit-font-smoothing: subpixel-antialiased;
     text-decoration: none;
@@ -221,14 +263,17 @@ button, input, optgroup, select, textarea {
     color: #999;
     font-weight: 500;
 }
-.text-align-r{
+
+.text-align-r {
     text-align: right;
 }
-.down-icon{
+
+.down-icon {
     position: relative;
     display: inline-block;
 }
-.down-svg{
+
+.down-svg {
     display: inline-block;
     fill: #999;
     padding: 8px;
@@ -238,14 +283,16 @@ button, input, optgroup, select, textarea {
     border-right: 1px solid #e6e6e6;
     border-left: 1px solid transparent;
 }
-.audio-time{
+
+.audio-time {
     color: #333;
     font-weight: 700;
     margin: 0 15px 0 15px;
     min-width: 40px;
     text-align: center;
 }
-.add-f-svg{
+
+.add-f-svg {
     display: inline-block;
     fill: #999;
     padding: 8px;
@@ -253,69 +300,97 @@ button, input, optgroup, select, textarea {
     width: 20px;
     height: 20px;
 }
-.row-r-s{
+
+.row-r-s {
     position: relative;
     height: 100%;
 }
-.row-r-ss{
+
+.row-r-ss {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: justify;
     justify-content: space-between;
     height: 100%;
 }
-#add-cart-div{
+
+#add-cart-div {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#add-cart-button{
+
+#add-cart-button {
     margin: 0;
     padding: .78571429em 1em .78571429em;
 }
-.price-span{
+
+.price-span {
     display: inline-block;
     margin: 8px 0 8px;
 }
-.price-div{
+
+.price-div {
     line-height: 28px;
     color: #4d4d4d;
     font-size: 18px;
     font-weight: 700;
 }
-.sales-div{
+
+.sales-div {
     line-height: 20px;
     color: #999;
     font-size: 12px;
 }
-.cart-span{
+
+.cart-span {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-item-align: end;
     align-self: center;
 }
-.like-a{
+
+.like-a {
     cursor: pointer;
 }
-.add-like{
+
+.add-like {
     animation-name: _3HUDA;
 }
-#audioList{
+
+#audioList {
     margin-bottom: 24px;
 }
-@keyframes _3HUDA
-{20%{transform:scale(.8)}50%{transform:scale(1.2)}
+
+@keyframes _3HUDA {
+    20% {
+        transform: scale(.8)
+    }
+
+    50% {
+        transform: scale(1.2)
+    }
 }
-@keyframes XzVf_{50%{transform:scale(1.1);opacity:1}}
-.add-like,.add-like .add-f-svg {
+
+@keyframes XzVf_ {
+    50% {
+        transform: scale(1.1);
+        opacity: 1
+    }
+}
+
+.add-like,
+.add-like .add-f-svg {
     animation-duration: .8s;
-    animation-timing-function: cubic-bezier(.17,.89,.32,1.49);
+    animation-timing-function: cubic-bezier(.17, .89, .32, 1.49);
 }
-.add-like .add-f-svg{
+
+.add-like .add-f-svg {
     fill: #ff6966;
     animation-name: XzVf_;
 }
-.cart-a{
+
+.cart-a {
     color: #999;
     border-color: #79b530;
     height: 37px;
@@ -340,34 +415,40 @@ button, input, optgroup, select, textarea {
 }
 
 @media(max-width: 639px) {
+
     /* body {
       background-color: rgb(117, 14, 36);
     } */
-    .row_div{
+    .row_div {
         -ms-flex-direction: column;
         flex-direction: column;
     }
-    .row_div, .row_one {
+
+    .row_div,
+    .row_one {
         padding: 16px;
         /* margin: 0px 30px 0px 0px; */
-    }   
-    .h3_m_name{
+    }
+
+    .h3_m_name {
         width: 235px;
     }
 }
 
 @media(min-width: 640px) {
+
     /* body {
     background-color: aquamarine;
         
     } */
-    .row_div{
-    margin: 16px 16px 0px;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    height: 106px;
-    padding: 15px 30px;
+    .row_div {
+        margin: 16px 16px 0px;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        height: 106px;
+        padding: 15px 30px;
     }
+
     .row-R {
         width: 170px;
         min-width: 127px;
@@ -381,9 +462,11 @@ button, input, optgroup, select, textarea {
     }
 
 }
-.display_3qnOD ._3qnOD{
+
+.display_3qnOD ._3qnOD {
     display: none;
 }
+
 ._3qnOD {
     width: 8px;
     height: 8px;
@@ -393,6 +476,7 @@ button, input, optgroup, select, textarea {
     left: 25px;
     top: 5px;
 }
+
 ._3qnOD:after {
     content: "";
     height: 100%;
@@ -407,14 +491,21 @@ button, input, optgroup, select, textarea {
     animation-direction: reverse;
     opacity: .5;
 }
-@keyframes _3UIIa{0%{opacity:0;transform:scale(3)}}
+
+@keyframes _3UIIa {
+    0% {
+        opacity: 0;
+        transform: scale(3)
+    }
+}
+
 /* @media(min-width: 1000px) {
 body {
     background-color: rgb(255, 255, 255);
 }
 } */
-@media (max-width: 1408px) and (min-width: 1152px){
-.music_info {
-    max-width: 500px;
-}
+@media (max-width: 1408px) and (min-width: 1152px) {
+    .music_info {
+        max-width: 500px;
+    }
 }
